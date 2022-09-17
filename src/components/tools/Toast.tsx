@@ -17,35 +17,37 @@ interface Props {
   type?: ToastType;
   hide?: (event: GestureResponderEvent) => void;
 }
-
 const Toast: React.FC<Props> = ({ content, type, hide }) => {
   const icon =
     type && type == ToastType.ERROR ? faExclamationTriangle : faCheck;
-  const color =
-    type && type == ToastType.ERROR ? "rgb(255, 0, 0)" : "rgb(0, 255, 0)";
-  const bgColor =
-    type && type == ToastType.ERROR
-      ? "rgba(255, 0, 0, .5)"
-      : "rgba(0, 255, .5)";
+  const color = type && type == ToastType.ERROR ? "#ff0000" : "#00ff00";
 
   const styles = StyleSheet.create({
     toast: {
       elevation: 8,
       borderColor: color,
-      borderWidth: 2,
-      borderRadius: 15,
+      borderLeftWidth: 8,
+      borderTopWidth: 2,
+      borderRadius: 5,
       paddingVertical: 15,
       paddingHorizontal: 15,
-      shadowOpacity: 0.5,
-      backgroundColor: bgColor,
-      width: "50%",
+      position: "absolute",
+      top: -50,
+      left: -100,
+      zIndex: 4,
+      backgroundColor: "rgba(255, 255, 255,.6)",
+      flexDirection: "row",
+    },
+    text: {
+      color: "#000",
+      fontSize: 24,
     },
   });
 
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={hide} style={styles.toast}>
+    <TouchableOpacity onPress={hide} style={styles.toast}>
       <FontAwesomeIcon color={color} icon={icon} size={24} />
-      {content ? <Text>{content}</Text> : ""}
+      {content ? <Text style={styles.text}>{content}</Text> : ""}
     </TouchableOpacity>
   );
 };

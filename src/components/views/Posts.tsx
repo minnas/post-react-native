@@ -2,6 +2,7 @@ import {
   faSignsPost,
   faBookmark,
   faHome,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { FlatList, StyleSheet, Text, View } from "react-native";
@@ -119,6 +120,9 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     alignItems: "flex-end",
+    borderBottomColor: "rgba(0, 0, 0, .2)",
+    borderBottomWidth: 3,
+    paddingBottom: 5,
   },
   itemText: {
     fontSize: 24,
