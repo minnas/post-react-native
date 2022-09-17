@@ -5,6 +5,7 @@ import {
   faCircleInfo,
   faPlus,
   faMinus,
+  faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Link } from "react-router-native";
@@ -47,10 +48,15 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
           color="#000"
         />
       </View>
-      <View>
+      <View style={styles.btnRow}>
         <Link to="/about" activeOpacity={0.2}>
           <View style={styles.row}>
             <FontAwesomeIcon icon={faCircleInfo} size={32} />
+          </View>
+        </Link>
+        <Link to="/posts" activeOpacity={0.2}>
+          <View style={styles.row}>
+            <FontAwesomeIcon icon={faLayerGroup} size={32} />
           </View>
         </Link>
       </View>
@@ -76,8 +82,6 @@ const styles = StyleSheet.create({
     width: "80%",
     justifyContent: "center",
     alignItems: "center",
-    rowGap: "2%",
-    columnGap: "2%",
   },
   text: {
     fontSize: 24,

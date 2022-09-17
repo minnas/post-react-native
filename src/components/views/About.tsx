@@ -72,15 +72,11 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
-    rowGap: "2%",
-    columnGap: "2%",
     paddingVertical: 25,
     paddingHorizontal: 15,
   },
   column: {
     flexDirection: "column",
-    rowGap: "2%",
-    columnGap: "2%",
     paddingVertical: 25,
     paddingHorizontal: 15,
   },

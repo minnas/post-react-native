@@ -15,7 +15,7 @@ import { ToastType } from "./settings";
 interface Props {
   content?: string;
   type?: ToastType;
-  hide: (event: GestureResponderEvent) => void;
+  hide?: (event: GestureResponderEvent) => void;
 }
 
 const Toast: React.FC<Props> = ({ content, type, hide }) => {

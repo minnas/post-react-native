@@ -16,6 +16,7 @@ interface Props {
   type?: ButtonType;
   color?: string;
   disabled?: boolean;
+  id?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const Button: React.FC<Props> = ({
   type,
   color,
   disabled,
+  id,
 }) => {
   const onlyIcon = type == ButtonType.ICON_ONLY;
   const btnColor = color || "#916ec9";
