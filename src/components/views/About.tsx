@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {
-  faUserNinja,
   faHome,
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
@@ -28,8 +27,7 @@ const About = ({}) => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.title}>About the App</Text>
-        <FontAwesomeIcon icon={faUserNinja} size={32} />
+        <Text style={styles.title}>Here will be some useful info about the app</Text>
       </View>
       <View>
         <Link to="/" activeOpacity={0.2}>

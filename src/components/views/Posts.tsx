@@ -61,18 +61,10 @@ const Posts = () => {
   };
   return (
     <View style={styles.container}>
-      <View style={styles.item}>
-        <Text style={styles.text}>Some Awesome Posts.</Text>
-        <FontAwesomeIcon icon={faSignsPost} size={32} />
-      </View>
-      <View style={styles.item}>
+      <View style={styles.title}>
         <Text style={styles.text}>Current {count} posts in the list</Text>
-      </View>
-      <View>
         <Link to="/" activeOpacity={0.2}>
-          <View style={styles.item}>
             <FontAwesomeIcon icon={faHome} size={32} />
-          </View>
         </Link>
       </View>
       <View style={styles.containerPosts}>
@@ -95,12 +87,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    rowGap: 12,
-    paddin: 25,
+    marginTop:25
   },
   containerPosts: {
-    height: "60%",
-    marginVertical: 4,
+    //marginVertical: 4,
   },
   item: {
     flexDirection: "row",
@@ -122,19 +112,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
   },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#000",
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
   itemText: {
     fontSize: 24,
     fontWeight: "normal",
     color: "#000",
     marginHorizontal: 25,
-  },
-  btnRow: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 25,
-    paddingHorizontal: 55,
   },
 });
 
