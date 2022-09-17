@@ -64,7 +64,7 @@ const Posts = () => {
       <View style={styles.title}>
         <Text style={styles.text}>Current {count} posts in the list</Text>
         <Link to="/" activeOpacity={0.2}>
-            <FontAwesomeIcon icon={faHome} size={32} />
+          <FontAwesomeIcon icon={faHome} size={32} />
         </Link>
       </View>
       <View style={styles.containerPosts}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop:25
+    marginTop: 25,
   },
   containerPosts: {
     //marginVertical: 4,
@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#000",
     height: 50,
-    flexDirection: 'row',
-    alignItems: 'flex-end'
+    flexDirection: "row",
+    alignItems: "flex-end",
   },
   itemText: {
     fontSize: 24,

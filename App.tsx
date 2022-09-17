@@ -10,9 +10,26 @@ export default function App() {
   return (
     <NativeRouter>
       <Routes>
-        <Route path="/" element={<BaseLayout children={<Profi name="Minna" />}/>} />
-        <Route path="/about" element={<BaseLayout title="About" icon={faUserNinja} children={<About />}/>} />
-        <Route path="/posts" element={<BaseLayout title="Some Awesome Posts" icon={faLayerGroup} children={<Posts />}/>} />
+        <Route
+          path="/"
+          element={<BaseLayout children={<Profi name="Minna" />} />}
+        />
+        <Route
+          path="/about"
+          element={
+            <BaseLayout title="About" icon={faUserNinja} children={<About />} />
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <BaseLayout
+              title="Some Awesome Posts"
+              icon={faLayerGroup}
+              children={<Posts />}
+            />
+          }
+        />
       </Routes>
     </NativeRouter>
   );

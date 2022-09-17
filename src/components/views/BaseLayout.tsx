@@ -4,43 +4,41 @@ import {
   faHome,
   faLayerGroup,
   faSnowflake,
-  faInfo
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Link } from "react-router-native";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const BaseLayout = ({
-    children,
-    title,
-    icon
-  }: {
-    children: ReactNode;
-    title?: string;
-    icon?: IconProp;
-  }) => {
-    const myTitle = title || "Dummy Post App";
-    const myIcon = icon || faSnowflake;
+  children,
+  title,
+  icon,
+}: {
+  children: ReactNode;
+  title?: string;
+  icon?: IconProp;
+}) => {
+  const myTitle = title || "Dummy Post App";
+  const myIcon = icon || faSnowflake;
 
-    return (
+  return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>{myTitle}</Text>
         <FontAwesomeIcon icon={myIcon} size={32} />
       </View>
-      <View style={styles.content}>
-        {children}
-      </View>
+      <View style={styles.content}>{children}</View>
       <View style={styles.footer}>
         <Link to="/" activeOpacity={0.2}>
-            <FontAwesomeIcon icon={faHome} size={32} />
-        </Link>    
+          <FontAwesomeIcon icon={faHome} size={32} />
+        </Link>
         <Link to="/about" activeOpacity={0.2}>
-            <FontAwesomeIcon icon={faInfo} size={32} />
-        </Link>    
+          <FontAwesomeIcon icon={faInfo} size={32} />
+        </Link>
         <Link to="/posts" activeOpacity={0.2}>
-            <FontAwesomeIcon icon={faLayerGroup} size={32} />
-        </Link>    
+          <FontAwesomeIcon icon={faLayerGroup} size={32} />
+        </Link>
       </View>
     </View>
   );
@@ -49,34 +47,34 @@ const BaseLayout = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'flex-start',
-    flexDirection: 'column'
+    alignItems: "flex-start",
+    flexDirection: "column",
   },
   header: {
     flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    flexDirection: 'row',
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    flexDirection: "row",
     backgroundColor: "#916ec9",
-    paddingBottom: 15
+    paddingBottom: 15,
   },
-  
+
   content: {
     flex: 5,
-    width: '100%',
+    width: "100%",
   },
   footer: {
     flex: 1,
-    width: '100%',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 'auto',
-    flexDirection: 'row',
-    backgroundColor: "#916ec9"
+    width: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginTop: "auto",
+    flexDirection: "row",
+    backgroundColor: "#916ec9",
   },
   link: {
-    color: "#b141ec"
+    color: "#b141ec",
   },
   title: {
     fontSize: 24,

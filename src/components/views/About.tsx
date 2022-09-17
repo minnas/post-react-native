@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import {
-  faHome,
-  faMessage,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome, faMessage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Link } from "react-router-native";
 import Button from "../tools/Button";
@@ -27,7 +24,9 @@ const About = ({}) => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.title}>Here will be some useful info about the app</Text>
+        <Text style={styles.title}>
+          Here will be some useful info about the app
+        </Text>
       </View>
       <View>
         <Link to="/" activeOpacity={0.2}>
