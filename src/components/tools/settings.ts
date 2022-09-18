@@ -11,3 +11,7 @@ export type ButtonOptions = {
   noBorder?: boolean;
   color?: string;
 };
+export type ToastOptions = {
+  left?: number;
+  top?: number;
+};

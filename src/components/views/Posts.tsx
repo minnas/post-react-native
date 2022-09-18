@@ -1,13 +1,27 @@
 import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  GestureResponderEvent,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-native";
 import { search } from "../../api/api";
 import Spinner from "../tools/Spinner";
-import { Post, ListItem } from "../types/types";
+import { Post, ListItem, Bookmark } from "../types/types";
 import Button from "../tools/Button";
-import { ButtonOptions, ButtonType, ToastType } from "../tools/settings";
+import {
+  ButtonOptions,
+  ButtonType,
+  ToastOptions,
+  ToastType,
+} from "../tools/settings";
 import Toast from "../tools/Toast";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookmark, RootState } from "../../store/store";
 
 const Posts = () => {
   const [posts, setPosts] = useState([] as ListItem[]);
@@ -15,7 +29,10 @@ const Posts = () => {
   const [loading, setLoading] = useState(false);
   const [toastErrorVisible, setToastErrorVisible] = useState(false);
   const [toastErrorMessage, setToastErrorMessage] = useState("");
+  const [toastVisible, setToastVisible] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const bookmarks = useSelector((state: RootState) => state.bookmarks);
 
   const btnOptions = {
     noBorder: true,
@@ -46,15 +63,40 @@ const Posts = () => {
       });
   }, []);
 
+  const addToBookmarks = (id: string) => {
+    const post = posts.find((t) => t.key.toString() === id.toString());
+    if (post) {
+      dispatch(
+        addBookmark({
+          postId: id,
+          id: bookmarks.length,
+          title: post.title,
+        } as Bookmark)
+      );
+      setToastVisible(true);
+      setTimeout(() => {
+        setToastVisible(false);
+      }, 500);
+    }
+  };
+
+  const copyDisabled = (id: string) => {
+    return (
+      bookmarks.find((t: Bookmark) => t.postId === id.toString()) != undefined
+    );
+  };
+
   const renderPost = ({ item }: any) => {
     return (
       <View key={item.key} style={styles.listItem}>
         <Button
           icon={faBookmark}
           type={ButtonType.ICON_ONLY}
-          disabled={true}
+          disabled={copyDisabled(item.key.toString())}
           options={btnOptions}
-          onPress={() => {}}
+          onPress={() => {
+            return addToBookmarks(item.key.toString());
+          }}
         />
         <Text style={styles.itemText}>{item.title}</Text>
       </View>
@@ -74,6 +116,15 @@ const Posts = () => {
         />
       </View>
       <View style={styles.containerPosts}>
+        {toastVisible ? (
+          <Toast
+            content="Done"
+            type={ToastType.SUCCESS}
+            options={{ left: 5, top: 2 } as ToastOptions}
+          />
+        ) : (
+          ""
+        )}
         {toastErrorVisible ? (
           <Toast content={toastErrorMessage} type={ToastType.ERROR} />
         ) : (

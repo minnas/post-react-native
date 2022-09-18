@@ -10,14 +10,15 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import { ToastType } from "./settings";
+import { ToastOptions, ToastType } from "./settings";
 
 interface Props {
   content?: string;
   type?: ToastType;
   hide?: (event: GestureResponderEvent) => void;
+  options?: ToastOptions;
 }
-const Toast: React.FC<Props> = ({ content, type, hide }) => {
+const Toast: React.FC<Props> = ({ content, type, hide, options }) => {
   const icon =
     type && type == ToastType.ERROR ? faExclamationTriangle : faCheck;
   const color = type && type == ToastType.ERROR ? "#ff0000" : "#00ff00";
@@ -32,10 +33,10 @@ const Toast: React.FC<Props> = ({ content, type, hide }) => {
       paddingVertical: 15,
       paddingHorizontal: 15,
       position: "absolute",
-      top: -50,
-      left: -100,
+      top: options?.top || -50,
+      left: options?.left || -100,
       zIndex: 4,
-      backgroundColor: "rgba(255, 255, 255,.6)",
+      backgroundColor: "rgba(145, 110, 201, .6)",
       flexDirection: "row",
     },
     text: {
