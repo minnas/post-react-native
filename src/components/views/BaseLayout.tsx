@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {
   faHome,
@@ -7,8 +7,10 @@ import {
   faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { Link } from "react-router-native";
+import { useNavigate } from "react-router-native";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import Button from "../tools/Button";
+import { ButtonOptions, ButtonType } from "../tools/settings";
 
 const BaseLayout = ({
   children,
@@ -21,6 +23,12 @@ const BaseLayout = ({
 }) => {
   const myTitle = title || "Dummy Post App";
   const myIcon = icon || faSnowflake;
+  const navigate = useNavigate();
+
+  const btnOptions = {
+    color: "#000",
+    noBorder: true,
+  } as ButtonOptions;
 
   return (
     <View style={styles.container}>
@@ -30,15 +38,30 @@ const BaseLayout = ({
       </View>
       <View style={styles.content}>{children}</View>
       <View style={styles.footer}>
-        <Link to="/" activeOpacity={0.2}>
-          <FontAwesomeIcon icon={faHome} size={32} />
-        </Link>
-        <Link to="/about" activeOpacity={0.2}>
-          <FontAwesomeIcon icon={faInfo} size={32} />
-        </Link>
-        <Link to="/posts" activeOpacity={0.2}>
-          <FontAwesomeIcon icon={faLayerGroup} size={32} />
-        </Link>
+        <Button
+          onPress={() => {
+            navigate("/");
+          }}
+          icon={faHome}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
+        <Button
+          onPress={() => {
+            navigate("/about");
+          }}
+          icon={faInfo}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
+        <Button
+          onPress={() => {
+            navigate("/posts");
+          }}
+          icon={faLayerGroup}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
       </View>
     </View>
   );

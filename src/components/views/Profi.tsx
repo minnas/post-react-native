@@ -8,9 +8,9 @@ import {
   faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { Link } from "react-router-native";
+import { useNavigate } from "react-router-native";
 import Button from "../tools/Button";
-import { ButtonType } from "../tools/settings";
+import { ButtonOptions, ButtonType } from "../tools/settings";
 
 export type Props = {
   name: string;
@@ -19,6 +19,11 @@ export type Props = {
 
 const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
   const [starLevel, setStarLevel] = React.useState(defaultStarLevel);
+  const navigate = useNavigate();
+  const btnOptions = {
+    color: "#000",
+    noBorder: true,
+  } as ButtonOptions;
 
   const onIncrement = () => setStarLevel(starLevel + 1);
   const onDecrement = () => setStarLevel(starLevel > 0 ? starLevel - 1 : 0);
@@ -45,20 +50,25 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
           onPress={onIncrement}
           icon={faPlus}
           type={ButtonType.ICON_ONLY}
-          color="#000"
         />
       </View>
       <View style={styles.btnRow}>
-        <Link to="/about" activeOpacity={0.2}>
-          <View style={styles.row}>
-            <FontAwesomeIcon icon={faCircleInfo} size={32} />
-          </View>
-        </Link>
-        <Link to="/posts" activeOpacity={0.2}>
-          <View style={styles.row}>
-            <FontAwesomeIcon icon={faLayerGroup} size={32} />
-          </View>
-        </Link>
+        <Button
+          onPress={() => {
+            navigate("/about");
+          }}
+          icon={faCircleInfo}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
+        <Button
+          onPress={() => {
+            navigate("/posts");
+          }}
+          icon={faLayerGroup}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
       </View>
     </View>
   );

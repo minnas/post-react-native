@@ -1,18 +1,12 @@
-import {
-  faSignsPost,
-  faBookmark,
-  faHome,
-  faRightToBracket,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-native";
+import { useNavigate } from "react-router-native";
 import { search } from "../../api/api";
 import Spinner from "../tools/Spinner";
 import { Post, ListItem } from "../types/types";
 import Button from "../tools/Button";
-import { ButtonType, ToastType } from "../tools/settings";
+import { ButtonOptions, ButtonType, ToastType } from "../tools/settings";
 import Toast from "../tools/Toast";
 
 const Posts = () => {
@@ -21,6 +15,11 @@ const Posts = () => {
   const [loading, setLoading] = useState(false);
   const [toastErrorVisible, setToastErrorVisible] = useState(false);
   const [toastErrorMessage, setToastErrorMessage] = useState("");
+  const navigate = useNavigate();
+
+  const btnOptions = {
+    noBorder: true,
+  } as ButtonOptions;
 
   useEffect(() => {
     setLoading(true);
@@ -54,6 +53,7 @@ const Posts = () => {
           icon={faBookmark}
           type={ButtonType.ICON_ONLY}
           disabled={true}
+          options={btnOptions}
           onPress={() => {}}
         />
         <Text style={styles.itemText}>{item.title}</Text>
@@ -64,9 +64,14 @@ const Posts = () => {
     <View style={styles.container}>
       <View style={styles.title}>
         <Text style={styles.text}>Current {count} posts in the list</Text>
-        <Link to="/" activeOpacity={0.2}>
-          <FontAwesomeIcon icon={faHome} size={32} />
-        </Link>
+        <Button
+          icon={faHome}
+          type={ButtonType.ICON_ONLY}
+          options={{ ...btnOptions, color: "#000" }}
+          onPress={() => {
+            navigate("/");
+          }}
+        />
       </View>
       <View style={styles.containerPosts}>
         {toastErrorVisible ? (

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { ButtonType } from "./settings";
+import { ButtonOptions, ButtonType } from "./settings";
 import {
   GestureResponderEvent,
   StyleSheet,
@@ -14,9 +14,8 @@ interface Props {
   onPress: (event: GestureResponderEvent) => void;
   icon?: IconProp;
   type?: ButtonType;
-  color?: string;
   disabled?: boolean;
-  id?: string;
+  options?: ButtonOptions;
 }
 
 const Button: React.FC<Props> = ({
@@ -24,17 +23,17 @@ const Button: React.FC<Props> = ({
   onPress,
   icon,
   type,
-  color,
   disabled,
-  id,
+  options,
 }) => {
   const onlyIcon = type == ButtonType.ICON_ONLY;
-  const btnColor = color || "#916ec9";
+  const btnColor = options?.color || "#916ec9";
+  const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
 
   const styles = StyleSheet.create({
     button: {
       elevation: 8,
-      borderColor: btnColor,
+      borderColor: btnBorderColor,
       borderWidth: 2,
       borderRadius: 15,
       paddingVertical: 15,

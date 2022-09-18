@@ -7,3 +7,7 @@ export enum ToastType {
   SUCCESS,
   ERROR,
 }
+export type ButtonOptions = {
+  noBorder?: boolean;
+  color?: string;
+};
