@@ -1,12 +1,5 @@
-import { faBookmark, faHome } from "@fortawesome/free-solid-svg-icons";
-import {
-  FlatList,
-  GestureResponderEvent,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { faBookmark, faBookDead } from "@fortawesome/free-solid-svg-icons";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-native";
 import { search } from "../../api/api";
@@ -90,7 +83,7 @@ const Posts = () => {
     return (
       <View key={item.key} style={styles.listItem}>
         <Button
-          icon={faBookmark}
+          icon={copyDisabled(item.key.toString()) ? faBookDead : faBookmark}
           type={ButtonType.ICON_ONLY}
           disabled={copyDisabled(item.key.toString())}
           options={btnOptions}
@@ -106,14 +99,6 @@ const Posts = () => {
     <View style={styles.container}>
       <View style={styles.title}>
         <Text style={styles.text}>Current {count} posts in the list</Text>
-        <Button
-          icon={faHome}
-          type={ButtonType.ICON_ONLY}
-          options={{ ...btnOptions, color: "#000" }}
-          onPress={() => {
-            navigate("/");
-          }}
-        />
       </View>
       <View style={styles.containerPosts}>
         {toastVisible ? (

@@ -5,6 +5,7 @@ import {
   faLayerGroup,
   faSnowflake,
   faInfo,
+  faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
@@ -59,6 +60,14 @@ const BaseLayout = ({
             navigate("/posts");
           }}
           icon={faLayerGroup}
+          type={ButtonType.ICON_ONLY}
+          options={btnOptions}
+        />
+        <Button
+          onPress={() => {
+            navigate("/bookmarks");
+          }}
+          icon={faBookmark}
           type={ButtonType.ICON_ONLY}
           options={btnOptions}
         />

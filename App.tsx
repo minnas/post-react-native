@@ -4,9 +4,14 @@ import { NativeRouter, Route, Routes } from "react-router-native";
 import About from "./src/components/views/About";
 import Posts from "./src/components/views/Posts";
 import BaseLayout from "./src/components/views/BaseLayout";
-import { faLayerGroup, faUserNinja } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faLayerGroup,
+  faUserNinja,
+} from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
+import Bookmarks from "./src/components/views/Bookmarks";
 
 export default function App() {
   return (
@@ -34,6 +39,16 @@ export default function App() {
                 title="Some Awesome Posts"
                 icon={faLayerGroup}
                 children={<Posts />}
+              />
+            }
+          />
+          <Route
+            path="/bookmarks"
+            element={
+              <BaseLayout
+                title="Some Awesome Bookmarks"
+                icon={faBookmark}
+                children={<Bookmarks />}
               />
             }
           />
