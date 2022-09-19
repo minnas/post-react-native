@@ -1,6 +1,6 @@
 import {
   faBookmark,
-  faCheckCircle,
+  faCheck,
   faCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
@@ -60,18 +60,18 @@ const Posts = () => {
               position: "relative",
               justifyContent: "center",
               alignItems: "center",
-              width: 40,
-              height: 40,
+              width: 32,
+              height: 32,
             }}
             onPress={() => {
               return toggleImportant(item.key.toString());
             }}
           >
-            <FontAwesomeIcon icon={faCircle} color="#916ec9" size={40} />
+            <FontAwesomeIcon icon={faCircle} color="#916ec9" size={32} />
             <FontAwesomeIcon
               icon={faBookmark}
               color="rgba(0, 0, 0, 0.8)"
-              size={25}
+              size={15}
               style={{ position: "absolute", zIndex: 99 }}
             />
             {isImportant(item.key) ? (
@@ -79,12 +79,12 @@ const Posts = () => {
                 style={{
                   position: "absolute",
                   zIndex: 100,
-                  top: -8,
-                  right: -2,
+                  top: -12,
+                  right: -5,
                 }}
-                icon={faCheckCircle}
-                color="rgba(0, 0, 0, 0.8)"
-                size={18}
+                icon={faCheck}
+                color="rgb(0, 255, 0)"
+                size={25}
               />
             ) : (
               ""
