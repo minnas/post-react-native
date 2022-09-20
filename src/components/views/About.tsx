@@ -5,21 +5,21 @@ import Accortion from "../tools/Accordion";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const About = ({}) => {
-
-  const aboutInfo =  (
-    <Text>This is a simple dummy app for testing React native and some custom components with expo</Text>
+  const aboutInfo = (
+    <Text>
+      This is a simple dummy app for testing React native and some custom
+      components with expo
+    </Text>
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.title}>
-          This is a about page for the app
-        </Text>
-        <FontAwesomeIcon color="#000" icon={faInfo} size={32} />        
+        <Text style={styles.title}>This is a about page for the app</Text>
+        <FontAwesomeIcon color="#000" icon={faInfo} size={32} />
       </View>
       <View style={styles.column}>
-        <Accortion label="Toggle About Info" children={aboutInfo}/>
+        <Accortion label="Toggle About Info" children={aboutInfo} />
       </View>
     </View>
   );
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
     paddingHorizontal: 15,
     borderBottomColor: "#916ec9",
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
   },
   column: {
     flexDirection: "column",

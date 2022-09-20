@@ -1,7 +1,4 @@
-import {
-  faBookmark,
-  faBookDead,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookmark, faBookDead } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-native";
@@ -65,7 +62,7 @@ const Posts = () => {
       dispatch(
         addBookmark({
           postId: id,
-          id:id,
+          id: id,
           title: post.title,
         } as Bookmark)
       );
