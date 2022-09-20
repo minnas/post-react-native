@@ -6,6 +6,8 @@ import {
   faSnowflake,
   faInfo,
   faBookmark,
+  faNoteSticky,
+  faBookAtlas,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
@@ -39,38 +41,58 @@ const BaseLayout = ({
       </View>
       <View style={styles.content}>{children}</View>
       <View style={styles.footer}>
-        <Button
-          onPress={() => {
-            navigate("/");
-          }}
-          icon={faHome}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/about");
-          }}
-          icon={faInfo}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/posts");
-          }}
-          icon={faLayerGroup}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/bookmarks");
-          }}
-          icon={faBookmark}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
+        <View style={styles.footerButtons}>
+          <Button
+            onPress={() => {
+              navigate("/");
+            }}
+            icon={faHome}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/about");
+            }}
+            icon={faInfo}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/posts");
+            }}
+            icon={faLayerGroup}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/bookmarks");
+            }}
+            icon={faBookmark}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+        </View>
+        <View style={styles.footerButtons}>
+          <Button
+            onPress={() => {
+              navigate("/todos");
+            }}
+            icon={faNoteSticky}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/my-todos");
+            }}
+            icon={faBookAtlas}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+        </View>
       </View>
     </View>
   );
@@ -99,6 +121,9 @@ const styles = StyleSheet.create({
   footer: {
     flex: 1,
     width: "100%",
+    flexDirection: "column",
+  },
+  footerButtons: {
     justifyContent: "space-around",
     alignItems: "center",
     marginTop: "auto",

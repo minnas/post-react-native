@@ -12,80 +12,61 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { ListItem, Bookmark } from "../types/types";
+import { ListItem, Bookmark, MyTodo } from "../types/types";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
-import { removeBookmark, RootState, updateBookmark } from "../../store/store";
+import { remove, RootState, update } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
-const Bookmarks = () => {
-  const bookmarks = useSelector((state: RootState) => state.bookmarks);
+const MyTodos = () => {
+  const todos = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
 
-  const removeFromBookmarks = (id: string) => {
-    dispatch(removeBookmark({ id }));
+  const removeTodo = (id: string) => {
+    dispatch(remove({ id }));
   };
 
-  const toggleImportant = (id: string) => {
-    const bookmark = bookmarks.find((b) => (b.id as string) == id);
+  const toggleDone = (id: string) => {
+    const todo = todos.find((b) => b.id == id);
     const clone = {
-      ...bookmark,
-      important: bookmark?.important ? false : true,
+      ...todo,
+      completed: todo?.completed ? false : true,
     };
-    dispatch(updateBookmark(clone));
+    dispatch(update(clone));
   };
 
-  const isImportant = (id: string) => {
-    return bookmarks.find((b) => (b.id as string) == id)?.important;
+  const isDone = (id: string) => {
+    return todos.find((b) => (b.id as string) == id)?.completed;
   };
+
   useEffect(() => {
-    setCount(bookmarks.length);
-  }, [bookmarks]);
+    setCount(todos.length);
+  }, [todos]);
 
   const btnOptions = {
     noBorder: true,
   } as ButtonOptions;
 
-  const renderBookmark = ({ item }: any) => {
+  const renderTodo = ({ item }: any) => {
     return (
       <View key={item.key} style={styles.listItem}>
         <Text style={styles.itemText}>{item.title}</Text>
         <View style={styles.actions}>
           <TouchableOpacity
-            style={{
-              position: "relative",
-              justifyContent: "center",
-              alignItems: "center",
-              width: 32,
-              height: 32,
-            }}
             onPress={() => {
-              return toggleImportant(item.key.toString());
+              return toggleDone(item.key.toString());
             }}
           >
-            <FontAwesomeIcon icon={faCircle} color="#916ec9" size={32} />
-            <FontAwesomeIcon
-              icon={faBookmark}
-              color="rgba(0, 0, 0, 0.8)"
-              size={15}
-              style={{ position: "absolute", zIndex: 99 }}
-            />
-            {isImportant(item.key) ? (
+            {isDone(item.key) ? (
               <FontAwesomeIcon
-                style={{
-                  position: "absolute",
-                  zIndex: 100,
-                  top: -12,
-                  right: -5,
-                }}
                 icon={faCheck}
                 color="rgb(0, 255, 0)"
-                size={25}
+                size={32}
               />
             ) : (
-              ""
+              <FontAwesomeIcon icon={faCheck} color="#000" size={32} />
             )}
           </TouchableOpacity>
 
@@ -94,7 +75,7 @@ const Bookmarks = () => {
             type={ButtonType.ICON_ONLY}
             options={btnOptions}
             onPress={() => {
-              return removeFromBookmarks(item.key.toString());
+              return removeTodo(item.key.toString());
             }}
           />
         </View>
@@ -105,14 +86,14 @@ const Bookmarks = () => {
   return (
     <View style={styles.container}>
       <View style={styles.title}>
-        <Text style={styles.text}>My Bookmarks</Text>
+        <Text style={styles.text}>My Todos</Text>
       </View>
       <View style={styles.containerPosts}>
         <FlatList
-          data={bookmarks.map((item: Bookmark) => {
+          data={todos.map((item: MyTodo) => {
             return { key: item.id, title: item.title } as ListItem;
           })}
-          renderItem={renderBookmark}
+          renderItem={renderTodo}
         />
       </View>
     </View>
@@ -163,7 +144,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   itemText: {
-    maxWidth: "60%",
+    maxWidth: "70%",
     fontSize: 24,
     fontWeight: "normal",
     color: "#000",
@@ -171,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Bookmarks;
+export default MyTodos;

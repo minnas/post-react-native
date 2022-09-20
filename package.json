@@ -16,14 +16,18 @@
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "@types/uuid": "^8.3.4",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
+    "install": "^0.13.0",
     "react": "18.0.0",
     "react-native": "0.69.5",
     "react-native-fontawesome": "^7.0.0",
+    "react-native-get-random-values": "^1.8.0",
     "react-native-svg": "12.3.0",
     "react-redux": "^8.0.2",
-    "react-router-native": "^6.4.0"
+    "react-router-native": "^6.4.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -1,9 +1,9 @@
-import { faBookmark, faBookDead } from "@fortawesome/free-solid-svg-icons";
+import { faBookAtlas, faNoteSticky } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { search } from "../../api/api";
 import Spinner from "../tools/Spinner";
-import { Post, ListItem, Bookmark } from "../types/types";
+import { Post, ListItem, MyTodo } from "../types/types";
 import Button from "../tools/Button";
 import {
   ButtonOptions,
@@ -13,17 +13,17 @@ import {
 } from "../tools/settings";
 import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
-import { addBookmark, RootState } from "../../store/store";
+import { add, RootState } from "../../store/store";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([] as ListItem[]);
+const Todos = () => {
+  const [todos, setTodos] = useState([] as ListItem[]);
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [toastErrorVisible, setToastErrorVisible] = useState(false);
   const [toastErrorMessage, setToastErrorMessage] = useState("");
   const [toastVisible, setToastVisible] = useState(false);
   const dispatch = useDispatch();
-  const bookmarks = useSelector((state: RootState) => state.bookmarks);
+  const myTodos = useSelector((state: RootState) => state.todos);
 
   const btnOptions = {
     noBorder: true,
@@ -40,7 +40,7 @@ const Posts = () => {
           } as ListItem;
         });
 
-        setPosts(myItems);
+        setTodos(myItems);
         setCount(items.length);
         setLoading(false);
       })
@@ -54,14 +54,14 @@ const Posts = () => {
       });
   }, []);
 
-  const addToBookmarks = (id: string) => {
-    const post = posts.find((t) => t.key.toString() === id.toString());
+  const addToMyTodos = (id: string) => {
+    const post = todos.find((t) => t.key.toString() === id.toString());
     if (post) {
       dispatch(
-        addBookmark({
-          postId: id,
+        add({
+          externalId: id,
           title: post.title,
-        } as Bookmark)
+        } as MyTodo)
       );
       setToastVisible(true);
       setTimeout(() => {
@@ -70,20 +70,20 @@ const Posts = () => {
     }
   };
 
-  const copyDisabled = (id: string) => {
-    return bookmarks.find((t: Bookmark) => t.postId === id) != undefined;
+  const addDisabled = (id: string) => {
+    return myTodos.find((t: MyTodo) => t.externalId === id) != undefined;
   };
 
-  const renderPost = ({ item }: any) => {
+  const renderTodo = ({ item }: any) => {
     return (
       <View key={item.key} style={styles.listItem}>
         <Button
-          icon={copyDisabled(item.key.toString()) ? faBookDead : faBookmark}
+          icon={addDisabled(item.key.toString()) ? faBookAtlas : faNoteSticky}
           type={ButtonType.ICON_ONLY}
-          disabled={copyDisabled(item.key.toString())}
+          disabled={addDisabled(item.key.toString())}
           options={btnOptions}
           onPress={() => {
-            return addToBookmarks(item.key.toString());
+            return addToMyTodos(item.key.toString());
           }}
         />
         <Text style={styles.itemText}>{item.title}</Text>
@@ -93,7 +93,7 @@ const Posts = () => {
   return (
     <View style={styles.container}>
       <View style={styles.title}>
-        <Text style={styles.text}>Current {count} posts in the list</Text>
+        <Text style={styles.text}>Current {count} todos in the list</Text>
       </View>
       <View style={styles.containerPosts}>
         {toastVisible ? (
@@ -113,7 +113,7 @@ const Posts = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <FlatList data={posts} renderItem={renderPost} />
+          <FlatList data={todos} renderItem={renderTodo} />
         )}
       </View>
     </View>
@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     marginVertical: 2,
+    paddingHorizontal: 3,
   },
   text: {
     fontSize: 24,
@@ -168,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Posts;
+export default Todos;

@@ -5,13 +5,17 @@ import About from "./src/components/views/About";
 import Posts from "./src/components/views/Posts";
 import BaseLayout from "./src/components/views/BaseLayout";
 import {
+  faBookAtlas,
   faBookmark,
   faLayerGroup,
+  faNoteSticky,
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
 import Bookmarks from "./src/components/views/Bookmarks";
+import Todos from "./src/components/views/Todos";
+import MyTodos from "./src/components/views/MyTodos";
 
 export default function App() {
   return (
@@ -49,6 +53,26 @@ export default function App() {
                 title="Some Awesome Bookmarks"
                 icon={faBookmark}
                 children={<Bookmarks />}
+              />
+            }
+          />
+          <Route
+            path="/todos"
+            element={
+              <BaseLayout
+                title="Some Awesome Todos"
+                icon={faNoteSticky}
+                children={<Todos />}
+              />
+            }
+          />
+          <Route
+            path="/my-todos"
+            element={
+              <BaseLayout
+                title="My Todos"
+                icon={faBookAtlas}
+                children={<MyTodos />}
               />
             }
           />

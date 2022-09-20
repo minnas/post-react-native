@@ -1,15 +1,17 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import { Bookmark, MyTodo } from "../components/types/types";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 
 const myTodoSlice = createSlice({
   name: "myTodos",
   initialState: [] as MyTodo[],
   reducers: {
     add: (state, action) => {
-      state.push(action.payload as MyTodo);
+      state.push({ ...action.payload, id: uuidv4() } as MyTodo);
     },
     remove: (state, action) => {
-      return state.filter((t) => t.id != (action.payload.id as number));
+      return state.filter((t) => t.id != (action.payload.id as string));
     },
     update: (state, action) => {
       const index = state.findIndex(
@@ -27,10 +29,10 @@ const myBookmarkSlice = createSlice({
   initialState: [] as Bookmark[],
   reducers: {
     addBookmark: (state, action) => {
-      state.push(action.payload as Bookmark);
+      state.push({ ...action.payload, id: uuidv4() } as Bookmark);
     },
     removeBookmark: (state, action) => {
-      return state.filter((t) => t.id != (action.payload.id as number));
+      return state.filter((t) => t.id != (action.payload.id as string));
     },
     updateBookmark: (state, action) => {
       const index = state.findIndex(
