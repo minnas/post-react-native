@@ -24,7 +24,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<BaseLayout children={<Profi name="Minna" />} />}
+            element={<BaseLayout children={<Profi name="You" />} />}
           />
           <Route
             path="/about"

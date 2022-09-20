@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { colors } from "../../styles/colors";
 
 interface Props {
   title?: string;
@@ -27,7 +28,7 @@ const Button: React.FC<Props> = ({
   options,
 }) => {
   const onlyIcon = type == ButtonType.ICON_ONLY;
-  const btnColor = options?.color || "#916ec9";
+  const btnColor = options?.color || colors.APP_COLOR;
   const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
 
   const styles = StyleSheet.create({

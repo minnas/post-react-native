@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ToastOptions, ToastType } from "./settings";
+import { colors } from "../../styles/colors";
 
 interface Props {
   content?: string;
@@ -21,7 +22,8 @@ interface Props {
 const Toast: React.FC<Props> = ({ content, type, hide, options }) => {
   const icon =
     type && type == ToastType.ERROR ? faExclamationTriangle : faCheck;
-  const color = type && type == ToastType.ERROR ? "#ff0000" : "#00ff00";
+  const color =
+    type && type == ToastType.ERROR ? colors.ERROR_COLOR : colors.SUCCESS_COLOR;
 
   const styles = StyleSheet.create({
     toast: {

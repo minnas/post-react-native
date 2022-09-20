@@ -14,6 +14,7 @@ import {
 import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookmark, RootState } from "../../store/store";
+import { colors } from "../../styles/colors";
 
 const Posts = () => {
   const [posts, setPosts] = useState([] as ListItem[]);
@@ -147,23 +148,23 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: colors.FONT_COLOR,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: colors.FONT_COLOR,
     height: 50,
     flexDirection: "row",
     alignItems: "flex-end",
-    borderBottomColor: "rgba(0, 0, 0, .2)",
+    borderBottomColor: colors.BLACK_OPACITY_2,
     borderBottomWidth: 3,
     paddingBottom: 5,
   },
   itemText: {
     fontSize: 24,
     fontWeight: "normal",
-    color: "#000",
+    color: colors.FONT_COLOR,
     marginHorizontal: 25,
   },
 });

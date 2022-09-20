@@ -1,9 +1,4 @@
-import {
-  faBookmark,
-  faCheck,
-  faCircle,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
   FlatList,
   StyleSheet,
@@ -12,12 +7,13 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { ListItem, Bookmark, MyTodo } from "../types/types";
+import { ListItem, MyTodo } from "../types/types";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
 import { remove, RootState, update } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { colors } from "../../styles/colors";
 
 const MyTodos = () => {
   const todos = useSelector((state: RootState) => state.todos);
@@ -62,11 +58,15 @@ const MyTodos = () => {
             {isDone(item.key) ? (
               <FontAwesomeIcon
                 icon={faCheck}
-                color="rgb(0, 255, 0)"
+                color={colors.SUCCESS_COLOR}
                 size={32}
               />
             ) : (
-              <FontAwesomeIcon icon={faCheck} color="#000" size={32} />
+              <FontAwesomeIcon
+                icon={faCheck}
+                color={colors.FONT_COLOR}
+                size={32}
+              />
             )}
           </TouchableOpacity>
 
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     alignItems: "flex-end",
-    borderBottomColor: "rgba(0, 0, 0, .2)",
+    borderBottomColor: colors.BLACK_OPACITY_2,
     borderBottomWidth: 3,
     paddingBottom: 5,
   },

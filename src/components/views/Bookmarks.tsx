@@ -18,6 +18,7 @@ import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
 import { removeBookmark, RootState, updateBookmark } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { colors } from "../../styles/colors";
 
 const Bookmarks = () => {
   const bookmarks = useSelector((state: RootState) => state.bookmarks);
@@ -65,10 +66,14 @@ const Bookmarks = () => {
               return toggleImportant(item.key.toString());
             }}
           >
-            <FontAwesomeIcon icon={faCircle} color="#916ec9" size={32} />
+            <FontAwesomeIcon
+              icon={faCircle}
+              color={colors.APP_COLOR}
+              size={32}
+            />
             <FontAwesomeIcon
               icon={faBookmark}
-              color="rgba(0, 0, 0, 0.8)"
+              color={colors.BLACK_OPACITY_8}
               size={15}
               style={{ position: "absolute", zIndex: 99 }}
             />
@@ -81,7 +86,7 @@ const Bookmarks = () => {
                   right: -5,
                 }}
                 icon={faCheck}
-                color="rgb(0, 255, 0)"
+                color={colors.SUCCESS_COLOR}
                 size={25}
               />
             ) : (
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginVertical: 2,
-    borderBottomColor: "#916ec9",
+    borderBottomColor: colors.APP_COLOR,
     borderBottomWidth: 2,
   },
   actions: {
@@ -149,16 +154,16 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: colors.FONT_COLOR,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: colors.FONT_COLOR,
     height: 50,
     flexDirection: "row",
     alignItems: "flex-end",
-    borderBottomColor: "rgba(0, 0, 0, .2)",
+    borderBottomColor: colors.BLACK_OPACITY_2,
     borderBottomWidth: 3,
     paddingBottom: 5,
   },

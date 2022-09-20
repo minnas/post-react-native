@@ -2,6 +2,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, { ReactNode, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { colors } from "../../styles/colors";
 
 interface Props {
   label?: string;
@@ -11,7 +12,7 @@ interface Props {
 const Accordion: React.FC<Props> = ({ label, color, children }) => {
   const [open, setOpen] = useState(false);
   const icon = open ? faChevronUp : faChevronDown;
-  const labelColor = color || "#916ec9";
+  const labelColor = color || colors.APP_COLOR;
 
   const toggle = () => {
     setOpen(!open);

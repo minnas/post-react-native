@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-native";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
+import { colors } from "../../styles/colors";
 
 const BaseLayout = ({
   children,
@@ -101,34 +102,31 @@ const BaseLayout = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "flex-start",
     flexDirection: "column",
+    paddingVertical: 5,
+    paddingHorizontal: 2,
   },
   header: {
     flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "flex-end",
+    justifyContent: "space-evenly",
+    alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#916ec9",
-    paddingBottom: 15,
+    backgroundColor: colors.APP_COLOR,
   },
 
   content: {
     flex: 5,
-    width: "100%",
   },
   footer: {
     flex: 1,
-    width: "100%",
     flexDirection: "column",
+    marginTop: "auto",
+    backgroundColor: colors.APP_COLOR,
   },
   footerButtons: {
     justifyContent: "space-around",
     alignItems: "center",
-    marginTop: "auto",
     flexDirection: "row",
-    backgroundColor: "#916ec9",
   },
   link: {
     color: "#b141ec",
@@ -136,7 +134,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginRight: "5%",
   },
   row: {
     flexDirection: "row",

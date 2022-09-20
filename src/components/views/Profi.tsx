@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import {
   faStar,
   faCircleInfo,
@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
+import { colors } from "../../styles/colors";
 
 export type Props = {
   name: string;
@@ -21,38 +22,57 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
   const [starLevel, setStarLevel] = React.useState(defaultStarLevel);
   const navigate = useNavigate();
   const btnOptions = {
-    color: "#000",
+    color: colors.FONT_COLOR,
     noBorder: true,
   } as ButtonOptions;
 
   const onIncrement = () => setStarLevel(starLevel + 1);
   const onDecrement = () => setStarLevel(starLevel > 0 ? starLevel - 1 : 0);
 
+  const renderStar = ({ item }: any) => {
+    return (
+      <View style={{ marginHorizontal: 5 }}>
+        <FontAwesomeIcon
+          icon={faStar}
+          key={item.index}
+          color={colors.APP_COLOR}
+          size={32}
+        />
+      </View>
+    );
+  };
   return (
     <View style={styles.container}>
-      <Text style={styles.hello}>
+      <Text style={{ ...styles.hello, flex: 1 }}>
         Hello {name} {starLevel}
       </Text>
-      <View style={styles.row}>
-        {[...Array(starLevel + 1).keys()].map((index: number) => (
-          <FontAwesomeIcon icon={faStar} key={index} size={24} />
-        ))}
-      </View>
-      <View style={styles.btnRow}>
-        <Button
-          title="Decrease"
-          onPress={onDecrement}
-          icon={faMinus}
-          type={ButtonType.ICON_ONLY}
+      <View style={{ flex: 1, flexDirection: "row", paddingHorizontal: 15 }}>
+        <View>
+          <Button
+            title="Decrease"
+            onPress={onDecrement}
+            icon={faMinus}
+            type={ButtonType.ICON_ONLY}
+          />
+        </View>
+        <FlatList
+          data={[...Array(starLevel + 1).keys()].map((index: number) => {
+            return { key: index.toString(), title: index.toString() };
+          })}
+          style={styles.starList}
+          renderItem={renderStar}
+          horizontal={true}
         />
-        <Button
-          title="More Stars"
-          onPress={onIncrement}
-          icon={faPlus}
-          type={ButtonType.ICON_ONLY}
-        />
+        <View>
+          <Button
+            title="More Stars"
+            onPress={onIncrement}
+            icon={faPlus}
+            type={ButtonType.ICON_ONLY}
+          />
+        </View>
       </View>
-      <View style={styles.btnRow}>
+      <View style={{ ...styles.btnRow, flex: 1 }}>
         <Button
           onPress={() => {
             navigate("/about");
@@ -77,7 +97,7 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "center",
     rowGap: 12,
   },
@@ -104,6 +124,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 25,
     paddingHorizontal: 55,
+  },
+  starList: {
+    flex: 4,
+    marginHorizontal: 5,
+    maxHeight: 60,
+    padding: 5,
+    borderColor: colors.APP_COLOR,
+    borderWidth: 1,
+    borderRadius: 15,
   },
 });
 
