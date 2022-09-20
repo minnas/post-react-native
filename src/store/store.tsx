@@ -36,7 +36,7 @@ const myBookmarkSlice = createSlice({
     },
     updateBookmark: (state, action) => {
       const index = state.findIndex(
-        (t) => t.id == (action.payload as MyTodo).id
+        (t) => t.id == (action.payload as Bookmark).id
       );
       if (index > -1) {
         state.splice(index, 1, action.payload as Bookmark);
