@@ -1,25 +1,25 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
-import Accortion from "../tools/Accordion";
+import Accordion from "../tools/Accordion";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const About = ({}) => {
   const aboutInfo = (
     <Text>
       This is a simple dummy app for testing React native and some custom
-      components with expo
+      components
     </Text>
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.title}>This is a about page for the app</Text>
+        <Text style={styles.title}>This is an about page for the app</Text>
         <FontAwesomeIcon color="#000" icon={faInfo} size={32} />
       </View>
       <View style={styles.column}>
-        <Accortion label="Toggle About Info" children={aboutInfo} />
+        <Accordion label="Toggle About Info" children={aboutInfo} />
       </View>
     </View>
   );
