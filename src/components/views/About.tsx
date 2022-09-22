@@ -1,18 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "../tools/Accordion";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
+const duck = require("./../../assets/duck.png");
 
 const About = ({}) => {
   const aboutInfo = (
-    <Text style={{ fontSize: 20 }}>
-      This is a simple dummy app for testing React native and some custom
-      components
-    </Text>
+    <View>
+      <ImageBackground source={duck} style={styles.imageBg}>
+        <Text style={styles.imgText}>
+          This is a simple dummy app for testing React native and some custom
+          components
+        </Text>
+      </ImageBackground>
+    </View>
   );
-
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -50,6 +54,23 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     paddingVertical: 25,
     paddingHorizontal: 15,
+    marginVertical: 25,
+  },
+  imageBg: {
+    flex: 1,
+    resizeMode: "cover",
+    width: "100%",
+    height: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imgText: {
+    color: colors.FONT_COLOR,
+    fontSize: 24,
+    lineHeight: 34,
+    textAlign: "center",
+    paddingHorizontal: 5,
+    backgroundColor: colors.WHITE_OPACITY_6,
   },
 });
 

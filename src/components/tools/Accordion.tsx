@@ -50,7 +50,14 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
         <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
       </TouchableOpacity>
       {open ? (
-        <View style={{ ...styles.content, position: "absolute", top: 50 }}>
+        <View
+          style={{
+            ...styles.content,
+            position: "absolute",
+            top: 50,
+            zIndex: 5,
+          }}
+        >
           {children ? children : ""}
         </View>
       ) : (
