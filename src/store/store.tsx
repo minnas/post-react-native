@@ -45,12 +45,12 @@ const myBookmarkSlice = createSlice({
   },
 });
 
-const counterSlice = createSlice({
-  name: "counter",
+const starSlice = createSlice({
+  name: "star",
   initialState: 0 as number,
   reducers: {
-    increment: (state) => state + 1,
-    decrement: (state) => state - 1,
+    more: (state) => state + 1,
+    less: (state) => state - 1,
     reset: (state) => (state = 0),
   },
 });
@@ -58,13 +58,13 @@ const counterSlice = createSlice({
 export const { add, update, remove } = myTodoSlice.actions;
 export const { addBookmark, updateBookmark, removeBookmark } =
   myBookmarkSlice.actions;
-export const { increment, decrement, reset } = counterSlice.actions;
+export const { less, more, reset } = starSlice.actions;
 
 const store = configureStore({
   reducer: {
     todos: myTodoSlice.reducer,
     bookmarks: myBookmarkSlice.reducer,
-    count: counterSlice.reducer,
+    stars: starSlice.reducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

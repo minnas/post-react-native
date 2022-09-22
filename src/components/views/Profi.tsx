@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { colors } from "../../styles/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { less, more, RootState } from "../../store/store";
 
 export type Props = {
   name: string;
@@ -19,15 +21,16 @@ export type Props = {
 };
 
 const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
-  const [starLevel, setStarLevel] = React.useState(defaultStarLevel);
+  const stars = useSelector((state: RootState) => state.stars);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const btnOptions = {
     color: colors.FONT_COLOR,
     noBorder: true,
   } as ButtonOptions;
 
-  const onIncrement = () => setStarLevel(starLevel + 1);
-  const onDecrement = () => setStarLevel(starLevel > 0 ? starLevel - 1 : 0);
+  const onIncrement = () => dispatch(more());
+  const onDecrement = () => dispatch(less());
 
   const renderStar = ({ item }: any) => {
     return (
@@ -44,7 +47,7 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
   return (
     <View style={styles.container}>
       <Text style={{ ...styles.hello, flex: 1 }}>
-        Hello {name} {starLevel}
+        Hello {name} {stars}
       </Text>
       <View style={{ flex: 1, flexDirection: "row", paddingHorizontal: 15 }}>
         <View>
@@ -56,7 +59,7 @@ const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
           />
         </View>
         <FlatList
-          data={[...Array(starLevel + 1).keys()].map((index: number) => {
+          data={[...Array(stars + 1).keys()].map((index: number) => {
             return { key: index.toString(), title: index.toString() };
           })}
           style={styles.starList}
