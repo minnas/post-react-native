@@ -19,6 +19,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeBookmark, RootState, updateBookmark } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
+import Placeholder from "../tools/Placeholder";
+const placeholder = require("./../../assets/birds.png");
 
 const Bookmarks = () => {
   const bookmarks = useSelector((state: RootState) => state.bookmarks);
@@ -107,6 +109,10 @@ const Bookmarks = () => {
     );
   };
 
+  const noBookmarks = () => (
+    <Placeholder image={placeholder} text="Ou nou! Nothing here." />
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -114,6 +120,7 @@ const Bookmarks = () => {
       </View>
       <View style={styles.containerPosts}>
         <FlatList
+          ListEmptyComponent={noBookmarks}
           data={bookmarks.map((item: Bookmark) => {
             return { key: item.id, title: item.title } as ListItem;
           })}

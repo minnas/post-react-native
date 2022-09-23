@@ -1,6 +1,12 @@
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAutomobile,
+  faCheck,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   FlatList,
+  Image,
+  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -14,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { remove, RootState, update } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
+import Placeholder from "../tools/Placeholder";
+const placeholder = require("./../../assets/placeholder.png");
 
 const MyTodos = () => {
   const todos = useSelector((state: RootState) => state.todos);
@@ -83,6 +91,9 @@ const MyTodos = () => {
     );
   };
 
+  const emptyList = () => (
+    <Placeholder image={placeholder} text="Yay! No Todos here!" />
+  );
   return (
     <View style={styles.container}>
       <View style={styles.title}>
@@ -90,6 +101,7 @@ const MyTodos = () => {
       </View>
       <View style={styles.containerPosts}>
         <FlatList
+          ListEmptyComponent={emptyList}
           data={todos.map((item: MyTodo) => {
             return { key: item.id, title: item.title } as ListItem;
           })}
