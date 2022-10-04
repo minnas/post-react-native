@@ -1,3 +1,5 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 export type Item = {
   id: string | number;
   title: string;
@@ -20,4 +22,8 @@ export type MyTodo = Item & {
 export type ListItem = {
   key: string | number;
   title: string;
+};
+export type FaIcon = {
+  icon: IconProp;
+  label: string;
 };

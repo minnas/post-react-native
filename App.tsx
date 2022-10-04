@@ -10,12 +10,14 @@ import {
   faLayerGroup,
   faNoteSticky,
   faUserNinja,
+  faMehRollingEyes,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
 import Bookmarks from "./src/components/views/Bookmarks";
 import Todos from "./src/components/views/Todos";
 import MyTodos from "./src/components/views/MyTodos";
+import MyMood from "./src/components/views/MyMood";
 
 export default function App() {
   return (
@@ -73,6 +75,16 @@ export default function App() {
                 title="My Todos"
                 icon={faBookAtlas}
                 children={<MyTodos />}
+              />
+            }
+          />
+          <Route
+            path="/my-mood"
+            element={
+              <BaseLayout
+                title="My Mood"
+                icon={faMehRollingEyes}
+                children={<MyMood />}
               />
             }
           />

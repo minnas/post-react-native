@@ -8,6 +8,7 @@ import {
   faBookmark,
   faNoteSticky,
   faBookAtlas,
+  faMehRollingEyes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
@@ -90,6 +91,14 @@ const BaseLayout = ({
               navigate("/my-todos");
             }}
             icon={faBookAtlas}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/my-mood");
+            }}
+            icon={faMehRollingEyes}
             type={ButtonType.ICON_ONLY}
             options={btnOptions}
           />
