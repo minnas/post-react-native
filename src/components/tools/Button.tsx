@@ -30,7 +30,7 @@ const Button: React.FC<Props> = ({
   const onlyIcon = type == ButtonType.ICON_ONLY;
   const btnColor = options?.color || colors.APP_COLOR;
   const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
-
+  const iconSize = options?.iconSize || 24;
   const styles = StyleSheet.create({
     button: {
       elevation: 8,
@@ -56,7 +56,11 @@ const Button: React.FC<Props> = ({
       disabled={disabled}
     >
       {onlyIcon ? "" : <Text style={styles.btnText}>{title}</Text>}
-      {icon ? <FontAwesomeIcon color={btnColor} icon={icon} size={24} /> : ""}
+      {icon ? (
+        <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />
+      ) : (
+        ""
+      )}
     </TouchableOpacity>
   );
 };

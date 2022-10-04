@@ -10,6 +10,7 @@ export enum ToastType {
 export type ButtonOptions = {
   noBorder?: boolean;
   color?: string;
+  iconSize?: number;
 };
 export type ToastOptions = {
   left?: number;

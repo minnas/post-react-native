@@ -39,6 +39,7 @@ const MyMood = ({}) => {
 
   const renderMood = ({ item }: any) => {
     const icon = item as FaIcon;
+    const iconSize = 32;
     const options = mood === icon?.label ? {} : { noBorder: true };
     return (
       <View style={{ marginLeft: 15 }}>
@@ -49,7 +50,7 @@ const MyMood = ({}) => {
           onPress={() => {
             updateMood(icon);
           }}
-          options={options as ButtonOptions}
+          options={{ ...options, iconSize } as ButtonOptions}
         />
       </View>
     );
@@ -58,7 +59,7 @@ const MyMood = ({}) => {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <Text style={styles.title}>How do you feel today?</Text>
+        <Text style={styles.title}>How do you feel today</Text>
         <FontAwesomeIcon
           color={colors.FONT_COLOR}
           icon={faQuestion}
