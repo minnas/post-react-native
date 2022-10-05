@@ -1,3 +1,12 @@
+import {
+  faCat,
+  faDove,
+  faDragon,
+  faHippo,
+  faSpider,
+} from "@fortawesome/free-solid-svg-icons";
+import { FaIcon } from "../components/types/types";
+
 const randomApi = "https://jsonplaceholder.typicode.com";
 
 export const search = async (type?: ApiType) => {
@@ -22,3 +31,26 @@ export enum ApiType {
   POSTS,
   TODOS,
 }
+
+export const avatars = [
+  {
+    icon: faHippo,
+    label: "Hippo",
+  } as FaIcon,
+  {
+    icon: faDove,
+    label: "Dove",
+  } as FaIcon,
+  {
+    icon: faDragon,
+    label: "Dragon",
+  } as FaIcon,
+  {
+    icon: faCat,
+    label: "Cat",
+  } as FaIcon,
+  {
+    icon: faSpider,
+    label: "Spider",
+  } as FaIcon,
+];

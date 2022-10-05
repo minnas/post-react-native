@@ -1,5 +1,4 @@
 import React from "react";
-import Profi from "./src/components/views/Profi";
 import { NativeRouter, Route, Routes } from "react-router-native";
 import About from "./src/components/views/About";
 import Posts from "./src/components/views/Posts";
@@ -18,6 +17,7 @@ import Bookmarks from "./src/components/views/Bookmarks";
 import Todos from "./src/components/views/Todos";
 import MyTodos from "./src/components/views/MyTodos";
 import MyMood from "./src/components/views/MyMood";
+import Profile from "./src/components/views/Profile";
 
 export default function App() {
   return (
@@ -26,7 +26,7 @@ export default function App() {
         <Routes>
           <Route
             path="/"
-            element={<BaseLayout children={<Profi name="You" />} />}
+            element={<BaseLayout title="Profile" children={<Profile />} />}
           />
           <Route
             path="/about"

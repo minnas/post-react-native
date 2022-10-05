@@ -16,6 +16,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { colors } from "../../styles/colors";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const BaseLayout = ({
   children,
@@ -26,6 +28,7 @@ const BaseLayout = ({
   title?: string;
   icon?: IconProp;
 }) => {
+  const profile = useSelector((state: RootState) => state.profile);
   const myTitle = title || "Dummy Post App";
   const myIcon = icon || faSnowflake;
   const navigate = useNavigate();
@@ -38,6 +41,11 @@ const BaseLayout = ({
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        {profile?.avatar?.icon ? (
+          <FontAwesomeIcon icon={profile.avatar.icon} size={32} />
+        ) : (
+          ""
+        )}
         <Text style={styles.title}>{myTitle}</Text>
         <FontAwesomeIcon icon={myIcon} size={32} />
       </View>

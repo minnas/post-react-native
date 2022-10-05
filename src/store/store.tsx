@@ -1,5 +1,5 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { Bookmark, MyTodo } from "../components/types/types";
+import { Bookmark, MyProfile, MyTodo } from "../components/types/types";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 
@@ -55,7 +55,18 @@ const starSlice = createSlice({
   },
 });
 
+const myProfileSlice = createSlice({
+  name: "myProfile",
+  initialState: {} as MyProfile,
+  reducers: {
+    updateProfile: (state, action) => {
+      return { ...state, ...action.payload };
+    },
+  },
+});
+
 export const { add, update, remove } = myTodoSlice.actions;
+export const { updateProfile } = myProfileSlice.actions;
 export const { addBookmark, updateBookmark, removeBookmark } =
   myBookmarkSlice.actions;
 export const { less, more, reset } = starSlice.actions;
@@ -65,6 +76,7 @@ const store = configureStore({
     todos: myTodoSlice.reducer,
     bookmarks: myBookmarkSlice.reducer,
     stars: starSlice.reducer,
+    profile: myProfileSlice.reducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

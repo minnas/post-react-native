@@ -27,3 +27,7 @@ export type FaIcon = {
   icon: IconProp;
   label: string;
 };
+export type MyProfile = {
+  avatar: FaIcon;
+  name: string;
+};

@@ -20,7 +20,7 @@ export type Props = {
   defaultStarLevel?: number;
 };
 
-const Profi: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
+const Stars: React.FC<Props> = ({ name, defaultStarLevel = 0 }) => {
   const stars = useSelector((state: RootState) => state.stars);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -139,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profi;
+export default Stars;
