@@ -31,3 +31,6 @@ export type MyProfile = {
   avatar: FaIcon;
   name: string;
 };
+export type MapIcon = FaIcon & {
+  path: string;
+};

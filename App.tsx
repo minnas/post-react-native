@@ -10,6 +10,7 @@ import {
   faNoteSticky,
   faUserNinja,
   faMehRollingEyes,
+  faEarth,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
@@ -18,6 +19,7 @@ import Todos from "./src/components/views/Todos";
 import MyTodos from "./src/components/views/MyTodos";
 import MyMood from "./src/components/views/MyMood";
 import Profile from "./src/components/views/Profile";
+import Map from "./src/components/views/Map";
 
 export default function App() {
   return (
@@ -86,6 +88,12 @@ export default function App() {
                 icon={faMehRollingEyes}
                 children={<MyMood />}
               />
+            }
+          />
+          <Route
+            path="/map"
+            element={
+              <BaseLayout title="Map" icon={faEarth} children={<Map />} />
             }
           />
         </Routes>

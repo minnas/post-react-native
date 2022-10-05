@@ -9,6 +9,7 @@ import {
   faNoteSticky,
   faBookAtlas,
   faMehRollingEyes,
+  faEarth,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
@@ -107,6 +108,14 @@ const BaseLayout = ({
               navigate("/my-mood");
             }}
             icon={faMehRollingEyes}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/map");
+            }}
+            icon={faEarth}
             type={ButtonType.ICON_ONLY}
             options={btnOptions}
           />
