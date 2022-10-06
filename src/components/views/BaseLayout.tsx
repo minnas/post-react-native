@@ -44,7 +44,7 @@ const BaseLayout = ({
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         {profile?.avatar?.icon ? (
-          <FontAwesomeIcon icon={profile.avatar.icon} size={32} />
+          <FontAwesomeIcon icon={profile?.avatar?.icon} size={32} />
         ) : (
           ""
         )}

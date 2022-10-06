@@ -4,11 +4,8 @@ import Button from "../tools/Button";
 import { ButtonOptions } from "../tools/settings";
 import { useNavigate } from "react-router-native";
 import {
-  faCloud,
-  faStar,
-  faBookDead,
-  faBookmark,
   faCircle,
+  faFeatherPointed
 } from "@fortawesome/free-solid-svg-icons";
 import { MapIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
@@ -52,7 +49,7 @@ const Map = () => {
   ];
 
   const icon = (index: number) =>
-    page && page === index ? profile.avatar.icon : faCircle;
+    page && page === index ? (profile?.avatar?.icon || faFeatherPointed) : faCircle;
   const options = (index: number) => {
     if (page && page === index) {
       return {
