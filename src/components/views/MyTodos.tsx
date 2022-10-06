@@ -21,6 +21,7 @@ import { remove, RootState, update } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
+import { styles } from "./styles";
 const placeholder = require("./../../assets/placeholder.png");
 
 const MyTodos = () => {
@@ -51,11 +52,12 @@ const MyTodos = () => {
 
   const btnOptions = {
     noBorder: true,
+    iconSize: 32,
   } as ButtonOptions;
 
   const renderTodo = ({ item }: any) => {
     return (
-      <View key={item.key} style={styles.listItem}>
+      <View key={item.key} style={styles.listItemIconRight}>
         <Text style={styles.itemText}>{item.title}</Text>
         <View style={styles.actions}>
           <TouchableOpacity
@@ -95,7 +97,7 @@ const MyTodos = () => {
     <Placeholder image={placeholder} text="Yay! No Todos here!" />
   );
   return (
-    <View style={styles.container}>
+    <>
       <View style={styles.title}>
         <Text style={styles.text}>My Todos</Text>
       </View>
@@ -108,60 +110,7 @@ const MyTodos = () => {
           renderItem={renderTodo}
         />
       </View>
-    </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 25,
-  },
-  containerPosts: {
-    //marginVertical: 4,
-  },
-  listItem: {
-    flexDirection: "row",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 2,
-    borderBottomColor: "#916ec9",
-    borderBottomWidth: 2,
-  },
-  actions: {
-    flexDirection: "row",
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    width: 80,
-    paddingLeft: 5,
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#000",
-    height: 50,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    borderBottomColor: colors.BLACK_OPACITY_2,
-    borderBottomWidth: 3,
-    paddingBottom: 5,
-  },
-  itemText: {
-    maxWidth: "70%",
-    fontSize: 24,
-    fontWeight: "normal",
-    color: "#000",
-    marginHorizontal: 25,
-  },
-});
-
 export default MyTodos;

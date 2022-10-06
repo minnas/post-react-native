@@ -3,8 +3,14 @@ import { ImageBackground, StyleSheet, View } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import { faCloud, faStar, faBookDead } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCloud,
+  faStar,
+  faBookDead,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { MapIcon } from "../types/types";
+import { colors } from "../../styles/colors";
 const map = require("./../../assets/bird-map.png");
 
 const Map = () => {
@@ -17,19 +23,18 @@ const Map = () => {
     },
     { icon: faCloud, label: "Mood", path: "/my-mood" },
     { icon: faBookDead, label: "My Todos", path: "/my-todos" },
+    { icon: faBookmark, label: "My Bookmarks", path: "/bookmarks" },
   ];
 
   return (
-    <View style={styles.container}>
+    <>
       <ImageBackground source={map} style={styles.imageBg}>
-        <View style={{ flex: 2, width: "100%" }}>
+        <View style={styles.mapIcons}>
           {icons.map((mapIcon: MapIcon, index: number) => (
             <View
               key={index + 1}
               style={{
-                marginLeft: (index + 1) * 57,
-                marginTop: 52,
-                width: 100,
+                padding: 15,
               }}
             >
               <Button
@@ -38,31 +43,33 @@ const Map = () => {
                 onPress={() => {
                   navigate(mapIcon.path);
                 }}
-                options={{ noBorder: true, iconSize: 62 } as ButtonOptions}
+                options={
+                  {
+                    noBorder: true,
+                    iconSize: 62,
+                    color: colors.BLACK_OPACITY_8,
+                  } as ButtonOptions
+                }
               />
             </View>
           ))}
         </View>
       </ImageBackground>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
   imageBg: {
-    flex: 1,
     resizeMode: "cover",
     height: "100%",
     width: "100%",
     alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    position: "relative",
+  },
+  mapIcons: {
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
+    alignItems: "center",
   },
 });
 

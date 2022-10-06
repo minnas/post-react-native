@@ -18,7 +18,7 @@ const About = ({}) => {
     </View>
   );
   return (
-    <View style={styles.container}>
+    <>
       <View style={styles.row}>
         <Text style={styles.title}>This is an about page for the app</Text>
         <FontAwesomeIcon color={colors.FONT_COLOR} icon={faInfo} size={32} />
@@ -26,38 +26,29 @@ const About = ({}) => {
       <View style={styles.column}>
         <Accordion label="Toggle About Info" children={aboutInfo} />
       </View>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    paddingVertical: 25,
-    paddingHorizontal: 15,
-  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginRight: "5%",
   },
   row: {
     flexDirection: "row",
     paddingVertical: 25,
-    paddingHorizontal: 15,
     borderBottomColor: colors.APP_COLOR,
     borderBottomWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
   },
   column: {
     flexDirection: "column",
-    paddingVertical: 25,
-    paddingHorizontal: 15,
-    marginVertical: 25,
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   imageBg: {
-    flex: 1,
     resizeMode: "cover",
     width: "100%",
     height: 200,

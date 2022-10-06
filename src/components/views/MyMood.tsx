@@ -37,28 +37,25 @@ const MyMood = ({}) => {
     setMood(icon.label);
   };
 
-  const renderMood = ({ item }: any) => {
-    const icon = item as FaIcon;
+  const renderMood = (icon: FaIcon) => {
     const iconSize = 32;
     const options = mood === icon?.label ? {} : { noBorder: true };
     return (
-      <View style={{ marginLeft: 15 }}>
-        <Button
-          type={ButtonType.ICON_ONLY}
-          icon={icon?.icon}
-          title={icon?.label}
-          onPress={() => {
-            updateMood(icon);
-          }}
-          options={{ ...options, iconSize } as ButtonOptions}
-        />
-      </View>
+      <Button
+        type={ButtonType.ICON_ONLY}
+        icon={icon?.icon}
+        title={icon?.label}
+        onPress={() => {
+          updateMood(icon);
+        }}
+        options={{ ...options, iconSize } as ButtonOptions}
+      />
     );
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.row}>
+    <>
+      <View style={styles.textRow}>
         <Text style={styles.title}>How do you feel today</Text>
         <FontAwesomeIcon
           color={colors.FONT_COLOR}
@@ -66,33 +63,33 @@ const MyMood = ({}) => {
           size={32}
         />
       </View>
-      <View style={styles.row}>
-        <FlatList
-          data={moods}
-          renderItem={renderMood}
-          horizontal={true}
-          style={styles.moodList}
-        />
+      <View style={styles.moodRow}>
+        {moods.map((icon: FaIcon, index: number) => (
+          <View
+            key={index + 1}
+            style={{ paddingVertical: 10, paddingHorizontal: 5 }}
+          >
+            {renderMood(icon)}
+          </View>
+        ))}
       </View>
-      <View style={{ ...styles.row, flex: 3 }}>
-        <Text style={{ ...styles.title, alignSelf: "flex-end" }}>{mood}</Text>
+      <View style={styles.textRow}>
+        <Text style={{ fontSize: 32, fontStyle: "italic" }}>{mood}</Text>
       </View>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    paddingVertical: 25,
-    paddingHorizontal: 15,
-  },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
-    marginRight: "5%",
+  },
+  textRow: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
   },
   row: {
     flexDirection: "row",
@@ -101,18 +98,11 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.APP_COLOR,
     borderBottomWidth: 2,
   },
-  column: {
-    flexDirection: "column",
-    paddingVertical: 25,
+  moodRow: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
     flex: 2,
-    paddingHorizontal: 15,
-    marginVertical: 25,
-  },
-  moodList: {
-    marginHorizontal: 5,
-    maxHeight: 80,
-    padding: 5,
-    width: 300,
   },
 });
 

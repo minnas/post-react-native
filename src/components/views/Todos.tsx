@@ -15,6 +15,7 @@ import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { add, RootState } from "../../store/store";
 import { colors } from "../../styles/colors";
+import { styles } from "./styles";
 
 const Todos = () => {
   const [todos, setTodos] = useState([] as ListItem[]);
@@ -28,6 +29,7 @@ const Todos = () => {
 
   const btnOptions = {
     noBorder: true,
+    iconSize: 32,
   } as ButtonOptions;
 
   useEffect(() => {
@@ -77,7 +79,8 @@ const Todos = () => {
 
   const renderTodo = ({ item }: any) => {
     return (
-      <View key={item.key} style={styles.listItem}>
+      <View key={item.key} style={styles.listItemIconRight}>
+        <Text style={styles.itemText}>{item.title}</Text>
         <Button
           icon={addDisabled(item.key.toString()) ? faBookAtlas : faNoteSticky}
           type={ButtonType.ICON_ONLY}
@@ -87,12 +90,11 @@ const Todos = () => {
             return addToMyTodos(item.key.toString());
           }}
         />
-        <Text style={styles.itemText}>{item.title}</Text>
       </View>
     );
   };
   return (
-    <View style={styles.container}>
+    <>
       <View style={styles.title}>
         <Text style={styles.text}>Current {count} todos in the list</Text>
       </View>
@@ -117,57 +119,7 @@ const Todos = () => {
           <FlatList data={todos} renderItem={renderTodo} />
         )}
       </View>
-    </View>
+    </>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 25,
-  },
-  containerPosts: {
-    //marginVertical: 4,
-  },
-  item: {
-    flexDirection: "row",
-    display: "flex",
-    width: "90%",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  listItem: {
-    flexDirection: "row",
-    display: "flex",
-    width: "90%",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    marginVertical: 2,
-    paddingHorizontal: 3,
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: colors.FONT_COLOR,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: colors.FONT_COLOR,
-    height: 50,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    borderBottomColor: colors.BLACK_OPACITY_2,
-    borderBottomWidth: 3,
-    paddingBottom: 5,
-  },
-  itemText: {
-    fontSize: 24,
-    fontWeight: "normal",
-    color: "#000",
-    marginHorizontal: 25,
-  },
-});
-
 export default Todos;

@@ -31,6 +31,8 @@ const Button: React.FC<Props> = ({
   const btnColor = options?.color || colors.APP_COLOR;
   const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
   const iconSize = options?.iconSize || 24;
+  const bgColor = options?.backgroundColor || "transparent";
+
   const styles = StyleSheet.create({
     button: {
       elevation: 8,
@@ -39,6 +41,7 @@ const Button: React.FC<Props> = ({
       borderRadius: 15,
       paddingVertical: 15,
       paddingHorizontal: 15,
+      backgroundColor: bgColor,
     },
     btnText: {
       fontSize: 18,
