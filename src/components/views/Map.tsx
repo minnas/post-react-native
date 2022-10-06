@@ -3,10 +3,7 @@ import { ImageBackground, StyleSheet, View, Text } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import {
-  faCircle,
-  faFeatherPointed
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircle, faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
 import { MapIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +46,9 @@ const Map = () => {
   ];
 
   const icon = (index: number) =>
-    page && page === index ? (profile?.avatar?.icon || faFeatherPointed) : faCircle;
+    page && page === index
+      ? profile?.avatar?.icon || faFeatherPointed
+      : faCircle;
   const options = (index: number) => {
     if (page && page === index) {
       return {

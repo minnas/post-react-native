@@ -22,40 +22,35 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
     content: {
       display: "flex",
       flexDirection: "column",
-      width: 250,
-      position: "relative",
     },
     label: {
       fontSize: 24,
       fontWeight: "bold",
     },
     toggler: {
-      display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
       color: labelColor,
       fontSize: 24,
-      height: 50,
-      position: "absolute",
-      zIndex: 5,
-      width: 250,
+      padding: 15,
     },
   });
 
   return (
     <View style={styles.content}>
-      <TouchableOpacity onPress={toggle} style={styles.toggler}>
-        {label ? <Text style={styles.label}>{label}</Text> : ""}
-        <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
-      </TouchableOpacity>
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity onPress={toggle} style={styles.toggler}>
+          {label ? <Text style={styles.label}>{label}</Text> : ""}
+          <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
+        </TouchableOpacity>
+      </View>
       {open ? (
         <View
           style={{
             ...styles.content,
-            position: "absolute",
-            top: 50,
-            zIndex: 5,
+            flex: 4,
+            padding: 15,
           }}
         >
           {children ? children : ""}
