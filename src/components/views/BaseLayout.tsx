@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { NativeAppEventEmitter, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
   faHome,
   faLayerGroup,
@@ -19,6 +19,7 @@ import { ButtonOptions, ButtonType } from "../tools/settings";
 import { colors } from "../../styles/colors";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 const BaseLayout = ({
   children,
@@ -40,11 +41,33 @@ const BaseLayout = ({
     iconSize: 26,
   } as ButtonOptions;
 
+  const profileAvatar = (icon: IconProp) => {
+    return (
+      <>
+        <TouchableOpacity
+          style={{
+            position: "relative",
+            justifyContent: "center",
+            alignItems: "center",
+            width: 52,
+            height: 52,
+          }}
+          onPress={() => {
+            navigate("/");
+          }}
+        >
+        <FontAwesomeIcon icon={faCircle} size={52} />
+        <FontAwesomeIcon icon={icon} size={38} style={{ position: "absolute", zIndex: 99 }} />      
+        </TouchableOpacity>
+      </>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         {profile?.avatar?.icon ? (
-          <FontAwesomeIcon icon={profile?.avatar?.icon} size={32} />
+          profileAvatar(profile?.avatar?.icon)          
         ) : (
           ""
         )}
@@ -129,9 +152,10 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
+    paddingHorizontal: 10,
     backgroundColor: colors.APP_COLOR,
   },
 
