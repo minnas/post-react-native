@@ -1,5 +1,5 @@
 import { faBookmark, faBookDead } from "@fortawesome/free-solid-svg-icons";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { search } from "../../api/api";
 import Spinner from "../tools/Spinner";
@@ -14,8 +14,7 @@ import {
 import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookmark, RootState } from "../../store/store";
-import { colors } from "../../styles/colors";
-import { styles } from "./styles";
+import { styles } from "../../styles/views";
 
 const Posts = () => {
   const [posts, setPosts] = useState([] as ListItem[]);

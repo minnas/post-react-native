@@ -30,7 +30,9 @@ export type FaIcon = {
 export type MyProfile = {
   avatar: FaIcon;
   name: string;
+  page?: number;
 };
-export type MapIcon = FaIcon & {
+export type MapIcon = Omit<FaIcon, "icon"> & {
   path: string;
+  icon?: IconProp;
 };

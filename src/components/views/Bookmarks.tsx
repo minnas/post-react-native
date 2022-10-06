@@ -4,13 +4,7 @@ import {
   faCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ListItem, Bookmark } from "../types/types";
 import Button from "../tools/Button";
@@ -20,7 +14,7 @@ import { removeBookmark, RootState, updateBookmark } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
-import { styles } from "./styles";
+import { styles } from "../../styles/views";
 const placeholder = require("./../../assets/birds.png");
 
 const Bookmarks = () => {

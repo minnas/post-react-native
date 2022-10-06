@@ -4,6 +4,9 @@ export const colors = {
   SUCCESS_COLOR: "#00ff00",
   ERROR_COLOR: "#ff0000",
   BLACK_OPACITY_2: "rgba(0, 0, 0, .2)",
+  BLACK_OPACITY_6: "rgba(0, 0, 0, .6)",
   BLACK_OPACITY_8: "rgba(0, 0, 0, .8)",
+  WHITE_OPACITY_8: "rgba(255, 255, 255, .8)",
   WHITE_OPACITY_6: "rgba(255, 255, 255, .6)",
+  WHITE_OPACITY_2: "rgba(255, 255, 255, .2)",
 };

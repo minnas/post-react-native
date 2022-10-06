@@ -1,17 +1,5 @@
-import {
-  faAutomobile,
-  faCheck,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  FlatList,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ListItem, MyTodo } from "../types/types";
 import Button from "../tools/Button";
@@ -21,7 +9,8 @@ import { remove, RootState, update } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
-import { styles } from "./styles";
+import { styles } from "../../styles/views";
+
 const placeholder = require("./../../assets/placeholder.png");
 
 const MyTodos = () => {
