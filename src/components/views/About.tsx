@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import Accordion from "../tools/Accordion";
 import { colors } from "../../styles/colors";
-const birds = require("./../../assets/birds.png");
 
 const About = ({}) => {
   const aboutInfo = (
     <View>
-      <ImageBackground source={birds} style={styles.imageBg}>
+      <ImageBackground
+        source={require("./../../assets/birds.png")}
+        style={styles.imageBg}
+      >
         <Text style={styles.imgText}>
           This is a simple dummy app for testing React native and some custom
           components

@@ -16,7 +16,6 @@ import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
 import { styles } from "../../styles/views";
 import { removeBookmark, updateBookmark } from "../../store/dataSlices";
-const placeholder = require("./../../assets/birds.png");
 
 const Bookmarks = () => {
   const bookmarks = useSelector((state: RootState) => state.bookmarks);
@@ -107,7 +106,10 @@ const Bookmarks = () => {
   };
 
   const noBookmarks = () => (
-    <Placeholder image={placeholder} text="Ou nou! Nothing here." />
+    <Placeholder
+      image={require("./../../assets/birds.png")}
+      text="Ou nou! Nothing here."
+    />
   );
 
   return (

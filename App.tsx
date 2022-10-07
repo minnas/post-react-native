@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NativeRouter, Route, Routes } from "react-router-native";
 import About from "./src/components/views/About";
 import Posts from "./src/components/views/Posts";
@@ -22,8 +22,37 @@ import Profile from "./src/components/views/Profile";
 import Map from "./src/components/views/Map";
 import { PersistGate } from "redux-persist/integration/react";
 import Spinner from "./src/components/tools/Spinner";
+import { Asset } from "expo-asset";
+import { View } from "react-native";
 
 export default function App() {
+  const useImages = (images: any) => {
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+      Asset.loadAsync(images)
+        .then(() => setLoaded(true))
+        .catch(setError);
+    }, []);
+
+    return [loaded, error];
+  };
+
+  const [imagesLoaded] = useImages([
+    require("./src/assets/bird-map.png"),
+    require("./src/assets/birds.png"),
+    require("./src/assets/placeholder.png"),
+  ]);
+
+  if (!imagesLoaded) {
+    return (
+      <View>
+        <Spinner />
+      </View>
+    );
+  }
+
   return (
     <NativeRouter>
       <Provider store={store}>

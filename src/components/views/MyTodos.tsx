@@ -12,8 +12,6 @@ import Placeholder from "../tools/Placeholder";
 import { styles } from "../../styles/views";
 import { remove, update } from "../../store/dataSlices";
 
-const placeholder = require("./../../assets/placeholder.png");
-
 const MyTodos = () => {
   const todos = useSelector((state: RootState) => state.todos);
   const dispatch = useDispatch();
@@ -84,7 +82,10 @@ const MyTodos = () => {
   };
 
   const emptyList = () => (
-    <Placeholder image={placeholder} text="Yay! No Todos here!" />
+    <Placeholder
+      image={require("./../../assets/placeholder.png")}
+      text="Yay! No Todos here!"
+    />
   );
   return (
     <>
