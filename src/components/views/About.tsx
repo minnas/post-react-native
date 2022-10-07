@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "../tools/Accordion";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
-const duck = require("./../../assets/duck.png");
+const birds = require("./../../assets/birds.png");
 
 const About = ({}) => {
   const aboutInfo = (
     <View>
-      <ImageBackground source={duck} style={styles.imageBg}>
+      <ImageBackground source={birds} style={styles.imageBg}>
         <Text style={styles.imgText}>
           This is a simple dummy app for testing React native and some custom
           components
@@ -30,13 +28,13 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "center"
   },
   imageBg: {
     resizeMode: "cover",
     alignItems: "center",
     justifyContent: "center",
-    padding: 25,
+    padding: 35,
   },
   imgText: {
     color: colors.FONT_COLOR,
