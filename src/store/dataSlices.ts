@@ -1,6 +1,5 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { Bookmark, MyProfile, MyTodo } from "../components/types/types";
-import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
 
 const myTodoSlice = createSlice({
@@ -23,7 +22,6 @@ const myTodoSlice = createSlice({
     },
   },
 });
-
 const myBookmarkSlice = createSlice({
   name: "myBookmarks",
   initialState: [] as Bookmark[],
@@ -45,16 +43,6 @@ const myBookmarkSlice = createSlice({
   },
 });
 
-const starSlice = createSlice({
-  name: "star",
-  initialState: 0 as number,
-  reducers: {
-    more: (state) => state + 1,
-    less: (state) => state - 1,
-    reset: (state) => (state = 0),
-  },
-});
-
 const myProfileSlice = createSlice({
   name: "myProfile",
   initialState: {} as MyProfile,
@@ -65,19 +53,25 @@ const myProfileSlice = createSlice({
   },
 });
 
+const starSlice = createSlice({
+  name: "star",
+  initialState: 0 as number,
+  reducers: {
+    more: (state) => state + 1,
+    less: (state) => state - 1,
+    reset: (state) => (state = 0),
+  },
+});
+
+/**reducers */
+export const todoReducer = myTodoSlice.reducer;
+export const bookmarReducer = myBookmarkSlice.reducer;
+export const profileReducer = myProfileSlice.reducer;
+export const starReducer = starSlice.reducer;
+
+/**actions */
 export const { add, update, remove } = myTodoSlice.actions;
 export const { updateProfile } = myProfileSlice.actions;
 export const { addBookmark, updateBookmark, removeBookmark } =
   myBookmarkSlice.actions;
 export const { less, more, reset } = starSlice.actions;
-
-const store = configureStore({
-  reducer: {
-    todos: myTodoSlice.reducer,
-    bookmarks: myBookmarkSlice.reducer,
-    stars: starSlice.reducer,
-    profile: myProfileSlice.reducer,
-  },
-});
-export type RootState = ReturnType<typeof store.getState>;
-export default store;

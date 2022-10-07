@@ -10,11 +10,12 @@ import { ListItem, Bookmark } from "../types/types";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
-import { removeBookmark, RootState, updateBookmark } from "../../store/store";
+import { RootState } from "../../store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
 import { styles } from "../../styles/views";
+import { removeBookmark, updateBookmark } from "../../store/dataSlices";
 const placeholder = require("./../../assets/birds.png");
 
 const Bookmarks = () => {

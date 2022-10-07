@@ -1,5 +1,12 @@
 import React, { ReactNode } from "react";
-import { NativeAppEventEmitter, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  NativeAppEventEmitter,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import {
   faHome,
   faLayerGroup,
@@ -56,21 +63,21 @@ const BaseLayout = ({
             navigate("/");
           }}
         >
-        <FontAwesomeIcon icon={faCircle} size={52} />
-        <FontAwesomeIcon icon={icon} size={38} style={{ position: "absolute", zIndex: 99 }} />      
+          <FontAwesomeIcon icon={faCircle} size={52} />
+          <FontAwesomeIcon
+            icon={icon}
+            size={38}
+            style={{ position: "absolute", zIndex: 99 }}
+          />
         </TouchableOpacity>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        {profile?.avatar?.icon ? (
-          profileAvatar(profile?.avatar?.icon)          
-        ) : (
-          ""
-        )}
+        {profile?.avatar?.icon ? profileAvatar(profile?.avatar?.icon) : ""}
         <Text style={styles.title}>{myTitle}</Text>
         <FontAwesomeIcon icon={myIcon} size={32} />
       </View>

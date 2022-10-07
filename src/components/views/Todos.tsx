@@ -13,8 +13,9 @@ import {
 } from "../tools/settings";
 import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
-import { add, RootState } from "../../store/store";
+import { RootState } from "../../store/store";
 import { styles } from "../../styles/views";
+import { add } from "../../store/dataSlices";
 
 const Todos = () => {
   const [todos, setTodos] = useState([] as ListItem[]);

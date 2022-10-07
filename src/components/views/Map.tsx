@@ -7,7 +7,8 @@ import { faCircle, faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
 import { MapIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, updateProfile } from "../../store/store";
+import { RootState } from "../../store/store";
+import { updateProfile } from "../../store/dataSlices";
 const map = require("./../../assets/bird-map.png");
 
 const Map = () => {

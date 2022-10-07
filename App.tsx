@@ -13,90 +13,94 @@ import {
   faEarth,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
-import store from "./src/store/store";
+import { default as store, persistor } from "./src/store/store";
 import Bookmarks from "./src/components/views/Bookmarks";
 import Todos from "./src/components/views/Todos";
 import MyTodos from "./src/components/views/MyTodos";
 import MyMood from "./src/components/views/MyMood";
 import Profile from "./src/components/views/Profile";
 import Map from "./src/components/views/Map";
+import { PersistGate } from "redux-persist/integration/react";
+import Spinner from "./src/components/tools/Spinner";
 
 export default function App() {
   return (
     <NativeRouter>
       <Provider store={store}>
-        <Routes>
-          <Route
-            path="/"
-            element={<BaseLayout title="Profile" children={<Profile />} />}
-          />
-          <Route
-            path="/about"
-            element={
-              <BaseLayout
-                title="About"
-                icon={faUserNinja}
-                children={<About />}
-              />
-            }
-          />
-          <Route
-            path="/posts"
-            element={
-              <BaseLayout
-                title="Some Awesome Posts"
-                icon={faLayerGroup}
-                children={<Posts />}
-              />
-            }
-          />
-          <Route
-            path="/bookmarks"
-            element={
-              <BaseLayout
-                title="Some Awesome Bookmarks"
-                icon={faBookmark}
-                children={<Bookmarks />}
-              />
-            }
-          />
-          <Route
-            path="/todos"
-            element={
-              <BaseLayout
-                title="Some Awesome Todos"
-                icon={faNoteSticky}
-                children={<Todos />}
-              />
-            }
-          />
-          <Route
-            path="/my-todos"
-            element={
-              <BaseLayout
-                title="My Todos"
-                icon={faBookAtlas}
-                children={<MyTodos />}
-              />
-            }
-          />
-          <Route
-            path="/my-mood"
-            element={
-              <BaseLayout
-                title="My Mood"
-                icon={faMehRollingEyes}
-                children={<MyMood />}
-              />
-            }
-          />
-          <Route
-            path="/map"
-            element={
-              <BaseLayout title="Map" icon={faEarth} children={<Map />} />
-            }
-          />
-        </Routes>
+        <PersistGate loading={<Spinner />} persistor={persistor}>
+          <Routes>
+            <Route
+              path="/"
+              element={<BaseLayout title="Profile" children={<Profile />} />}
+            />
+            <Route
+              path="/about"
+              element={
+                <BaseLayout
+                  title="About"
+                  icon={faUserNinja}
+                  children={<About />}
+                />
+              }
+            />
+            <Route
+              path="/posts"
+              element={
+                <BaseLayout
+                  title="Some Awesome Posts"
+                  icon={faLayerGroup}
+                  children={<Posts />}
+                />
+              }
+            />
+            <Route
+              path="/bookmarks"
+              element={
+                <BaseLayout
+                  title="Some Awesome Bookmarks"
+                  icon={faBookmark}
+                  children={<Bookmarks />}
+                />
+              }
+            />
+            <Route
+              path="/todos"
+              element={
+                <BaseLayout
+                  title="Some Awesome Todos"
+                  icon={faNoteSticky}
+                  children={<Todos />}
+                />
+              }
+            />
+            <Route
+              path="/my-todos"
+              element={
+                <BaseLayout
+                  title="My Todos"
+                  icon={faBookAtlas}
+                  children={<MyTodos />}
+                />
+              }
+            />
+            <Route
+              path="/my-mood"
+              element={
+                <BaseLayout
+                  title="My Mood"
+                  icon={faMehRollingEyes}
+                  children={<MyMood />}
+                />
+              }
+            />
+            <Route
+              path="/map"
+              element={
+                <BaseLayout title="Map" icon={faEarth} children={<Map />} />
+              }
+            />
+          </Routes>
+        </PersistGate>
       </Provider>
     </NativeRouter>
   );

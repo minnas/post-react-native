@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import { faQuestion, faSmoking } from "@fortawesome/free-solid-svg-icons";
+import { StyleSheet, Text, View } from "react-native";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { colors } from "../../styles/colors";
 import {
   faFaceAngry,
   faFaceSadCry,
   faSmileBeam,
+  faFaceMehBlank,
 } from "@fortawesome/free-regular-svg-icons";
 import { FaIcon } from "../types/types";
 import Button from "../tools/Button";
@@ -29,7 +30,7 @@ const MyMood = ({}) => {
       label: "I am Happy",
     } as FaIcon,
     {
-      icon: faSmoking,
+      icon: faFaceMehBlank,
       label: "No Comments",
     } as FaIcon,
   ];
@@ -38,7 +39,7 @@ const MyMood = ({}) => {
   };
 
   const renderMood = (icon: FaIcon) => {
-    const iconSize = 32;
+    const iconSize = 50;
     const options = mood === icon?.label ? {} : { noBorder: true };
     return (
       <Button

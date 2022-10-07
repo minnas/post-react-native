@@ -3,10 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, updateProfile } from "../../store/store";
+import { RootState } from "../../store/store";
 import { avatars } from "../../api/api";
 import { FaIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
+import { updateProfile } from "../../store/dataSlices";
 
 const Profile = () => {
   const profile = useSelector((state: RootState) => state.profile);

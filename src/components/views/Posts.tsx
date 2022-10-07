@@ -13,8 +13,9 @@ import {
 } from "../tools/settings";
 import Toast from "../tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
-import { addBookmark, RootState } from "../../store/store";
+import { RootState } from "../../store/store";
 import { styles } from "../../styles/views";
+import { addBookmark } from "../../store/dataSlices";
 
 const Posts = () => {
   const [posts, setPosts] = useState([] as ListItem[]);
