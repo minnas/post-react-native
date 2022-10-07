@@ -49,7 +49,7 @@ const Profile = () => {
   return (
     <>
       <View style={styles.title}>
-        <Text style={{ fontSize: 32, fontWeight: "bold" }}>Set Profile </Text>
+        <Text style={{ fontSize: 32, fontWeight: "bold" }}>Select Avatar</Text>
       </View>
       <View style={styles.avatarList}>
         {avatars.map((icon: FaIcon, index: number) => (

@@ -13,7 +13,8 @@ import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { less, more, RootState } from "../../store/store";
+import { RootState } from "../../store/store";
+import { less, more } from "../../store/dataSlices";
 
 export type Props = {
   name: string;
