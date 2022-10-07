@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
   },
   imageBg: {
     resizeMode: "cover",
