@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FaIcon } from "../components/types/types";
 import { dummyTask } from "./dummyTasks";
+import { ApiType } from "./type";
 
 const randomApi = "https://jsonplaceholder.typicode.com";
 
@@ -27,11 +28,6 @@ export const search = async (type?: ApiType) => {
       throw new Error(`Failed to fetch ${prefix} from api`);
     });
 };
-
-export enum ApiType {
-  POSTS,
-  TODOS,
-}
 
 export const avatars = [
   {

@@ -1,5 +1,10 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
+export enum ApiType {
+  POSTS,
+  TODOS,
+}
+
 export enum TaskAnswerType {
   TEXT,
   CHOICE,

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { styles } from "../../styles/views";
 import { add } from "../../store/dataSlices";
+import { ApiType } from "../../api/type";
 
 const Todos = () => {
   const [todos, setTodos] = useState([] as ListItem[]);
@@ -34,7 +35,7 @@ const Todos = () => {
 
   useEffect(() => {
     setLoading(true);
-    search()
+    search(ApiType.TODOS)
       .then((items) => {
         const myItems = items.map((item: Post) => {
           return {
