@@ -108,17 +108,16 @@ const TaskOfTheDay = () => {
   };
   return (
     <>
-      <Text
-        style={{
-          fontSize: 28,
-          alignSelf: "center",
-          paddingHorizontal: 5,
-          flex: 1,
-          justifyContent: "center",
-        }}
-      >
-        {task.desc}
-      </Text>
+      <View style={styles.desc}>
+        <Text
+          style={{
+            fontSize: 28,
+            paddingHorizontal: 15,
+          }}
+        >
+          {task.desc}
+        </Text>
+      </View>
       <View
         style={{
           ...styles.content,
@@ -196,6 +195,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "row",
+    backgroundColor: colors.LIGHT_VIOLET_4,
+  },
+  desc: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.LIGHT_VIOLET_6,
   },
 });
 

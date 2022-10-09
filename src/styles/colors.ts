@@ -9,4 +9,7 @@ export const colors = {
   WHITE_OPACITY_8: "rgba(255, 255, 255, .8)",
   WHITE_OPACITY_6: "rgba(255, 255, 255, .6)",
   WHITE_OPACITY_2: "rgba(255, 255, 255, .2)",
+  LIGHT_VIOLET_4: "rgba(174, 186, 255, .4)",
+  LIGHT_VIOLET_6: "rgba(174, 186, 255, .6)",
+  LIGHT_VIOLET_8: "rgba(174, 186, 255, .8)",
 };

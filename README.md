@@ -8,4 +8,4 @@ To Setup:
 First ensure you are using node version > 14 (and have yarn installed) and have expo installed on your mobile phone
 
 1. Run yarn
-2. Run yarn start ant scan the QR with the phone
+2. Run yarn start and scan the QR with the phone
