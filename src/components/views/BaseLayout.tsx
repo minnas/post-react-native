@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from "react";
 import {
-  NativeAppEventEmitter,
   SafeAreaView,
   StyleSheet,
   Text,

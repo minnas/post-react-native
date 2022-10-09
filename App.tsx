@@ -12,6 +12,7 @@ import {
   faMehRollingEyes,
   faEarth,
   faClipboardQuestion,
+  faUserAstronaut,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
@@ -62,7 +63,7 @@ export default function App() {
           <Routes>
             <Route
               path="/"
-              element={<BaseLayout title="Profile" children={<Profile />} />}
+              element={<BaseLayout title="Profile" children={<Profile />} icon={faUserAstronaut}/>}
             />
             <Route
               path="/about"

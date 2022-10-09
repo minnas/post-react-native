@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import Accordion from "../tools/Accordion";
 import { colors } from "../../styles/colors";

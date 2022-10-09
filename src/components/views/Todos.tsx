@@ -3,7 +3,7 @@ import { FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { search } from "../../api/api";
 import Spinner from "../tools/Spinner";
-import { Post, ListItem, MyTodo } from "../types/types";
+import { ListItem, MyTodo, Todo } from "../types/types";
 import Button from "../tools/Button";
 import {
   ButtonOptions,
@@ -37,7 +37,7 @@ const Todos = () => {
     setLoading(true);
     search(ApiType.TODOS)
       .then((items) => {
-        const myItems = items.map((item: Post) => {
+        const myItems = items.map((item: Todo) => {
           return {
             key: item.id,
             title: item.title,
