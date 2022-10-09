@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import { faEarth, faBroom } from "@fortawesome/free-solid-svg-icons";
+import { faEarth, faBroom, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import {
-  addAnswer,
-  clearAll,
-  removeAnswer,
-  updateAnswer,
-} from "../../store/dataSlices";
+import { addAnswer, clearAll, removeAnswer } from "../../store/dataSlices";
 import { fetchTask } from "../../api/api";
 import { Answer, Choice, Task, TaskAnswerType } from "../../api/type";
+import TextField from "../tools/TextField";
 
 const TaskOfTheDay = () => {
   const navigate = useNavigate();
@@ -27,6 +23,8 @@ const TaskOfTheDay = () => {
   );
   const [task, setTask] = useState({} as Task);
   const [selected, setSelected] = useState("");
+  const inputRef = useRef<TextInput | null>(null);
+  const [changed, setChanged] = useState(false);
 
   useEffect(() => {
     setTask(fetchTask(taskId?.toString()) as Task);
@@ -46,6 +44,7 @@ const TaskOfTheDay = () => {
 
   const add = (answer: Answer) => {
     dispatch(addAnswer(answer));
+    setChanged(true);
     const others = answers.filter(
       (item: Answer) => item.answer != answer.answer && item.id
     );
@@ -118,16 +117,39 @@ const TaskOfTheDay = () => {
             renderChoice(choice, index)
           )
         ) : (
-          <TextInput
-            style={styles.input}
-            onChangeText={(text) => {
-              add({
-                taskId: task.id,
-                answer: text,
-              });
+          <View
+            style={{
+              flexWrap: "wrap",
+              alignContent: "center",
+              justifyContent: "space-between",
+              flexDirection: "row",
             }}
-            value={answers.length > 0 ? answers[0]?.answer : ""}
-          />
+          >
+            <TextField
+              ref={inputRef}
+              value={answers.length > 0 ? answers[0]?.answer : ""}
+              placeholder="Type your answer here"
+              multiline={true}
+              onChangeValue={(text: string) => {
+                add({
+                  taskId: task.id,
+                  answer: text,
+                });
+              }}
+            />
+            <Button
+              icon={faCheck}
+              onPress={() => {
+                inputRef?.current?.blur();
+                setChanged(false);
+              }}
+              options={{
+                iconSize: 36,
+                noBorder: true,
+                color: changed ? colors.BLACK_OPACITY_6 : colors.APP_COLOR,
+              }}
+            />
+          </View>
         )}
       </View>
       <View style={{ ...styles.content, justifyContent: "space-between" }}>
@@ -158,17 +180,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "row",
-  },
-  input: {
-    borderColor: colors.APP_COLOR,
-    borderRadius: 5,
-    borderWidth: 2,
-    padding: 5,
-    width: "80%",
-    height: 150,
-    marginTop: 15,
-    marginBottom: 15,
-    fontSize: 24,
   },
 });
 

@@ -56,4 +56,15 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  inputTextLarge: {
+    borderColor: colors.APP_COLOR,
+    borderRadius: 5,
+    borderWidth: 2,
+    padding: 5,
+    width: "80%",
+    height: 100,
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 24,
+  },
 });
