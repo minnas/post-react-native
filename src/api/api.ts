@@ -6,6 +6,7 @@ import {
   faSpider,
 } from "@fortawesome/free-solid-svg-icons";
 import { FaIcon } from "../components/types/types";
+import { dummyTask } from "./dummyTasks";
 
 const randomApi = "https://jsonplaceholder.typicode.com";
 
@@ -54,3 +55,8 @@ export const avatars = [
     label: "Spider",
   } as FaIcon,
 ];
+
+export const fetchTask = (id?: string) => {
+  if (id) return dummyTask.find((t) => t.id == id);
+  return dummyTask;
+};

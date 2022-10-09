@@ -11,6 +11,7 @@ export type ButtonOptions = {
   noBorder?: boolean;
   color?: string;
   iconSize?: number;
+  fontSize?: number;
   backgroundColor?: string;
 };
 export type ToastOptions = {

@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
+  answerReducer,
   bookmarReducer,
   profileReducer,
   starReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   bookmarks: bookmarReducer,
   profile: profileReducer,
   stars: starReducer,
+  answers: answerReducer,
 });
 
 type RootReducer = ReturnType<typeof rootReducer>;

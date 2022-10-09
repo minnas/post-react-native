@@ -85,7 +85,8 @@ const Map = () => {
                 title={mapIcon.label}
                 onPress={() => {
                   setPage(index + 1);
-                  setPath(mapIcon.path);
+                  //setPath(mapIcon.path);
+                  setPath("/day");
                 }}
                 options={
                   {

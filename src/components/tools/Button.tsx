@@ -32,6 +32,7 @@ const Button: React.FC<Props> = ({
   const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
   const iconSize = options?.iconSize || 24;
   const bgColor = options?.backgroundColor || "transparent";
+  const fontSize = options?.fontSize || 18;
 
   const styles = StyleSheet.create({
     button: {
@@ -44,7 +45,7 @@ const Button: React.FC<Props> = ({
       backgroundColor: bgColor,
     },
     btnText: {
-      fontSize: 18,
+      fontSize,
       color: btnColor,
       fontWeight: "bold",
       alignSelf: "center",

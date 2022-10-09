@@ -10,7 +10,7 @@ import {
   faNoteSticky,
   faUserNinja,
   faMehRollingEyes,
-  faEarth,
+  faEarth
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
@@ -24,6 +24,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import Spinner from "./src/components/tools/Spinner";
 import { Asset } from "expo-asset";
 import { View } from "react-native";
+import TaskOfTheDay from "./src/components/views/TaskOfTheDay";
 
 export default function App() {
   const useImages = (images: any) => {
@@ -126,6 +127,17 @@ export default function App() {
               path="/map"
               element={
                 <BaseLayout title="Map" icon={faEarth} children={<Map />} />
+              }
+            />
+            <Route
+              path="/day"
+              element={
+                <BaseLayout
+                  title="Exam for Today"
+                  icon={faLayerGroup}
+                  children={<TaskOfTheDay />}
+                  bottonNavDisabled={true}
+                />
               }
             />
           </Routes>

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   NativeAppEventEmitter,
   SafeAreaView,
@@ -32,15 +32,20 @@ const BaseLayout = ({
   children,
   title,
   icon,
+  bottonNavDisabled,
 }: {
   children: ReactNode;
   title?: string;
   icon?: IconProp;
+  bottonNavDisabled?: boolean;
 }) => {
   const profile = useSelector((state: RootState) => state.profile);
   const myTitle = title || "Dummy Post App";
   const myIcon = icon || faSnowflake;
   const navigate = useNavigate();
+  const [showButtons, setShowButtons] = useState(
+    bottonNavDisabled ? false : true
+  );
 
   const btnOptions = {
     color: "#000",
@@ -81,73 +86,79 @@ const BaseLayout = ({
         <Text style={styles.title}>{myTitle}</Text>
         <FontAwesomeIcon icon={myIcon} size={32} />
       </View>
-      <View style={styles.content}>{children}</View>
-      <View style={styles.footer}>
-        <Button
-          onPress={() => {
-            navigate("/");
-          }}
-          icon={faHome}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/about");
-          }}
-          icon={faInfo}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/posts");
-          }}
-          icon={faLayerGroup}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/bookmarks");
-          }}
-          icon={faBookmark}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/todos");
-          }}
-          icon={faNoteSticky}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/my-todos");
-          }}
-          icon={faBookAtlas}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/my-mood");
-          }}
-          icon={faMehRollingEyes}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
-        <Button
-          onPress={() => {
-            navigate("/map");
-          }}
-          icon={faEarth}
-          type={ButtonType.ICON_ONLY}
-          options={btnOptions}
-        />
+      <View style={showButtons ? styles.content : styles.contentNoBottomNav}>
+        {children}
       </View>
+      {showButtons ? (
+        <View style={styles.footer}>
+          <Button
+            onPress={() => {
+              navigate("/");
+            }}
+            icon={faHome}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/about");
+            }}
+            icon={faInfo}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/posts");
+            }}
+            icon={faLayerGroup}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/bookmarks");
+            }}
+            icon={faBookmark}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/todos");
+            }}
+            icon={faNoteSticky}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/my-todos");
+            }}
+            icon={faBookAtlas}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/my-mood");
+            }}
+            icon={faMehRollingEyes}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+          <Button
+            onPress={() => {
+              navigate("/map");
+            }}
+            icon={faEarth}
+            type={ButtonType.ICON_ONLY}
+            options={btnOptions}
+          />
+        </View>
+      ) : (
+        ""
+      )}
     </SafeAreaView>
   );
 };
@@ -168,6 +179,9 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 4,
+  },
+  contentNoBottomNav: {
+    flex: 5,
   },
   footer: {
     flex: 1,
