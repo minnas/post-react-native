@@ -11,6 +11,7 @@ import {
   faUserNinja,
   faMehRollingEyes,
   faEarth,
+  faClipboardQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
@@ -134,7 +135,7 @@ export default function App() {
               element={
                 <BaseLayout
                   title="Exam for Today"
-                  icon={faLayerGroup}
+                  icon={faClipboardQuestion}
                   children={<TaskOfTheDay />}
                   bottonNavDisabled={true}
                 />

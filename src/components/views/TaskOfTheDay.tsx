@@ -63,7 +63,7 @@ const TaskOfTheDay = () => {
       return {
         ...settings,
         iconSize: 58,
-        backgroundColor: colors.BLACK_OPACITY_6,
+        backgroundColor: colors.APP_COLOR,
         color: colors.WHITE_OPACITY_8,
       };
     }
