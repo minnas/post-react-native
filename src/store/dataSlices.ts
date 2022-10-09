@@ -69,7 +69,7 @@ const answerSlice = createSlice({
   initialState: [] as Answer[],
   reducers: {
     addAnswer: (state, action) => {
-      state.push({ ...action.payload, id:uuidv4() } as Answer);
+      state.push({ ...action.payload, id: uuidv4() } as Answer);
     },
     removeAnswer: (state, action) => {
       return state.filter((t) => t.id != (action.payload.id as string));
@@ -80,13 +80,13 @@ const answerSlice = createSlice({
       );
       if (index > -1) {
         state.splice(index, 1, action.payload as Answer);
-      } 
+      }
     },
     clearAll: (state, action) => {
-      if(action.payload.id) {
-        return state.filter((t) => t.taskId != (action.payload.id as string));  
+      if (action.payload.id) {
+        return state.filter((t) => t.taskId != (action.payload.id as string));
       }
-    }
+    },
   },
 });
 
@@ -103,4 +103,5 @@ export const { updateProfile } = myProfileSlice.actions;
 export const { addBookmark, updateBookmark, removeBookmark } =
   myBookmarkSlice.actions;
 export const { less, more, reset } = starSlice.actions;
-export const { addAnswer, updateAnswer, removeAnswer, clearAll } = answerSlice.actions;
+export const { addAnswer, updateAnswer, removeAnswer, clearAll } =
+  answerSlice.actions;

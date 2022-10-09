@@ -10,7 +10,7 @@ import {
   faNoteSticky,
   faUserNinja,
   faMehRollingEyes,
-  faEarth
+  faEarth,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";

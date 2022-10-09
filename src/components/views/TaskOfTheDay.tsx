@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-} from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import {
-  faEarth, faBroom,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEarth, faBroom } from "@fortawesome/free-solid-svg-icons";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { addAnswer, clearAll, removeAnswer, updateAnswer } from "../../store/dataSlices";
+import {
+  addAnswer,
+  clearAll,
+  removeAnswer,
+  updateAnswer,
+} from "../../store/dataSlices";
 import { fetchTask } from "../../api/api";
 import { Answer, Choice, Task, TaskAnswerType } from "../../api/type";
 
 const TaskOfTheDay = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const taskId = useSelector((state: RootState) => state.profile.page)?.toString();
-  const answers = useSelector((state: RootState) => state.answers).filter((item: Answer) => item.taskId == taskId);
+  const taskId = useSelector(
+    (state: RootState) => state.profile.page
+  )?.toString();
+  const answers = useSelector((state: RootState) => state.answers).filter(
+    (item: Answer) => item.taskId == taskId
+  );
   const [task, setTask] = useState({} as Task);
   const [selected, setSelected] = useState("");
 
@@ -31,7 +33,7 @@ const TaskOfTheDay = () => {
   }, []);
 
   useEffect(() => {
-    if(answers.length > 0) {
+    if (answers.length > 0) {
       setSelected(answers[0].answer);
     } else {
       setSelected("");
@@ -42,21 +44,21 @@ const TaskOfTheDay = () => {
     dispatch(removeAnswer({ id }));
   };
 
-  const add = (answer: Answer) => {        
-    dispatch(
-      addAnswer(answer)
+  const add = (answer: Answer) => {
+    dispatch(addAnswer(answer));
+    const others = answers.filter(
+      (item: Answer) => item.answer != answer.answer && item.id
     );
-    const others = answers.filter((item: Answer) => item.answer != answer.answer && item.id);
-    for( const item of others) {
+    for (const item of others) {
       const answer = item as Answer;
-      if(answer.id) {
+      if (answer.id) {
         remove(answer.id);
       }
     }
   };
 
   const options = (choice: Choice) => {
-    const settings = choice.icon ? {} : {fontSize: 24};
+    const settings = choice.icon ? {} : { fontSize: 24 };
     if (selected === choice.id) {
       return {
         ...settings,
@@ -71,7 +73,7 @@ const TaskOfTheDay = () => {
       color: colors.BLACK_OPACITY_8,
     };
   };
-  const handleChoicePress = (id: string ) => {
+  const handleChoicePress = (id: string) => {
     const answer = answers.find((answer: Answer) => answer.answer === id);
     if (!answer?.id) {
       add({
@@ -91,7 +93,9 @@ const TaskOfTheDay = () => {
         <Button
           icon={choice.icon}
           title={choice.text}
-          onPress={() => { handleChoicePress(choice.id)} }
+          onPress={() => {
+            handleChoicePress(choice.id);
+          }}
           type={choice.icon ? ButtonType.ICON_ONLY : ButtonType.DEFAULT}
           options={
             {
@@ -105,8 +109,10 @@ const TaskOfTheDay = () => {
   };
   return (
     <>
-      <Text style={{ fontSize: 28, alignSelf: "center", paddingHorizontal: 5 }}>{task.desc}</Text>
-      <View style={{...styles.content, flex: 2}}>
+      <Text style={{ fontSize: 28, alignSelf: "center", paddingHorizontal: 5 }}>
+        {task.desc}
+      </Text>
+      <View style={{ ...styles.content, flex: 2 }}>
         {task.type === TaskAnswerType.CHOICE && task.choices ? (
           task.choices.map((choice: Choice, index: number) =>
             renderChoice(choice, index)
@@ -124,7 +130,7 @@ const TaskOfTheDay = () => {
           />
         )}
       </View>
-      <View style={{...styles.content, justifyContent: "space-between"}}>
+      <View style={{ ...styles.content, justifyContent: "space-between" }}>
         <Button
           type={ButtonType.ICON_ONLY}
           icon={faEarth}
@@ -138,7 +144,7 @@ const TaskOfTheDay = () => {
           icon={faBroom}
           options={{ iconSize: 42 }}
           onPress={() => {
-            dispatch(clearAll({id: taskId}));
+            dispatch(clearAll({ id: taskId }));
           }}
         />
       </View>
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-evenly",
     alignItems: "center",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   input: {
     borderColor: colors.APP_COLOR,
@@ -162,7 +168,7 @@ const styles = StyleSheet.create({
     height: 150,
     marginTop: 15,
     marginBottom: 15,
-    fontSize: 24
+    fontSize: 24,
   },
 });
 
