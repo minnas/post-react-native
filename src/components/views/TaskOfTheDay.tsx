@@ -108,10 +108,25 @@ const TaskOfTheDay = () => {
   };
   return (
     <>
-      <Text style={{ fontSize: 28, alignSelf: "center", paddingHorizontal: 5 }}>
+      <Text
+        style={{
+          fontSize: 28,
+          alignSelf: "center",
+          paddingHorizontal: 5,
+          flex: 1,
+          justifyContent: "center",
+        }}
+      >
         {task.desc}
       </Text>
-      <View style={{ ...styles.content, flex: 2 }}>
+      <View
+        style={{
+          ...styles.content,
+          flex: 3,
+          alignContent: "flex-start",
+          paddingHorizontal: 10,
+        }}
+      >
         {task.type === TaskAnswerType.CHOICE && task.choices ? (
           task.choices.map((choice: Choice, index: number) =>
             renderChoice(choice, index)
@@ -120,9 +135,10 @@ const TaskOfTheDay = () => {
           <View
             style={{
               flexWrap: "wrap",
-              alignContent: "center",
+              alignContent: "flex-start",
               justifyContent: "space-between",
               flexDirection: "row",
+              flex: 1,
             }}
           >
             <TextField
