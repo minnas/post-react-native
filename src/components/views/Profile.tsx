@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,6 +47,18 @@ const Profile = () => {
     );
   };
 
+  const svgButton = () => {
+    return (
+      <Button
+        type={ButtonType.SVG}
+        onPress={() => {
+          console.log("Hi there, Dog here only!");
+        }}
+        options={{ backgroundColor: colors.FONT_COLOR }}
+        svg={<Koira style={{ width: 54, height: 54 }} />}
+      />
+    );
+  };
   return (
     <>
       <View style={styles.title}>
@@ -61,8 +73,8 @@ const Profile = () => {
             {avatarBtn(icon)}
           </View>
         ))}
-        <View style={{backgroundColor: colors.BLACK_OPACITY_6, padding: 5, borderRadius: 15}}>
-          <Koira style={{width: 72, height: 72, top: 0, zIndex: 100, margin: 0}}/>
+        <View style={{ paddingVertical: 10, paddingHorizontal: 5 }}>
+          {svgButton()}
         </View>
       </View>
     </>

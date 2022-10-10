@@ -37,7 +37,7 @@ const Map = () => {
   useEffect(() => {
     navigate(path);
   }, [path]);
-  const days: number[] = [1,2,3,4,5,6,7,8,9];
+  const days: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const icon = (index: number) =>
     page && page === index
@@ -71,7 +71,7 @@ const Map = () => {
             >
               <Button
                 icon={icon(index)}
-                title={"Day " + index}
+                title={index.toString()}
                 onPress={() => {
                   setPage(index);
                   setPath("/day");
@@ -95,7 +95,7 @@ const Map = () => {
               onPress={() => {
                 setPath("/end");
               }}
-              title="Result"
+              title="Tulos"
               options={
                 {
                   backgroundColor: colors.WHITE_OPACITY_6,

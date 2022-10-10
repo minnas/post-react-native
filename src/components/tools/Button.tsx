@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ButtonOptions, ButtonType } from "./settings";
@@ -17,6 +17,7 @@ interface Props {
   type?: ButtonType;
   disabled?: boolean;
   options?: ButtonOptions;
+  svg?: ReactNode;
 }
 
 const Button: React.FC<Props> = ({
@@ -26,6 +27,7 @@ const Button: React.FC<Props> = ({
   type,
   disabled,
   options,
+  svg,
 }) => {
   const onlyIcon = type == ButtonType.ICON_ONLY;
   const btnColor = options?.color || colors.APP_COLOR;
@@ -65,6 +67,7 @@ const Button: React.FC<Props> = ({
       ) : (
         ""
       )}
+      {svg ? svg : ""}
     </TouchableOpacity>
   );
 };
