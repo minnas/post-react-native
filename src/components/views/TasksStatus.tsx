@@ -3,24 +3,28 @@ import { ImageBackground, StyleSheet, View, Text } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import {
-  faCircle,
-  faFeatherPointed,
-  faRainbow,
-} from "@fortawesome/free-solid-svg-icons";
-import { MapIcon, MyProfile } from "../types/types";
+import { faAward } from "@fortawesome/free-solid-svg-icons";
+import { MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { updateProfile } from "../../store/dataSlices";
-const map = require("./../../assets/bird-map.png");
+import { Answer, Task } from "../../api/type";
+import { fetchTask } from "../../api/api";
+const bgImage = require("./../../assets/bird-map-rotated.png");
 
-const Map = () => {
+const TasksStatus = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.profile);
   const [page, setPage] = useState(profile?.page);
   const [path, setPath] = useState("");
+  const answers = useSelector((state: RootState) => state.answers);
+  const [tasks, setTasks] = useState([] as Task[]);
+
+  useEffect(() => {
+    setTasks(fetchTask() as Task[]);
+  }, []);
 
   const setProfile = () => {
     dispatch(
@@ -38,47 +42,26 @@ const Map = () => {
     navigate(path);
   }, [path]);
 
-  const icons: MapIcon[] = [
-    {
-      label: "Day 1",
-      path: "/",
-    },
-    { label: "Day 2", path: "/posts" },
-    { label: "Day 3", path: "/bookmarks" },
-    { label: "Day 4", path: "/todos" },
-    { label: "Day 5", path: "/my-todos" },
-    { label: "Day 6", path: "/my-mood" },
-  ];
-
-  const icon = (index: number) =>
-    page && page === index
-      ? profile?.avatar?.icon || faFeatherPointed
-      : faCircle;
-
-  const options = (index: number) => {
-    if (page && page === index) {
+  const options = (id: string) => {
+    if (answers.find((answer: Answer) => answer.taskId === id)) {
       return {
-        iconSize: 58,
-        backgroundColor: colors.BLACK_OPACITY_6,
-        color: colors.WHITE_OPACITY_8,
+        color: colors.YELLOW_PASTEL,
+        backgroundColor: colors.BLACK_OPACITY_4,
       };
     }
     return {
-      iconSize: 42,
       color: colors.BLACK_OPACITY_8,
     };
   };
 
   return (
     <>
-      <ImageBackground source={map} style={styles.imageBg}>
+      <ImageBackground source={bgImage} style={styles.imageBg}>
         <View style={styles.mapIcons}>
           <View style={{ paddingVertical: 5 }}>
-            <Text style={{ fontSize: 24, fontStyle: "italic" }}>
-              On Day {page}
-            </Text>
+            <Text style={{ fontSize: 24, fontStyle: "italic" }}>Results</Text>
           </View>
-          {icons.map((mapIcon: MapIcon, index: number) => (
+          {tasks.map((task: Task, index: number) => (
             <View
               key={index + 1}
               style={{
@@ -86,41 +69,22 @@ const Map = () => {
               }}
             >
               <Button
-                icon={icon(index + 1)}
-                title={mapIcon.label}
+                icon={faAward}
                 onPress={() => {
                   setPage(index + 1);
                   setPath("/day");
                 }}
+                title={(index + 1)?.toString() || ""}
                 options={
                   {
                     backgroundColor: colors.WHITE_OPACITY_2,
-                    ...options(index + 1),
+                    iconSize: 42,
+                    ...options(task.id),
                   } as ButtonOptions
                 }
               />
             </View>
           ))}
-          <View
-            style={{
-              padding: 15,
-            }}
-          >
-            <Button
-              icon={faRainbow}
-              onPress={() => {
-                setPath("/end");
-              }}
-              title="Result"
-              options={
-                {
-                  backgroundColor: colors.WHITE_OPACITY_6,
-                  color: colors.APP_COLOR,
-                  iconSize: 52,
-                } as ButtonOptions
-              }
-            />
-          </View>
         </View>
       </ImageBackground>
     </>
@@ -141,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default TasksStatus;

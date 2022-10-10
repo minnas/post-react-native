@@ -72,6 +72,7 @@ const TaskOfTheDay = () => {
       color: colors.BLACK_OPACITY_8,
     };
   };
+
   const handleChoicePress = (id: string) => {
     const answer = answers.find((answer: Answer) => answer.answer === id);
     if (!answer?.id) {
@@ -81,6 +82,7 @@ const TaskOfTheDay = () => {
       });
     }
   };
+
   const renderChoice = (choice: Choice, index: number) => {
     return (
       <View
@@ -195,13 +197,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: colors.LIGHT_VIOLET_4,
   },
   desc: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.LIGHT_VIOLET_6,
+    borderBottomColor: colors.LIGHT_VIOLET_8,
+    borderBottomWidth: 2,
   },
 });
 

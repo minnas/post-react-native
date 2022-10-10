@@ -13,6 +13,7 @@ import {
   faEarth,
   faClipboardQuestion,
   faUserAstronaut,
+  faMoneyCheckDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
@@ -27,6 +28,7 @@ import Spinner from "./src/components/tools/Spinner";
 import { Asset } from "expo-asset";
 import { View } from "react-native";
 import TaskOfTheDay from "./src/components/views/TaskOfTheDay";
+import TasksStatus from "./src/components/views/TasksStatus";
 
 export default function App() {
   const useImages = (images: any) => {
@@ -44,6 +46,7 @@ export default function App() {
 
   const [imagesLoaded] = useImages([
     require("./src/assets/bird-map.png"),
+    require("./src/assets/bird-map-rotated.png"),
     require("./src/assets/birds.png"),
     require("./src/assets/placeholder.png"),
   ]);
@@ -63,7 +66,13 @@ export default function App() {
           <Routes>
             <Route
               path="/"
-              element={<BaseLayout title="Profile" children={<Profile />} icon={faUserAstronaut}/>}
+              element={
+                <BaseLayout
+                  title="Profile"
+                  children={<Profile />}
+                  icon={faUserAstronaut}
+                />
+              }
             />
             <Route
               path="/about"
@@ -138,6 +147,17 @@ export default function App() {
                   title="Exam for Today"
                   icon={faClipboardQuestion}
                   children={<TaskOfTheDay />}
+                  bottonNavDisabled={true}
+                />
+              }
+            />
+            <Route
+              path="/end"
+              element={
+                <BaseLayout
+                  title="Done/Undone Tasks"
+                  icon={faMoneyCheckDollar}
+                  children={<TasksStatus />}
                   bottonNavDisabled={true}
                 />
               }
