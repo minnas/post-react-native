@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import { avatars } from "../../api/api";
 import { FaIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { updateProfile } from "../../store/dataSlices";
+import Koira from "./../../assets/Koira.svg";
 
 const Profile = () => {
   const profile = useSelector((state: RootState) => state.profile);
@@ -60,6 +61,9 @@ const Profile = () => {
             {avatarBtn(icon)}
           </View>
         ))}
+        <View style={{backgroundColor: colors.BLACK_OPACITY_6, padding: 5, borderRadius: 15}}>
+          <Koira style={{width: 72, height: 72, top: 0, zIndex: 100, margin: 0}}/>
+        </View>
       </View>
     </>
   );
