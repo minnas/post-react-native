@@ -8,7 +8,7 @@ import { Choice, Task, TaskAnswerType } from "./type";
 export const dummyTask: Task[] = [
   {
     id: "1",
-    desc: "Select emoji wich describes today feeling",
+    desc: "Select emoji which describes today feeling",
     type: TaskAnswerType.CHOICE,
     choices: [
       { id: "1-1", text: "angry", icon: faFaceAngry },
