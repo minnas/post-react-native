@@ -58,9 +58,6 @@ const TasksStatus = () => {
     <>
       <ImageBackground source={bgImage} style={styles.imageBg}>
         <View style={styles.mapIcons}>
-          <View style={{ paddingVertical: 5 }}>
-            <Text style={{ fontSize: 24, fontStyle: "italic" }}>Results</Text>
-          </View>
           {tasks.map((task: Task, index: number) => (
             <View
               key={index + 1}

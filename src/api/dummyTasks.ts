@@ -56,4 +56,30 @@ export const dummyTask: Task[] = [
       { id: "6-3", text: "neutral", icon: faFaceMeh },
     ] as Choice[],
   },
+  {
+    id: "7",
+    desc: "Do you trust your self?",
+    type: TaskAnswerType.CHOICE,
+    choices: [
+      { id: "7-1", text: "Yes" },
+      { id: "7-2", text: "No" },
+      { id: "7-3", text: "Not sure" }
+    ] as Choice[],
+  },
+  {
+    id: "8",
+    desc: "How was your day at school?",
+    type: TaskAnswerType.TEXT,
+  },
+  {
+    id: "9",
+    desc: "What you like most?",
+    type: TaskAnswerType.CHOICE,
+    choices: [
+      { id: "9-1", text: "Music" },
+      { id: "9-2", text: "Running" },
+      { id: "9-3", text: "Swimming" },
+      { id: "9-4", text: "Reading" },
+    ] as Choice[],
+  },
 ];

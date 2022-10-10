@@ -8,7 +8,7 @@ import {
   faFeatherPointed,
   faRainbow,
 } from "@fortawesome/free-solid-svg-icons";
-import { MapIcon, MyProfile } from "../types/types";
+import { MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -37,18 +37,7 @@ const Map = () => {
   useEffect(() => {
     navigate(path);
   }, [path]);
-
-  const icons: MapIcon[] = [
-    {
-      label: "Day 1",
-      path: "/",
-    },
-    { label: "Day 2", path: "/posts" },
-    { label: "Day 3", path: "/bookmarks" },
-    { label: "Day 4", path: "/todos" },
-    { label: "Day 5", path: "/my-todos" },
-    { label: "Day 6", path: "/my-mood" },
-  ];
+  const days: number[] = [1,2,3,4,5,6,7,8,9];
 
   const icon = (index: number) =>
     page && page === index
@@ -73,29 +62,24 @@ const Map = () => {
     <>
       <ImageBackground source={map} style={styles.imageBg}>
         <View style={styles.mapIcons}>
-          <View style={{ paddingVertical: 5 }}>
-            <Text style={{ fontSize: 24, fontStyle: "italic" }}>
-              On Day {page}
-            </Text>
-          </View>
-          {icons.map((mapIcon: MapIcon, index: number) => (
+          {days.map((index: number) => (
             <View
-              key={index + 1}
+              key={index}
               style={{
                 padding: 15,
               }}
             >
               <Button
-                icon={icon(index + 1)}
-                title={mapIcon.label}
+                icon={icon(index)}
+                title={"Day " + index}
                 onPress={() => {
-                  setPage(index + 1);
+                  setPage(index);
                   setPath("/day");
                 }}
                 options={
                   {
                     backgroundColor: colors.WHITE_OPACITY_2,
-                    ...options(index + 1),
+                    ...options(index),
                   } as ButtonOptions
                 }
               />
