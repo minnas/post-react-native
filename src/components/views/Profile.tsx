@@ -8,7 +8,6 @@ import { avatars } from "../../api/api";
 import { FaIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { updateProfile } from "../../store/dataSlices";
-import Koira from "./../../assets/Koira.svg";
 
 const Profile = () => {
   const profile = useSelector((state: RootState) => state.profile);
@@ -47,18 +46,6 @@ const Profile = () => {
     );
   };
 
-  const svgButton = () => {
-    return (
-      <Button
-        type={ButtonType.SVG}
-        onPress={() => {
-          console.log("Hi there, Dog here only!");
-        }}
-        options={{ backgroundColor: colors.FONT_COLOR }}
-        svg={<Koira style={{ width: 54, height: 54 }} />}
-      />
-    );
-  };
   return (
     <>
       <View style={styles.title}>
@@ -73,9 +60,6 @@ const Profile = () => {
             {avatarBtn(icon)}
           </View>
         ))}
-        <View style={{ paddingVertical: 10, paddingHorizontal: 5 }}>
-          {svgButton()}
-        </View>
       </View>
     </>
   );
