@@ -95,7 +95,7 @@ const Map = () => {
               onPress={() => {
                 setPath("/end");
               }}
-              title="Tulos"
+              title="Result"
               options={
                 {
                   backgroundColor: colors.WHITE_OPACITY_6,
