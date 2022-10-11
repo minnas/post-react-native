@@ -2,84 +2,82 @@ import {
   faFaceAngry,
   faFaceMeh,
   faFaceSadTear,
+  faFaceSmile,
 } from "@fortawesome/free-solid-svg-icons";
 import { Choice, Task, TaskAnswerType } from "./type";
 
 export const dummyTask: Task[] = [
   {
     id: "1",
-    desc: "Select emoji which describes today feeling",
+    desc: "Millainen olo tänään?",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "1-1", text: "angry", icon: faFaceAngry },
-      { id: "1-2", text: "sad", icon: faFaceSadTear },
-      { id: "1-3", text: "neutral", icon: faFaceMeh },
+      { id: "1-1", text: "vihainen", icon: faFaceAngry },
+      { id: "1-2", text: "surullinen", icon: faFaceSadTear },
+      { id: "1-3", text: "iloinen", icon: faFaceSmile },
+      { id: "1-4", text: "neutraali", icon: faFaceMeh },
     ] as Choice[],
   },
   {
     id: "2",
-    desc: "Which fruit taste better?",
-    type: TaskAnswerType.CHOICE,
-    choices: [
-      { id: "2-1", text: "Apple" },
-      { id: "2-2", text: "Banana" },
-    ] as Choice[],
-  },
-  {
-    id: "3",
-    desc: "Write here something",
+    desc: "Kuka minä olen?",
     type: TaskAnswerType.TEXT,
   },
   {
+    id: "3",
+    desc: "Luotanko itseeni??",
+    type: TaskAnswerType.CHOICE,
+    choices: [
+      { id: "3-1", text: "Kyllä" },
+      { id: "3-2", text: "En" },
+      { id: "3-3", text: "En osaa sanoa" },
+    ] as Choice[],
+  },
+  {
     id: "4",
-    desc: "Write here something else",
+    desc: "Mistä olen kiitollinen?",
     type: TaskAnswerType.TEXT,
   },
   {
     id: "5",
-    desc: "Which season you like most?",
+    desc: "Mistä vuodenajasta pidän eniten??",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "5-1", text: "Spring" },
-      { id: "5-2", text: "Summer" },
-      { id: "5-3", text: "Autum" },
-      { id: "5-4", text: "Winter" },
+      { id: "5-1", text: "Kevät" },
+      { id: "5-2", text: "Kesä" },
+      { id: "5-3", text: "Syksy" },
+      { id: "5-4", text: "Talvi" },
     ] as Choice[],
   },
   {
     id: "6",
-    desc: "Choose your mood",
-    type: TaskAnswerType.CHOICE,
-    choices: [
-      { id: "6-1", text: "angry", icon: faFaceAngry },
-      { id: "6-2", text: "sad", icon: faFaceSadTear },
-      { id: "6-3", text: "neutral", icon: faFaceMeh },
-    ] as Choice[],
+    desc: "Miksi vuodenaika on paras?",
+    type: TaskAnswerType.TEXT,
   },
   {
     id: "7",
-    desc: "Do you trust your self?",
+    desc: "Olenko tarpeeksi hyvä?",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "7-1", text: "Yes" },
-      { id: "7-2", text: "No" },
-      { id: "7-3", text: "Not sure" }
+      { id: "7-1", text: "Kyllä" },
+      { id: "7-2", text: "En" },
+      { id: "7-3", text: "En ole varma" },
     ] as Choice[],
   },
   {
     id: "8",
-    desc: "How was your day at school?",
+    desc: "Miten koulussa meni tänään?",
     type: TaskAnswerType.TEXT,
   },
   {
     id: "9",
-    desc: "What you like most?",
+    desc: "Mistä pidän eniten?",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "9-1", text: "Music" },
-      { id: "9-2", text: "Running" },
-      { id: "9-3", text: "Swimming" },
-      { id: "9-4", text: "Reading" },
+      { id: "9-1", text: "Musiikki" },
+      { id: "9-2", text: "Juoku/Kävely" },
+      { id: "9-3", text: "Uinti" },
+      { id: "9-4", text: "Lukeminen" },
     ] as Choice[],
   },
 ];

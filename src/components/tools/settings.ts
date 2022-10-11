@@ -1,6 +1,7 @@
 export enum ButtonType {
   ICON_ONLY,
   DEFAULT,
+  SVG,
 }
 
 export enum ToastType {
