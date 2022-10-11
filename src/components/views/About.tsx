@@ -1,7 +1,17 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Accordion from "../tools/Accordion";
 import { colors } from "../../styles/colors";
+import Park from "./../../assets/amusementpartk.svg";
+import Snowman from "./../../assets/Snowman.svg";
+import Button from "../tools/Button";
+import { ButtonType } from "../tools/settings";
 
 const About = ({}) => {
   const aboutInfo = (
@@ -17,11 +27,43 @@ const About = ({}) => {
       </ImageBackground>
     </View>
   );
+
+  const svgView = (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Park height={250} width={250} />
+    </View>
+  );
+
+  const svgButton = (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Button
+        type={ButtonType.SVG}
+        onPress={() => {}}
+        options={{ backgroundColor: colors.LIGHT_VIOLET_8 }}
+        svg={<Snowman height={42} width={42} />}
+      />
+    </View>
+  );
+
   return (
     <>
-      <View style={styles.column}>
+      <ScrollView>
         <Accordion label="About the App" children={aboutInfo} />
-      </View>
+        <Accordion label="Svg Image" children={svgView} />
+        <Accordion label="Svg Button" children={svgButton} />
+      </ScrollView>
     </>
   );
 };
