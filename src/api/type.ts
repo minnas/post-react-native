@@ -14,6 +14,7 @@ export type Choice = {
   id: string;
   text: string;
   icon?: IconProp;
+  color?: string;
 };
 export type SliderValue = {
   text: string;
@@ -30,6 +31,7 @@ export type Task = {
   type: TaskAnswerType;
   choices?: Choice[];
   range?: SliderValues;
+  background?: string;
 };
 export type Answer = {
   id?: string;

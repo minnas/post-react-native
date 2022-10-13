@@ -38,6 +38,7 @@ const TaskOfTheDay = () => {
   const inputRef = useRef<TextInput | null>(null);
   const [changed, setChanged] = useState(false);
   const [value, setValue] = useState(0);
+  const sliderRef = useRef<TextInput | null>(null);
 
   useEffect(() => {
     setTask(fetchTask(taskId?.toString()) as Task);
@@ -87,7 +88,7 @@ const TaskOfTheDay = () => {
     return {
       ...settings,
       iconSize: 42,
-      color: colors.BLACK_OPACITY_8,
+      color: choice.color || colors.BLACK_OPACITY_8,
     };
   };
 
