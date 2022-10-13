@@ -8,6 +8,7 @@ import { avatars } from "../../api/api";
 import { FaIcon, MyProfile } from "../types/types";
 import { colors } from "../../styles/colors";
 import { updateProfile } from "../../store/dataSlices";
+import { View as AnimatableView } from "react-native-animatable";
 
 const Profile = () => {
   const profile = useSelector((state: RootState) => state.profile);
@@ -51,7 +52,12 @@ const Profile = () => {
       <View style={styles.title}>
         <Text style={{ fontSize: 32, fontWeight: "bold" }}>Select Avatar</Text>
       </View>
-      <View style={styles.avatarList}>
+      <AnimatableView
+        style={styles.avatarList}
+        animation="fadeInLeft"
+        duration={800}
+        delay={0}
+      >
         {avatars.map((icon: FaIcon, index: number) => (
           <View
             key={index + 1}
@@ -60,7 +66,7 @@ const Profile = () => {
             {avatarBtn(icon)}
           </View>
         ))}
-      </View>
+      </AnimatableView>
     </>
   );
 };

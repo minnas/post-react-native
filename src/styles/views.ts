@@ -67,4 +67,48 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     fontSize: 24,
   },
+  bottomShadowLine: {
+    borderBottomColor: colors.LIGHT_VIOLET_6,
+    borderBottomWidth: 1,
+    shadowColor: colors.LIGHT_VIOLET,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+  },
+});
+export const slider = StyleSheet.create({
+  thumb: {
+    borderRadius: 15,
+    border: 5,
+    height: 52,
+    width: 20,
+    shadowColor: colors.APP_COLOR,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+  },
+  track: {
+    backgroundColor: colors.APP_COLOR,
+    borderRadius: 5,
+    height: 10,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignSelf: "center",
+    flex: 1,
+    paddingVertical: 25,
+    paddingHorizontal: 5,
+    minHeight: 100,
+    ...styles.bottomShadowLine,
+  },
+  minField: { fontSize: 24, textAlign: "left" },
+  maxField: { fontSize: 24, textAlign: "right" },
 });

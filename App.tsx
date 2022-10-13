@@ -14,6 +14,7 @@ import {
   faClipboardQuestion,
   faUserAstronaut,
   faMoneyCheckDollar,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
@@ -29,6 +30,8 @@ import { Asset } from "expo-asset";
 import { View } from "react-native";
 import TaskOfTheDay from "./src/components/views/TaskOfTheDay";
 import TasksStatus from "./src/components/views/TasksStatus";
+import Cover from "./src/components/views/Cover";
+import Info from "./src/components/views/Info";
 
 export default function App() {
   const useImages = (images: any) => {
@@ -64,13 +67,15 @@ export default function App() {
       <Provider store={store}>
         <PersistGate loading={<Spinner />} persistor={persistor}>
           <Routes>
+            <Route path="/" element={<Cover />} />
             <Route
-              path="/"
+              path="/profile"
               element={
                 <BaseLayout
-                  title="Profile"
+                  title="Avatar"
                   children={<Profile />}
                   icon={faUserAstronaut}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -78,9 +83,10 @@ export default function App() {
               path="/about"
               element={
                 <BaseLayout
-                  title="About"
-                  icon={faUserNinja}
+                  title="Accordions"
+                  icon={faInfo}
                   children={<About />}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -88,9 +94,10 @@ export default function App() {
               path="/posts"
               element={
                 <BaseLayout
-                  title="Some Awesome Posts"
+                  title="Awesome Posts"
                   icon={faLayerGroup}
                   children={<Posts />}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -98,9 +105,10 @@ export default function App() {
               path="/bookmarks"
               element={
                 <BaseLayout
-                  title="Some Awesome Bookmarks"
+                  title="Awesome Bookmarks"
                   icon={faBookmark}
                   children={<Bookmarks />}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -108,9 +116,10 @@ export default function App() {
               path="/todos"
               element={
                 <BaseLayout
-                  title="Some Awesome Todos"
+                  title="Awesome Todos"
                   icon={faNoteSticky}
                   children={<Todos />}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -121,6 +130,7 @@ export default function App() {
                   title="My Todos"
                   icon={faBookAtlas}
                   children={<MyTodos />}
+                  bottonNavDisabled={false}
                 />
               }
             />
@@ -131,20 +141,26 @@ export default function App() {
                   title="My Mood"
                   icon={faMehRollingEyes}
                   children={<MyMood />}
+                  bottonNavDisabled={false}
                 />
               }
             />
             <Route
               path="/map"
               element={
-                <BaseLayout title="Map" icon={faEarth} children={<Map />} />
+                <BaseLayout
+                  title="Map"
+                  icon={faEarth}
+                  children={<Map />}
+                  bottonNavDisabled={true}
+                />
               }
             />
             <Route
               path="/day"
               element={
                 <BaseLayout
-                  title="Exam for Today"
+                  title="Small todo"
                   icon={faClipboardQuestion}
                   children={<TaskOfTheDay />}
                   bottonNavDisabled={true}
@@ -155,13 +171,14 @@ export default function App() {
               path="/end"
               element={
                 <BaseLayout
-                  title="Done/Undone Tasks"
+                  title="Done/undo"
                   icon={faMoneyCheckDollar}
                   children={<TasksStatus />}
                   bottonNavDisabled={true}
                 />
               }
             />
+            <Route path="/info" element={<Info />} />
           </Routes>
         </PersistGate>
       </Provider>

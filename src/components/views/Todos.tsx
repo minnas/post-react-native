@@ -17,6 +17,7 @@ import { RootState } from "../../store/store";
 import { styles } from "../../styles/views";
 import { add } from "../../store/dataSlices";
 import { ApiType } from "../../api/type";
+import { View as AnimatableView } from "react-native-animatable";
 
 const Todos = () => {
   const [todos, setTodos] = useState([] as ListItem[]);
@@ -117,7 +118,14 @@ const Todos = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <FlatList data={todos} renderItem={renderTodo} />
+          <AnimatableView
+            style={styles.containerPosts}
+            animation="slideInUp"
+            duration={800}
+            delay={0}
+          >
+            <FlatList data={todos} renderItem={renderTodo} />
+          </AnimatableView>
         )}
       </View>
     </>

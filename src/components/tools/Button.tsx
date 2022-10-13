@@ -45,12 +45,14 @@ const Button: React.FC<Props> = ({
       paddingVertical: 15,
       paddingHorizontal: 15,
       backgroundColor: bgColor,
+      maxWidth: 200,
     },
     btnText: {
       fontSize,
       color: btnColor,
       fontWeight: "bold",
       alignSelf: "center",
+      flexWrap: "wrap",
     },
   });
 
@@ -61,7 +63,7 @@ const Button: React.FC<Props> = ({
       style={styles.button}
       disabled={disabled}
     >
-      {onlyIcon ? "" : <Text style={styles.btnText}>{title}</Text>}
+      {onlyIcon || !title ? "" : <Text style={styles.btnText}>{title}</Text>}
       {icon ? (
         <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />
       ) : (

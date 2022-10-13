@@ -11,6 +11,7 @@ import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
 import { styles } from "../../styles/views";
 import { remove, update } from "../../store/dataSlices";
+import { View as AnimatableView } from "react-native-animatable";
 
 const MyTodos = () => {
   const todos = useSelector((state: RootState) => state.todos);
@@ -92,7 +93,12 @@ const MyTodos = () => {
       <View style={styles.title}>
         <Text style={styles.text}>My Todos</Text>
       </View>
-      <View style={styles.containerPosts}>
+      <AnimatableView
+        style={styles.containerPosts}
+        animation="slideInUp"
+        duration={800}
+        delay={0}
+      >
         <FlatList
           ListEmptyComponent={emptyList}
           data={todos.map((item: MyTodo) => {
@@ -100,7 +106,7 @@ const MyTodos = () => {
           })}
           renderItem={renderTodo}
         />
-      </View>
+      </AnimatableView>
     </>
   );
 };

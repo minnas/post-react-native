@@ -1,83 +1,105 @@
 import {
+  faAppleWhole,
   faFaceAngry,
   faFaceMeh,
   faFaceSadTear,
-  faFaceSmile,
+  faLemon,
+  faSadCry,
+  faSmile,
 } from "@fortawesome/free-solid-svg-icons";
-import { Choice, Task, TaskAnswerType } from "./type";
+import { Choice, SliderValues, Task, TaskAnswerType } from "./type";
+import { colors } from "../styles/colors";
 
 export const dummyTask: Task[] = [
   {
     id: "1",
-    desc: "Millainen olo tänään?",
+    desc: "Select emoji which describes today feeling",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "1-1", text: "vihainen", icon: faFaceAngry },
-      { id: "1-2", text: "surullinen", icon: faFaceSadTear },
-      { id: "1-3", text: "iloinen", icon: faFaceSmile },
-      { id: "1-4", text: "neutraali", icon: faFaceMeh },
+      { id: "1-1", text: "angry", icon: faFaceAngry },
+      { id: "1-2", text: "sad", icon: faFaceSadTear },
+      { id: "1-3", text: "neutral", icon: faFaceMeh },
     ] as Choice[],
   },
   {
     id: "2",
-    desc: "Kuka minä olen?",
-    type: TaskAnswerType.TEXT,
+    desc: "Which fruit taste better?",
+    type: TaskAnswerType.SLIDER,
+    range: {
+      min: {
+        text: "lemon",
+        icon: faLemon,
+        color: colors.YELLOW_PASTEL,
+      },
+      max: {
+        text: "apple",
+        icon: faAppleWhole,
+        color: colors.LIGHT_VIOLET_8,
+      },
+    } as SliderValues,
   },
   {
     id: "3",
-    desc: "Luotanko itseeni??",
-    type: TaskAnswerType.CHOICE,
-    choices: [
-      { id: "3-1", text: "Kyllä" },
-      { id: "3-2", text: "En" },
-      { id: "3-3", text: "En osaa sanoa" },
-    ] as Choice[],
+    desc: "Write here something",
+    type: TaskAnswerType.TEXT,
   },
   {
     id: "4",
-    desc: "Mistä olen kiitollinen?",
+    desc: "Write here something else",
     type: TaskAnswerType.TEXT,
   },
   {
     id: "5",
-    desc: "Mistä vuodenajasta pidän eniten??",
+    desc: "Which season you like most?",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "5-1", text: "Kevät" },
-      { id: "5-2", text: "Kesä" },
-      { id: "5-3", text: "Syksy" },
-      { id: "5-4", text: "Talvi" },
+      { id: "5-1", text: "Spring" },
+      { id: "5-2", text: "Summer" },
+      { id: "5-3", text: "Autum" },
+      { id: "5-4", text: "Winter" },
     ] as Choice[],
   },
   {
     id: "6",
-    desc: "Miksi vuodenaika on paras?",
-    type: TaskAnswerType.TEXT,
-  },
-  {
-    id: "7",
-    desc: "Olenko tarpeeksi hyvä?",
+    desc: "Choose your mood",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "7-1", text: "Kyllä" },
-      { id: "7-2", text: "En" },
-      { id: "7-3", text: "En ole varma" },
+      { id: "6-1", text: "angry", icon: faFaceAngry },
+      { id: "6-2", text: "sad", icon: faFaceSadTear },
+      { id: "6-3", text: "neutral", icon: faFaceMeh },
     ] as Choice[],
   },
   {
+    id: "7",
+    desc: "How are you feeling?",
+    type: TaskAnswerType.SLIDER,
+    range: {
+      min: {
+        text: "sad",
+        icon: faSadCry,
+        color: colors.LIGHT_VIOLET_8,
+      },
+      max: {
+        text: "happy",
+        icon: faSmile,
+        color: colors.APP_COLOR,
+      },
+    } as SliderValues,
+  },
+  {
     id: "8",
-    desc: "Miten koulussa meni tänään?",
+    desc: "How was your day at school?",
     type: TaskAnswerType.TEXT,
   },
   {
     id: "9",
-    desc: "Mistä pidän eniten?",
+    desc: "What you like most?",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "9-1", text: "Musiikki" },
-      { id: "9-2", text: "Juoku/Kävely" },
-      { id: "9-3", text: "Uinti" },
-      { id: "9-4", text: "Lukeminen" },
+      { id: "9-1", text: "Music" },
+      { id: "9-2", text: "Running" },
+      { id: "9-3", text: "Swimming" },
+      { id: "9-4", text: "Reading" },
     ] as Choice[],
   },
 ];
