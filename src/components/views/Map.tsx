@@ -74,7 +74,11 @@ const Map = () => {
                 title={index.toString()}
                 onPress={() => {
                   setPage(index);
-                  setPath("/info");
+                  if (!(profile.disableInfo === true)) {
+                    setPath("/info");
+                  } else {
+                    setPath("/day");
+                  }
                 }}
                 options={
                   {

@@ -31,6 +31,7 @@ export type MyProfile = {
   avatar: FaIcon;
   name: string;
   page?: number;
+  disableInfo?: boolean;
 };
 export type MapIcon = Omit<FaIcon, "icon"> & {
   path: string;
