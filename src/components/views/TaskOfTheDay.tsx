@@ -9,8 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { addAnswer, clearAll, removeAnswer } from "../../store/dataSlices";
 import { fetchTask } from "../../api/api";
-import { Answer, Choice, Task, TaskAnswerType } from "../../api/type";
+import {
+  Answer,
+  Choice,
+  SliderValue,
+  SliderValues,
+  Task,
+  TaskAnswerType,
+} from "../../api/type";
 import TextField from "../tools/TextField";
+import { Slider } from "@miblanchard/react-native-slider";
+import { slider, styles as defaultStyles } from "../../styles/views";
+import Ghost from "./../../assets/ghost.svg";
+import { View as AnimatableView } from "react-native-animatable";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const TaskOfTheDay = () => {
   const navigate = useNavigate();
@@ -25,6 +37,7 @@ const TaskOfTheDay = () => {
   const [selected, setSelected] = useState("");
   const inputRef = useRef<TextInput | null>(null);
   const [changed, setChanged] = useState(false);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     setTask(fetchTask(taskId?.toString()) as Task);
@@ -33,6 +46,11 @@ const TaskOfTheDay = () => {
   useEffect(() => {
     if (answers.length > 0) {
       setSelected(answers[0].answer);
+      if (
+        task.type == TaskAnswerType.SLIDER &&
+        !isNaN(answers[0].answer as number)
+      )
+        setValue(answers[0].answer as number);
     } else {
       setSelected("");
     }
@@ -108,17 +126,120 @@ const TaskOfTheDay = () => {
       </View>
     );
   };
+
+  const renderSliderValue = (value: SliderValue, styles: object) => {
+    if (value.icon) {
+      return (
+        <FontAwesomeIcon
+          style={styles}
+          icon={value.icon}
+          size={42}
+          color={value?.color || colors.BLACK_OPACITY_8}
+        />
+      );
+    }
+    return <Text style={styles}>{value.text}</Text>;
+  };
+
+  const renderSlider = (range: SliderValues) => {
+    return (
+      <View style={slider.container}>
+        <View style={{ flex: 1 }}>
+          {renderSliderValue(range.min, slider.minField)}
+        </View>
+        <View style={{ flex: 3, marginHorizontal: 5 }}>
+          <Slider
+            animateTransitions
+            value={value}
+            minimumValue={-5}
+            maximumValue={5}
+            minimumTrackTintColor={colors.BLACK_OPACITY_4}
+            thumbTintColor={colors.LIGHT_VIOLET_8}
+            onValueChange={(value) => {
+              add({
+                taskId: task.id,
+                answer: value,
+              });
+            }}
+            thumbStyle={slider.thumb}
+            trackStyle={slider.track}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          {renderSliderValue(range.max, slider.maxField)}
+        </View>
+      </View>
+    );
+  };
+
+  const renderTask = (task: Task) => {
+    if (TaskAnswerType.CHOICE && task.choices) {
+      return task.choices.map((choice: Choice, index: number) =>
+        renderChoice(choice, index)
+      );
+    }
+    if (TaskAnswerType.SLIDER && task.range) {
+      return renderSlider(task.range);
+    }
+    return (
+      <View
+        style={{
+          flexWrap: "wrap",
+          alignContent: "flex-start",
+          justifyContent: "space-between",
+          flexDirection: "row",
+          flex: 1,
+        }}
+      >
+        <TextField
+          ref={inputRef}
+          value={answers.length > 0 ? answers[0]?.answer : ""}
+          placeholder="Kirjoita tähän..."
+          multiline={true}
+          onChangeValue={(text: string) => {
+            add({
+              taskId: task.id,
+              answer: text,
+            });
+          }}
+        />
+        <Button
+          icon={faCheck}
+          onPress={() => {
+            inputRef?.current?.blur();
+            setChanged(false);
+          }}
+          options={{
+            iconSize: 36,
+            noBorder: true,
+            color: changed ? colors.BLACK_OPACITY_6 : colors.APP_COLOR,
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <>
-      <View style={styles.desc}>
+      <View
+        style={{
+          ...styles.desc,
+          ...defaultStyles.bottomShadowLine,
+          borderBottomWidth: 2,
+          paddingHorizontal: 15,
+        }}
+      >
         <Text
           style={{
             fontSize: 28,
-            paddingHorizontal: 15,
+            textAlign: "center",
           }}
         >
           {task.desc}
         </Text>
+        <AnimatableView animation="fadeInRight" duration={1000} delay={0}>
+          <Ghost height={52} width={52} fill={colors.LIGHT_VIOLET_8} />
+        </AnimatableView>
       </View>
       <View
         style={{
@@ -128,46 +249,7 @@ const TaskOfTheDay = () => {
           paddingHorizontal: 10,
         }}
       >
-        {task.type === TaskAnswerType.CHOICE && task.choices ? (
-          task.choices.map((choice: Choice, index: number) =>
-            renderChoice(choice, index)
-          )
-        ) : (
-          <View
-            style={{
-              flexWrap: "wrap",
-              alignContent: "flex-start",
-              justifyContent: "space-between",
-              flexDirection: "row",
-              flex: 1,
-            }}
-          >
-            <TextField
-              ref={inputRef}
-              value={answers.length > 0 ? answers[0]?.answer : ""}
-              placeholder="Type your answer here"
-              multiline={true}
-              onChangeValue={(text: string) => {
-                add({
-                  taskId: task.id,
-                  answer: text,
-                });
-              }}
-            />
-            <Button
-              icon={faCheck}
-              onPress={() => {
-                inputRef?.current?.blur();
-                setChanged(false);
-              }}
-              options={{
-                iconSize: 36,
-                noBorder: true,
-                color: changed ? colors.BLACK_OPACITY_6 : colors.APP_COLOR,
-              }}
-            />
-          </View>
-        )}
+        {renderTask(task)}
       </View>
       <View style={{ ...styles.content, justifyContent: "space-between" }}>
         <Button
@@ -200,8 +282,11 @@ const styles = StyleSheet.create({
   },
   desc: {
     flex: 1,
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
+    alignContent: "center",
+    flexWrap: "wrap",
     borderBottomColor: colors.LIGHT_VIOLET_8,
     borderBottomWidth: 2,
   },

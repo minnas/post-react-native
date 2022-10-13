@@ -64,7 +64,7 @@ const BaseLayout = ({
             height: 52,
           }}
           onPress={() => {
-            navigate("/");
+            navigate("/profile");
           }}
         >
           <FontAwesomeIcon icon={faCircle} size={52} />
@@ -85,10 +85,12 @@ const BaseLayout = ({
         <Text style={styles.title}>{myTitle}</Text>
         <FontAwesomeIcon icon={myIcon} size={32} />
       </View>
-      <View style={showButtons ? styles.content : styles.contentNoBottomNav}>
+      <View
+        style={!bottonNavDisabled ? styles.content : styles.contentNoBottomNav}
+      >
         {children}
       </View>
-      {showButtons ? (
+      {!bottonNavDisabled ? (
         <View style={styles.footer}>
           <Button
             onPress={() => {

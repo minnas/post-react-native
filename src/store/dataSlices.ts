@@ -80,6 +80,8 @@ const answerSlice = createSlice({
       );
       if (index > -1) {
         state.splice(index, 1, action.payload as Answer);
+      } else {
+        state.push({ ...action.payload, id: uuidv4() } as Answer);
       }
     },
     clearAll: (state, action) => {

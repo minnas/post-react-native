@@ -74,7 +74,7 @@ const Map = () => {
                 title={index.toString()}
                 onPress={() => {
                   setPage(index);
-                  setPath("/day");
+                  setPath("/info");
                 }}
                 options={
                   {

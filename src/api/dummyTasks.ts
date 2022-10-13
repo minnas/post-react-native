@@ -1,9 +1,14 @@
 import {
+  faAppleWhole,
   faFaceAngry,
   faFaceMeh,
   faFaceSadTear,
+  faLemon,
+  faSadCry,
+  faSmile,
 } from "@fortawesome/free-solid-svg-icons";
-import { Choice, Task, TaskAnswerType } from "./type";
+import { Choice, SliderValues, Task, TaskAnswerType } from "./type";
+import { colors } from "../styles/colors";
 
 export const dummyTask: Task[] = [
   {
@@ -19,11 +24,19 @@ export const dummyTask: Task[] = [
   {
     id: "2",
     desc: "Which fruit taste better?",
-    type: TaskAnswerType.CHOICE,
-    choices: [
-      { id: "2-1", text: "Apple" },
-      { id: "2-2", text: "Banana" },
-    ] as Choice[],
+    type: TaskAnswerType.SLIDER,
+    range: {
+      min: {
+        text: "lemon",
+        icon: faLemon,
+        color: colors.YELLOW_PASTEL,
+      },
+      max: {
+        text: "apple",
+        icon: faAppleWhole,
+        color: colors.LIGHT_VIOLET_8,
+      },
+    } as SliderValues,
   },
   {
     id: "3",
@@ -58,13 +71,20 @@ export const dummyTask: Task[] = [
   },
   {
     id: "7",
-    desc: "Do you trust your self?",
-    type: TaskAnswerType.CHOICE,
-    choices: [
-      { id: "7-1", text: "Yes" },
-      { id: "7-2", text: "No" },
-      { id: "7-3", text: "Not sure" },
-    ] as Choice[],
+    desc: "How are you feeling?",
+    type: TaskAnswerType.SLIDER,
+    range: {
+      min: {
+        text: "sad",
+        icon: faSadCry,
+        color: colors.LIGHT_VIOLET_8,
+      },
+      max: {
+        text: "happy",
+        icon: faSmile,
+        color: colors.APP_COLOR,
+      },
+    } as SliderValues,
   },
   {
     id: "8",

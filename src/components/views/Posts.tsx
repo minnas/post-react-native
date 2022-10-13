@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { styles } from "../../styles/views";
 import { addBookmark } from "../../store/dataSlices";
+import { View as AnimatableView } from "react-native-animatable";
 
 const Posts = () => {
   const [posts, setPosts] = useState([] as ListItem[]);
@@ -116,7 +117,9 @@ const Posts = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <FlatList data={posts} renderItem={renderPost} />
+          <AnimatableView animation="slideInUp" duration={800} delay={0}>
+            <FlatList data={posts} renderItem={renderPost} />
+          </AnimatableView>
         )}
       </View>
     </>

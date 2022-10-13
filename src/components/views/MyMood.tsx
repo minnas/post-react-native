@@ -12,6 +12,7 @@ import {
 import { FaIcon } from "../types/types";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
+import { View as AnimatableView } from "react-native-animatable";
 
 const MyMood = ({}) => {
   const [mood, setMood] = useState("");
@@ -64,7 +65,12 @@ const MyMood = ({}) => {
           size={32}
         />
       </View>
-      <View style={styles.moodRow}>
+      <AnimatableView
+        style={styles.moodRow}
+        animation="fadeInLeft"
+        duration={800}
+        delay={0}
+      >
         {moods.map((icon: FaIcon, index: number) => (
           <View
             key={index + 1}
@@ -73,7 +79,7 @@ const MyMood = ({}) => {
             {renderMood(icon)}
           </View>
         ))}
-      </View>
+      </AnimatableView>
       <View style={styles.textRow}>
         <Text style={{ fontSize: 32, fontStyle: "italic" }}>{mood}</Text>
       </View>

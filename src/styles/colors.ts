@@ -13,5 +13,6 @@ export const colors = {
   LIGHT_VIOLET_4: "rgba(174, 186, 255, .4)",
   LIGHT_VIOLET_6: "rgba(174, 186, 255, .6)",
   LIGHT_VIOLET_8: "rgba(174, 186, 255, .8)",
+  LIGHT_VIOLET: "rgb(174, 186, 255)",
   YELLOW_PASTEL: "#f2ed98",
 };

@@ -16,6 +16,7 @@ import { colors } from "../../styles/colors";
 import Placeholder from "../tools/Placeholder";
 import { styles } from "../../styles/views";
 import { removeBookmark, updateBookmark } from "../../store/dataSlices";
+import { View as AnimatableView } from "react-native-animatable";
 
 const Bookmarks = () => {
   const bookmarks = useSelector((state: RootState) => state.bookmarks);
@@ -117,7 +118,12 @@ const Bookmarks = () => {
       <View style={styles.title}>
         <Text style={styles.text}>My Bookmarks</Text>
       </View>
-      <View style={styles.containerPosts}>
+      <AnimatableView
+        style={styles.containerPosts}
+        animation="slideInUp"
+        duration={800}
+        delay={0}
+      >
         <FlatList
           ListEmptyComponent={noBookmarks}
           data={bookmarks.map((item: Bookmark) => {
@@ -125,7 +131,7 @@ const Bookmarks = () => {
           })}
           renderItem={renderBookmark}
         />
-      </View>
+      </AnimatableView>
     </>
   );
 };
