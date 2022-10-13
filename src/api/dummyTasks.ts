@@ -1,6 +1,8 @@
 import {
   faAppleWhole,
   faFaceAngry,
+  faFaceDizzy,
+  faFaceFrownOpen,
   faFaceMeh,
   faFaceSadTear,
   faLemon,
@@ -16,10 +18,38 @@ export const dummyTask: Task[] = [
     desc: "Select emoji which describes today feeling",
     type: TaskAnswerType.CHOICE,
     choices: [
-      { id: "1-1", text: "angry", icon: faFaceAngry },
-      { id: "1-2", text: "sad", icon: faFaceSadTear },
-      { id: "1-3", text: "neutral", icon: faFaceMeh },
+      {
+        id: "1-1",
+        text: "angry",
+        icon: faFaceAngry,
+        color: colors.BLACK_OPACITY_4,
+      },
+      {
+        id: "1-2",
+        text: "sad",
+        icon: faFaceSadTear,
+        color: colors.BLACK_OPACITY_6,
+      },
+      {
+        id: "1-3",
+        text: "neutral",
+        icon: faFaceMeh,
+        color: colors.LIGHT_VIOLET,
+      },
+      {
+        id: "1-4",
+        text: "dizzy",
+        icon: faFaceDizzy,
+        color: colors.LIGHT_VIOLET_8,
+      },
+      {
+        id: "1-5",
+        text: "neutral",
+        icon: faFaceFrownOpen,
+        color: colors.LIGHT_VIOLET_6,
+      },
     ] as Choice[],
+    background: "home.png",
   },
   {
     id: "2",
