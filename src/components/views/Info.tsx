@@ -1,14 +1,33 @@
-import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ImageBackground, StyleSheet, Switch, Text, View } from "react-native";
 import { colors } from "../../styles/colors";
 import Button from "../tools/Button";
 import { ButtonType } from "../tools/settings";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-native";
 import { View as AnimatableView } from "react-native-animatable";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { updateProfile } from "../../store/dataSlices";
+import { MyProfile } from "../types/types";
 
 const Info = ({}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const profile = useSelector((state: RootState) => state.profile);
+  const [disableInfo, setDisableInfo] = useState(profile?.disableInfo || false);
+
+  const toggleInfoDisabled = () => {
+    dispatch(
+      updateProfile({
+        disableInfo,
+      } as MyProfile)
+    );
+  };
+
+  useEffect(() => {
+    toggleInfoDisabled();
+  }, [disableInfo]);
 
   return (
     <>
@@ -34,7 +53,7 @@ const Info = ({}) => {
                 </Text>
                 <View
                   style={{
-                    flexDirection: "row",
+                    flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center",
                   }}
@@ -47,6 +66,30 @@ const Info = ({}) => {
                       navigate("/day");
                     }}
                   />
+                  <AnimatableView
+                    animation="fadeInLeft"
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      width: 120,
+                    }}
+                    duration={800}
+                    delay={800}
+                  >
+                    <Text style={{ fontStyle: "italic", fontSize: 20 }}>
+                      {disableInfo ? "Hide" : "Show"}
+                    </Text>
+                    <Switch
+                      thumbColor={colors.APP_COLOR}
+                      value={disableInfo}
+                      trackColor={{
+                        false: colors.LIGHT_VIOLET_8,
+                        true: colors.LIGHT_VIOLET_6,
+                      }}
+                      onChange={() => setDisableInfo(!disableInfo)}
+                    />
+                  </AnimatableView>
                 </View>
               </View>
             </AnimatableView>

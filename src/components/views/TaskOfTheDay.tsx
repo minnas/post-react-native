@@ -3,7 +3,12 @@ import { StyleSheet, View, Text, TextInput } from "react-native";
 import Button from "../tools/Button";
 import { ButtonOptions, ButtonType } from "../tools/settings";
 import { useNavigate } from "react-router-native";
-import { faEarth, faBroom, faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEarth,
+  faBroom,
+  faCheck,
+  faInfo,
+} from "@fortawesome/free-solid-svg-icons";
 import { colors } from "../../styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -195,7 +200,7 @@ const TaskOfTheDay = () => {
         <TextField
           ref={inputRef}
           value={answers.length > 0 ? answers[0]?.answer : ""}
-          placeholder="Kirjoita tähän..."
+          placeholder="Type here..."
           multiline={true}
           onChangeValue={(text: string) => {
             add({
@@ -240,6 +245,15 @@ const TaskOfTheDay = () => {
         </Text>
         <AnimatableView animation="fadeInRight" duration={1000} delay={0}>
           <Ghost height={52} width={52} fill={colors.LIGHT_VIOLET_8} />
+        </AnimatableView>
+        <AnimatableView animation="fadeInRight" duration={1000} delay={1000}>
+          <Button
+            icon={faInfo}
+            onPress={() => {
+              navigate("/info");
+            }}
+            type={ButtonType.ICON_ONLY}
+          />
         </AnimatableView>
       </View>
       <View

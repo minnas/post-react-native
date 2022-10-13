@@ -118,7 +118,7 @@ export const dummyTask: Task[] = [
   },
   {
     id: "8",
-    desc: "How was your day at school?",
+    desc: "How was your day?",
     type: TaskAnswerType.TEXT,
   },
   {
