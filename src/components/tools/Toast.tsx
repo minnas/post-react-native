@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ToastOptions, ToastType } from "./settings";
-import { colors } from "../../styles/colors";
+import { colors } from "@Styles/colors";
 
 interface Props {
   content?: string;

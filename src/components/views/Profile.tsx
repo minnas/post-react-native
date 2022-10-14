@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "@Store/store";
 import { avatars } from "../../api/api";
-import { FaIcon, MyProfile } from "../types/types";
-import { colors } from "../../styles/colors";
-import { updateProfile } from "../../store/dataSlices";
+import { FaIcon, MyProfile } from "@Types/types";
+import { colors } from "@Styles/colors";
+import { updateProfile } from "@Store/dataSlices";
 import { View as AnimatableView } from "react-native-animatable";
 
 const Profile = () => {

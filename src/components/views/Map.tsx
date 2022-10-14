@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet, View, Text } from "react-native";
-import Button from "../tools/Button";
-import { ButtonOptions } from "../tools/settings";
+import Button from "@Tools/Button";
+import { ButtonOptions } from "@Tools/settings";
 import { useNavigate } from "react-router-native";
 import {
   faCircle,
   faFeatherPointed,
   faRainbow,
 } from "@fortawesome/free-solid-svg-icons";
-import { MyProfile } from "../types/types";
-import { colors } from "../../styles/colors";
+import { MyProfile } from "@Types/types";
+import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { updateProfile } from "../../store/dataSlices";
+import { RootState } from "@Store/store";
+import { updateProfile } from "@Store/dataSlices";
 const map = require("./../../assets/bird-map.png");
 
 const Map = () => {

@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
 } from "react-native";
-import { colors } from "../../styles/colors";
+import { colors } from "@Styles/colors";
 
 interface Props {
   text?: string;

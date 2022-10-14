@@ -9,12 +9,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
-import { colors } from "../../styles/colors";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
+import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { less, more } from "../../store/dataSlices";
+import { RootState } from "@Store/store";
+import { less, more } from "@Store/dataSlices";
 
 export type Props = {
   name: string;

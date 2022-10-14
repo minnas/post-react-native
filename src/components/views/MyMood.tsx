@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { colors } from "../../styles/colors";
+import { colors } from "@Styles/colors";
 import {
   faFaceAngry,
   faFaceSadCry,
   faSmileBeam,
   faFaceMehBlank,
 } from "@fortawesome/free-regular-svg-icons";
-import { FaIcon } from "../types/types";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
+import { FaIcon } from "@Types/types";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
 import { View as AnimatableView } from "react-native-animatable";
 
 const MyMood = ({}) => {

@@ -5,7 +5,7 @@ import {
   faHippo,
   faSpider,
 } from "@fortawesome/free-solid-svg-icons";
-import { FaIcon } from "../components/types/types";
+import { FaIcon } from "@Types/types";
 import { dummyTask } from "./dummyTasks";
 import { ApiType } from "./type";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import { colors } from "../../styles/colors";
-import Button from "../tools/Button";
-import { ButtonType } from "../tools/settings";
+import { colors } from "@Styles/colors";
+import Button from "@Tools/Button";
+import { ButtonType } from "@Tools/settings";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-native";
 import { View as AnimatableView } from "react-native-animatable";
@@ -14,7 +14,7 @@ const Cover = ({}) => {
     <>
       <View style={{ flex: 1 }}>
         <ImageBackground
-          source={require("./../../assets/birds.png")}
+          source={require("@Assets/birds.png")}
           style={styles.imageBg}
         >
           <View style={styles.content}>

@@ -10,7 +10,7 @@ import {
   faSmile,
 } from "@fortawesome/free-solid-svg-icons";
 import { Choice, SliderValues, Task, TaskAnswerType } from "./type";
-import { colors } from "../styles/colors";
+import { colors } from "@Styles/colors";
 
 export const dummyTask: Task[] = [
   {

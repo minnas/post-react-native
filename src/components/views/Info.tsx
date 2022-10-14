@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ImageBackground, StyleSheet, Switch, Text, View } from "react-native";
-import { colors } from "../../styles/colors";
-import Button from "../tools/Button";
-import { ButtonType } from "../tools/settings";
+import { colors } from "@Styles/colors";
+import Button from "@Tools/Button";
+import { ButtonType } from "@Tools/settings";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-native";
 import { View as AnimatableView } from "react-native-animatable";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { updateProfile } from "../../store/dataSlices";
-import { MyProfile } from "../types/types";
+import { RootState } from "@Store/store";
+import { updateProfile } from "@Store/dataSlices";
+import { MyProfile } from "@Types/types";
 
 const Info = ({}) => {
   const navigate = useNavigate();

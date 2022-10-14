@@ -2,20 +2,20 @@ import { faBookAtlas, faNoteSticky } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { search } from "../../api/api";
-import Spinner from "../tools/Spinner";
-import { ListItem, MyTodo, Todo } from "../types/types";
-import Button from "../tools/Button";
+import Spinner from "@Tools/Spinner";
+import { ListItem, MyTodo, Todo } from "@Types/types";
+import Button from "@Tools/Button";
 import {
   ButtonOptions,
   ButtonType,
   ToastOptions,
   ToastType,
-} from "../tools/settings";
-import Toast from "../tools/Toast";
+} from "@Tools/settings";
+import Toast from "@Tools/Toast";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { styles } from "../../styles/views";
-import { add } from "../../store/dataSlices";
+import { RootState } from "@Store/store";
+import { styles } from "@Styles/views";
+import { add } from "@Store/dataSlices";
 import { ApiType } from "../../api/type";
 import { View as AnimatableView } from "react-native-animatable";
 

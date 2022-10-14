@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NativeRouter, Route, Routes } from "react-router-native";
-import About from "./src/components/views/About";
-import Posts from "./src/components/views/Posts";
-import BaseLayout from "./src/components/views/BaseLayout";
+import About from "@Views/About";
+import Posts from "@Views/Posts";
+import BaseLayout from "@Views/BaseLayout";
 import {
   faBookAtlas,
   faBookmark,
@@ -18,20 +18,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import { default as store, persistor } from "./src/store/store";
-import Bookmarks from "./src/components/views/Bookmarks";
-import Todos from "./src/components/views/Todos";
-import MyTodos from "./src/components/views/MyTodos";
-import MyMood from "./src/components/views/MyMood";
-import Profile from "./src/components/views/Profile";
-import Map from "./src/components/views/Map";
+import Bookmarks from "@Views/Bookmarks";
+import Todos from "@Views/Todos";
+import MyTodos from "@Views/MyTodos";
+import MyMood from "@Views/MyMood";
+import Profile from "@Views/Profile";
+import Map from "@Views/Map";
 import { PersistGate } from "redux-persist/integration/react";
-import Spinner from "./src/components/tools/Spinner";
+import Spinner from "@Tools/Spinner";
 import { Asset } from "expo-asset";
 import { View } from "react-native";
-import TaskOfTheDay from "./src/components/views/TaskOfTheDay";
-import TasksStatus from "./src/components/views/TasksStatus";
-import Cover from "./src/components/views/Cover";
-import Info from "./src/components/views/Info";
+import TaskOfTheDay from "@Views/TaskOfTheDay";
+import TasksStatus from "@Views/TasksStatus";
+import Cover from "@Views/Cover";
+import Info from "@Views/Info";
 
 export default function App() {
   const useImages = (images: any) => {

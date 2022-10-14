@@ -20,11 +20,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useNavigate } from "react-router-native";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
-import { colors } from "../../styles/colors";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
+import { colors } from "@Styles/colors";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "@Store/store";
 import { faCircle } from "@fortawesome/free-regular-svg-icons";
 
 const BaseLayout = ({

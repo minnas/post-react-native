@@ -10,7 +10,17 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@Tools/*": ["src/components/tools/*"],
+      "@Assets/*": ["src/assets/*"],
+      "@Types/*": ["src/components/types/*"],
+      "@Views/*": ["src/components/views/*"],
+      "@Store/*": ["src/store/*"],
+      "@Styles/*": ["src/styles/*"],
+      "@Api/*": ["src/api/*"]
+    }
   },
   "exclude": [
     "node_modules",

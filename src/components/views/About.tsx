@@ -6,14 +6,14 @@ import {
   Text,
   View,
 } from "react-native";
-import Accordion from "../tools/Accordion";
-import { colors } from "../../styles/colors";
-import Park from "./../../assets/amusementpartk.svg";
-import Chat from "./../../assets/chat.svg";
-import Bubble from "./../../assets/hashtag-bubble.svg";
-import Feedback from "./../../assets/feedback.svg";
-import Button from "../tools/Button";
-import { ButtonType } from "../tools/settings";
+import Accordion from "@Tools/Accordion";
+import { colors } from "@Styles/colors";
+import Park from "@Assets/amusementpartk.svg";
+import Chat from "@Assets/chat.svg";
+import Bubble from "@Assets/hashtag-bubble.svg";
+import Feedback from "@Assets/feedback.svg";
+import Button from "@Tools/Button";
+import { ButtonType } from "@Tools/settings";
 
 const About = ({}) => {
   const aboutInfo = (

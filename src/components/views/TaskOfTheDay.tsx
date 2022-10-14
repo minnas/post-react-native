@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
 import { useNavigate } from "react-router-native";
 import {
   faEarth,
@@ -9,10 +9,10 @@ import {
   faCheck,
   faInfo,
 } from "@fortawesome/free-solid-svg-icons";
-import { colors } from "../../styles/colors";
+import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { addAnswer, clearAll, removeAnswer } from "../../store/dataSlices";
+import { RootState } from "@Store/store";
+import { addAnswer, clearAll, removeAnswer } from "@Store/dataSlices";
 import { fetchTask } from "../../api/api";
 import {
   Answer,
@@ -22,9 +22,9 @@ import {
   Task,
   TaskAnswerType,
 } from "../../api/type";
-import TextField from "../tools/TextField";
+import TextField from "@Tools/TextField";
 import { Slider } from "@miblanchard/react-native-slider";
-import { slider, styles as defaultStyles } from "../../styles/views";
+import { slider, styles as defaultStyles } from "@Styles/views";
 import Ghost from "./../../assets/ghost.svg";
 import { View as AnimatableView } from "react-native-animatable";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";

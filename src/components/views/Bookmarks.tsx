@@ -6,16 +6,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { ListItem, Bookmark } from "../types/types";
-import Button from "../tools/Button";
-import { ButtonOptions, ButtonType } from "../tools/settings";
+import { ListItem, Bookmark } from "@Types/types";
+import Button from "@Tools/Button";
+import { ButtonOptions, ButtonType } from "@Tools/settings";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "@Store/store";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { colors } from "../../styles/colors";
-import Placeholder from "../tools/Placeholder";
-import { styles } from "../../styles/views";
-import { removeBookmark, updateBookmark } from "../../store/dataSlices";
+import { colors } from "@Styles/colors";
+import Placeholder from "@Tools/Placeholder";
+import { styles } from "@Styles/views";
+import { removeBookmark, updateBookmark } from "@Store/dataSlices";
 import { View as AnimatableView } from "react-native-animatable";
 
 const Bookmarks = () => {

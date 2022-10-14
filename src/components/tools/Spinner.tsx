@@ -1,5 +1,5 @@
 import { ActivityIndicator } from "react-native";
-import { colors } from "../../styles/colors";
+import { colors } from "@Styles/colors";
 
 const Spinner = () => {
   return <ActivityIndicator size="large" color={colors.APP_COLOR} />;
