@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/code-React%20Native-informational?style=flat&logo=react&logoColor=white&color=61dafb)&nbsp;
+![](https://img.shields.io/badge/code-Typescript-informational?style=flat&logo=typescript&logoColor=white&color=0076c6)
 # Testing React Native
 
 This is a test app for testing react native and it uses free dummy api for the test content.
