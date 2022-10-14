@@ -19,7 +19,7 @@ const About = ({}) => {
   const aboutInfo = (
     <View>
       <ImageBackground
-        source={require("./../../assets/birds.png")}
+        source={require("@Assets/birds.png")}
         style={styles.imageBg}
       >
         <Text style={styles.imgText}>

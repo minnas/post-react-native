@@ -33,7 +33,7 @@ const Info = ({}) => {
     <>
       <View style={{ flex: 1 }}>
         <ImageBackground
-          source={require("./../../assets/birds.png")}
+          source={require("@Assets/birds.png")}
           style={styles.imageBg}
         >
           <View style={styles.content}>

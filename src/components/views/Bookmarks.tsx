@@ -108,7 +108,7 @@ const Bookmarks = () => {
 
   const noBookmarks = () => (
     <Placeholder
-      image={require("./../../assets/birds.png")}
+      image={require("@Assets/birds.png")}
       text="Ou nou! Nothing here."
     />
   );

@@ -84,7 +84,7 @@ const MyTodos = () => {
 
   const emptyList = () => (
     <Placeholder
-      image={require("./../../assets/placeholder.png")}
+      image={require("@Assets/placeholder.png")}
       text="Yay! No Todos here!"
     />
   );

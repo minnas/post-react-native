@@ -48,10 +48,10 @@ export default function App() {
   };
 
   const [imagesLoaded] = useImages([
-    require("./src/assets/bird-map.png"),
-    require("./src/assets/bird-map-rotated.png"),
-    require("./src/assets/birds.png"),
-    require("./src/assets/placeholder.png"),
+    require("@Assets/bird-map.png"),
+    require("@Assets/bird-map-rotated.png"),
+    require("@Assets/birds.png"),
+    require("@Assets/placeholder.png"),
   ]);
 
   if (!imagesLoaded) {
