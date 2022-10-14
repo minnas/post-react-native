@@ -13,7 +13,7 @@ import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
 import { updateProfile } from "@Store/dataSlices";
-const map = require("./../../assets/bird-map.png");
+const map = require("@Assets/bird-map.png");
 
 const Map = () => {
   const navigate = useNavigate();

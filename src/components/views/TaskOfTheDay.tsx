@@ -13,7 +13,7 @@ import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
 import { addAnswer, clearAll, removeAnswer } from "@Store/dataSlices";
-import { fetchTask } from "../../api/api";
+import { fetchTask } from "@Api/api";
 import {
   Answer,
   Choice,
@@ -21,11 +21,11 @@ import {
   SliderValues,
   Task,
   TaskAnswerType,
-} from "../../api/type";
+} from "@Api/type";
 import TextField from "@Tools/TextField";
 import { Slider } from "@miblanchard/react-native-slider";
 import { slider, styles as defaultStyles } from "@Styles/views";
-import Ghost from "./../../assets/ghost.svg";
+import Ghost from "@Assets/ghost.svg";
 import { View as AnimatableView } from "react-native-animatable";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 

@@ -4,7 +4,7 @@ import Button from "@Tools/Button";
 import { ButtonOptions, ButtonType } from "@Tools/settings";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
-import { avatars } from "../../api/api";
+import { avatars } from "@Api/api";
 import { FaIcon, MyProfile } from "@Types/types";
 import { colors } from "@Styles/colors";
 import { updateProfile } from "@Store/dataSlices";

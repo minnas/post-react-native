@@ -9,9 +9,9 @@ import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
 import { updateProfile } from "@Store/dataSlices";
-import { Answer, Task } from "../../api/type";
-import { fetchTask } from "../../api/api";
-const bgImage = require("./../../assets/bird-map-rotated.png");
+import { Answer, Task } from "@Api/type";
+import { fetchTask } from "@Api/api";
+const bgImage = require("@Assets/bird-map-rotated.png");
 
 const TasksStatus = () => {
   const navigate = useNavigate();

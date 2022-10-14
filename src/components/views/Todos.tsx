@@ -1,7 +1,7 @@
 import { faBookAtlas, faNoteSticky } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { search } from "../../api/api";
+import { search } from "@Api/api";
 import Spinner from "@Tools/Spinner";
 import { ListItem, MyTodo, Todo } from "@Types/types";
 import Button from "@Tools/Button";
@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
 import { styles } from "@Styles/views";
 import { add } from "@Store/dataSlices";
-import { ApiType } from "../../api/type";
+import { ApiType } from "@Api/type";
 import { View as AnimatableView } from "react-native-animatable";
 
 const Todos = () => {

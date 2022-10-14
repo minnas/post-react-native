@@ -1,7 +1,7 @@
 import { faBookmark, faBookDead } from "@fortawesome/free-solid-svg-icons";
 import { FlatList, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { search } from "../../api/api";
+import { search } from "@Api/api";
 import Spinner from "@Tools/Spinner";
 import { Post, ListItem, Bookmark } from "@Types/types";
 import Button from "@Tools/Button";
