@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   ImageBackground,
   ScrollView,
@@ -14,18 +14,70 @@ import Bubble from "@Assets/hashtag-bubble.svg";
 import Feedback from "@Assets/feedback.svg";
 import Button from "@Tools/Button";
 import { ButtonType } from "@Tools/settings";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {
+  faBookAtlas,
+  faBookmark,
+  faEarth,
+} from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const About = ({}) => {
+  enum blockType {
+    BOOKMARKS,
+    TODOS,
+    MAP,
+  }
+  const [infos, setInfos] = useState([] as blockType[]);
+  useEffect(() => {
+    setInfos([blockType.MAP, blockType.BOOKMARKS, blockType.TODOS]);
+  }, []);
+
+  const iconAndText = (icon: IconProp, text: string) => {
+    return (
+      <View style={{ flexDirection: "row" }}>
+        <FontAwesomeIcon
+          color={colors.BLACK_OPACITY_6}
+          icon={icon}
+          size={32}
+          style={{ marginRight: 10 }}
+        />
+        <Text style={{ ...styles.imgText, fontSize: 22 }}>{text}</Text>
+      </View>
+    );
+  };
+
+  const infoBlock = (type: blockType) => {
+    if (type === blockType.MAP) return iconAndText(faEarth, "Map of the tasks");
+    if (type === blockType.BOOKMARKS)
+      return iconAndText(faBookmark, "My bookmarks");
+    if (type === blockType.TODOS) return iconAndText(faBookAtlas, "My todos");
+    return "";
+  };
+
   const aboutInfo = (
     <View>
       <ImageBackground
         source={require("@Assets/birds.png")}
         style={styles.imageBg}
       >
-        <Text style={styles.imgText}>
-          This is a simple dummy app for testing React native and some custom
-          components
-        </Text>
+        <View style={styles.textLayer}>
+          <Text style={styles.imgText}>
+            This is a simple dummy app for testing React native and some custom
+            components.
+          </Text>
+          <View
+            style={{
+              borderTopColor: colors.LIGHT_VIOLET_8,
+              borderTopWidth: 2,
+              paddingTop: 15,
+            }}
+          >
+            {infos.map((index: blockType) => (
+              <View key={index}>{infoBlock(index)}</View>
+            ))}
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -96,14 +148,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 35,
   },
+  textLayer: {
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+    backgroundColor: colors.WHITE_OPACITY_6,
+  },
   imgText: {
     color: colors.FONT_COLOR,
     fontSize: 24,
     lineHeight: 34,
     textAlign: "center",
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    backgroundColor: colors.WHITE_OPACITY_6,
+    marginBottom: 10,
   },
 });
 

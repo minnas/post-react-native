@@ -13,6 +13,8 @@ import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@Store/store";
 import { updateProfile } from "@Store/dataSlices";
+import { fetchTask } from "@Api/api";
+import { Task } from "@Api/type";
 const map = require("@Assets/bird-map.png");
 
 const Map = () => {
@@ -21,6 +23,16 @@ const Map = () => {
   const profile = useSelector((state: RootState) => state.profile);
   const [page, setPage] = useState(profile?.page);
   const [path, setPath] = useState("");
+  const [pages, setPages] = useState([] as number[]);
+
+  useEffect(() => {
+    const tasks = fetchTask() as Task[];
+    setPages(
+      tasks.map((task: Task, index: number) => {
+        return index + 1;
+      })
+    );
+  }, []);
 
   const setProfile = () => {
     dispatch(
@@ -37,7 +49,6 @@ const Map = () => {
   useEffect(() => {
     navigate(path);
   }, [path]);
-  const days: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const icon = (index: number) =>
     page && page === index
@@ -62,7 +73,7 @@ const Map = () => {
     <>
       <ImageBackground source={map} style={styles.imageBg}>
         <View style={styles.mapIcons}>
-          {days.map((index: number) => (
+          {pages.map((index: number) => (
             <View
               key={index}
               style={{
