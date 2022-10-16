@@ -19,7 +19,8 @@
       "@Views/*": ["src/components/views/*"],
       "@Store/*": ["src/store/*"],
       "@Styles/*": ["src/styles/*"],
-      "@Api/*": ["src/api/*"]
+      "@Api/*": ["src/api/*"],
+      "@Utils/*": ["src/utils/*"]
     }
   },
   "exclude": [

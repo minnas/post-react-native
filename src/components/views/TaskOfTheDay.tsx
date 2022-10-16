@@ -8,6 +8,7 @@ import {
   faBroom,
   faCheck,
   faInfo,
+  faArrowsRotate,
 } from "@fortawesome/free-solid-svg-icons";
 import { colors } from "@Styles/colors";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +29,7 @@ import { slider, styles as defaultStyles } from "@Styles/views";
 import Ghost from "@Assets/ghost.svg";
 import { View as AnimatableView } from "react-native-animatable";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { shuffleArray } from "@Utils/shuffle";
 
 const TaskOfTheDay = () => {
   const navigate = useNavigate();
@@ -43,11 +45,15 @@ const TaskOfTheDay = () => {
   const inputRef = useRef<TextInput | null>(null);
   const [changed, setChanged] = useState(false);
   const [value, setValue] = useState(0);
-  const sliderRef = useRef<TextInput | null>(null);
+  const [choices, setChoices] = useState([] as Choice[] | undefined);
 
   useEffect(() => {
     setTask(fetchTask(taskId?.toString()) as Task);
   }, []);
+
+  useEffect(() => {
+    setChoices(task.choices);
+  }, [task.choices]);
 
   useEffect(() => {
     if (answers.length > 0) {
@@ -61,6 +67,10 @@ const TaskOfTheDay = () => {
       setSelected("");
     }
   }, [answers]);
+
+  const shuffleChoices = () => {
+    setChoices(shuffleArray(choices));
+  };
 
   const remove = (id: string) => {
     dispatch(removeAnswer({ id }));
@@ -180,7 +190,7 @@ const TaskOfTheDay = () => {
 
   const renderTask = (task: Task) => {
     if (TaskAnswerType.CHOICE && task.choices) {
-      return task.choices.map((choice: Choice, index: number) =>
+      return choices?.map((choice: Choice, index: number) =>
         renderChoice(choice, index)
       );
     }
@@ -241,7 +251,7 @@ const TaskOfTheDay = () => {
             textAlign: "center",
           }}
         >
-          {task.desc}
+          {task?.desc}
         </Text>
         <AnimatableView animation="fadeInRight" duration={1000} delay={0}>
           <Ghost height={52} width={52} fill={colors.LIGHT_VIOLET_8} />
@@ -283,6 +293,18 @@ const TaskOfTheDay = () => {
             dispatch(clearAll({ id: taskId }));
           }}
         />
+        {task?.shuffle === true ? (
+          <Button
+            type={ButtonType.ICON_ONLY}
+            icon={faArrowsRotate}
+            options={{ iconSize: 42 }}
+            onPress={() => {
+              shuffleChoices();
+            }}
+          />
+        ) : (
+          ""
+        )}
       </View>
     </>
   );

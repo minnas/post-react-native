@@ -1,10 +1,13 @@
 import {
   faAppleWhole,
+  faCat,
+  faDog,
   faFaceAngry,
   faFaceDizzy,
   faFaceFrownOpen,
   faFaceMeh,
   faFaceSadTear,
+  faFishFins,
   faLemon,
   faSadCry,
   faSmile,
@@ -17,6 +20,7 @@ export const dummyTask: Task[] = [
     id: "1",
     desc: "Select emoji which describes today feeling",
     type: TaskAnswerType.CHOICE,
+    shuffle: true,
     choices: [
       {
         id: "1-1",
@@ -93,6 +97,7 @@ export const dummyTask: Task[] = [
     id: "6",
     desc: "Choose your mood",
     type: TaskAnswerType.CHOICE,
+    shuffle: true,
     choices: [
       { id: "6-1", text: "angry", icon: faFaceAngry },
       { id: "6-2", text: "sad", icon: faFaceSadTear },
@@ -118,18 +123,18 @@ export const dummyTask: Task[] = [
   },
   {
     id: "8",
-    desc: "How was your day?",
-    type: TaskAnswerType.TEXT,
-  },
-  {
-    id: "9",
-    desc: "What you like most?",
+    desc: "Which Animal you like most?",
     type: TaskAnswerType.CHOICE,
+    shuffle: true,
     choices: [
-      { id: "9-1", text: "Music" },
-      { id: "9-2", text: "Running" },
-      { id: "9-3", text: "Swimming" },
-      { id: "9-4", text: "Reading" },
+      { id: "9-1", text: "Dog", icon: faDog, color: colors.LIGHT_VIOLET },
+      { id: "9-2", text: "Cat", icon: faCat, color: colors.BLACK_OPACITY_8 },
+      {
+        id: "9-3",
+        text: "Fish",
+        icon: faFishFins,
+        color: colors.BLACK_OPACITY_6,
+      },
     ] as Choice[],
   },
 ];

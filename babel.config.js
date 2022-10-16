@@ -14,6 +14,7 @@ module.exports = function (api) {
             "@Store": "./src/store",
             "@Styles": "./src/styles",
             "@Api": "./src/api",
+            "@Utils": "./src/utils",
           },
           extensions: [".ts", ".tsx", ".svg", ".png"],
         },

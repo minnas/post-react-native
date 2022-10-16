@@ -32,6 +32,7 @@ export type Task = {
   choices?: Choice[];
   range?: SliderValues;
   background?: string;
+  shuffle?: boolean;
 };
 export type Answer = {
   id?: string;
