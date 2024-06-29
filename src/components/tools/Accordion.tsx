@@ -12,7 +12,7 @@ interface Props {
 const Accordion: React.FC<Props> = ({ label, color, children }) => {
   const [open, setOpen] = useState(false);
   const icon = open ? faChevronUp : faChevronDown;
-  const labelColor = color || colors.APP_COLOR;
+  const labelColor = color ?? colors.APP_COLOR;
 
   const toggle = () => {
     setOpen(!open);
