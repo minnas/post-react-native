@@ -41,7 +41,7 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
     <View style={styles.content}>
       <View style={{ flex: 1 }}>
         <Pressable onPress={toggle} style={styles.toggler}>
-          {label ? <Text style={styles.label}>{label}</Text> : ""}
+          {label && <Text style={styles.label}>{label}</Text>}
           <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
         </Pressable>
       </View>
