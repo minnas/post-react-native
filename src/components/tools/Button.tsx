@@ -30,11 +30,11 @@ const Button: React.FC<Props> = ({
   svg,
 }) => {
   const onlyIcon = type == ButtonType.ICON_ONLY;
-  const btnColor = options?.color || colors.APP_COLOR;
+  const btnColor = options?.color ?? colors.APP_COLOR;
   const btnBorderColor = options?.noBorder ? "transparent" : btnColor;
-  const iconSize = options?.iconSize || 24;
-  const bgColor = options?.backgroundColor || "transparent";
-  const fontSize = options?.fontSize || 18;
+  const iconSize = options?.iconSize ?? 24;
+  const bgColor = options?.backgroundColor ?? "transparent";
+  const fontSize = options?.fontSize ?? 18;
 
   const styles = StyleSheet.create({
     button: {
@@ -58,7 +58,7 @@ const Button: React.FC<Props> = ({
 
   return (
     <Pressable onPress={onPress} style={styles.button} disabled={disabled}>
-      {onlyIcon || !title ? "" : <Text style={styles.btnText}>{title}</Text>}
+      {onlyIcon ?? !title ? "" : <Text style={styles.btnText}>{title}</Text>}
       {icon ? (
         <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />
       ) : (

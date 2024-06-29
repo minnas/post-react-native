@@ -11,9 +11,9 @@ interface Props {
 
 const TextField = forwardRef((props: Props, ref) => {
   const inputRef = useRef<TextInput | null>(null);
-  const placeholder = props.placeholder || "";
-  const value = props.value || "";
-  const multiline = props.multiline || false;
+  const placeholder = props.placeholder ?? "";
+  const value = props.value ?? "";
+  const multiline = props.multiline ?? false;
 
   useImperativeHandle(ref, () => ({
     blur: () => {

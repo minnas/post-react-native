@@ -103,7 +103,7 @@ const TaskOfTheDay = () => {
     return {
       ...settings,
       iconSize: 42,
-      color: choice.color || colors.BLACK_OPACITY_8,
+      color: choice.color ?? colors.BLACK_OPACITY_8,
     };
   };
 
@@ -150,7 +150,7 @@ const TaskOfTheDay = () => {
           style={styles}
           icon={value.icon}
           size={42}
-          color={value?.color || colors.BLACK_OPACITY_8}
+          color={value?.color ?? colors.BLACK_OPACITY_8}
         />
       );
     }

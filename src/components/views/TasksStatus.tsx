@@ -71,7 +71,7 @@ const TasksStatus = () => {
                   setPage(index + 1);
                   setPath("/day");
                 }}
-                title={(index + 1)?.toString() || ""}
+                title={(index + 1)?.toString() ?? ""}
                 options={
                   {
                     backgroundColor: colors.WHITE_OPACITY_2,

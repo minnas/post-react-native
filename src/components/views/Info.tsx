@@ -15,7 +15,7 @@ const Info = ({}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.profile);
-  const [disableInfo, setDisableInfo] = useState(profile?.disableInfo || false);
+  const [disableInfo, setDisableInfo] = useState(profile?.disableInfo ?? false);
 
   const toggleInfoDisabled = () => {
     dispatch(

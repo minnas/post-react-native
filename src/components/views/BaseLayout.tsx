@@ -39,8 +39,8 @@ const BaseLayout = ({
   bottonNavDisabled?: boolean;
 }) => {
   const profile = useSelector((state: RootState) => state.profile);
-  const myTitle = title || "Dummy Post App";
-  const myIcon = icon || faSnowflake;
+  const myTitle = title ?? "Dummy Post App";
+  const myIcon = icon ?? faSnowflake;
   const navigate = useNavigate();
   const [showButtons, setShowButtons] = useState(
     bottonNavDisabled ? false : true

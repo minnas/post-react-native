@@ -52,7 +52,7 @@ const Map = () => {
 
   const icon = (index: number) =>
     page && page === index
-      ? profile?.avatar?.icon || faFeatherPointed
+      ? profile?.avatar?.icon ?? faFeatherPointed
       : faCircle;
 
   const options = (index: number) => {
