@@ -1,7 +1,7 @@
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React, { ReactNode, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { colors } from "@Styles/colors";
 
 interface Props {
@@ -40,10 +40,10 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
   return (
     <View style={styles.content}>
       <View style={{ flex: 1 }}>
-        <TouchableOpacity onPress={toggle} style={styles.toggler}>
+        <Pressable onPress={toggle} style={styles.toggler}>
           {label ? <Text style={styles.label}>{label}</Text> : ""}
           <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
-        </TouchableOpacity>
+        </Pressable>
       </View>
       {open ? (
         <View

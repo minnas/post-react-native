@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ImageBackground, StyleSheet, View, Text } from "react-native";
+import { ImageBackground, StyleSheet, View } from "react-native";
 import Button from "@Tools/Button";
 import { ButtonOptions } from "@Tools/settings";
 import { useNavigate } from "react-router-native";

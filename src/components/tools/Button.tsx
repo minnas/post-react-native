@@ -4,9 +4,9 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ButtonOptions, ButtonType } from "./settings";
 import {
   GestureResponderEvent,
+  Pressable,
   StyleSheet,
   Text,
-  TouchableOpacity,
 } from "react-native";
 import { colors } from "@Styles/colors";
 
@@ -57,12 +57,7 @@ const Button: React.FC<Props> = ({
   });
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={onPress}
-      style={styles.button}
-      disabled={disabled}
-    >
+    <Pressable onPress={onPress} style={styles.button} disabled={disabled}>
       {onlyIcon || !title ? "" : <Text style={styles.btnText}>{title}</Text>}
       {icon ? (
         <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />
@@ -70,7 +65,7 @@ const Button: React.FC<Props> = ({
         ""
       )}
       {svg ? svg : ""}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

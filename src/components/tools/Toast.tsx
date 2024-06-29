@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import React from "react";
 import {
   GestureResponderEvent,
+  Pressable,
   StyleSheet,
   Text,
-  TouchableOpacity,
 } from "react-native";
 import { ToastOptions, ToastType } from "./settings";
 import { colors } from "@Styles/colors";
@@ -48,10 +48,10 @@ const Toast: React.FC<Props> = ({ content, type, hide, options }) => {
   });
 
   return (
-    <TouchableOpacity onPress={hide} style={styles.toast}>
+    <Pressable onPress={hide} style={styles.toast}>
       <FontAwesomeIcon color={color} icon={icon} size={24} />
       {content ? <Text style={styles.text}>{content}</Text> : ""}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
