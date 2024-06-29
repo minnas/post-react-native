@@ -34,7 +34,7 @@ const Placeholder: React.FC<Props> = ({ text, image }) => {
 
   return (
     <ImageBackground style={styles.image} source={image}>
-      {text ? <Text style={styles.text}>{text}</Text> : ""}
+      {text && <Text style={styles.text}>{text}</Text>}
     </ImageBackground>
   );
 };

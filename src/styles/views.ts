@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
 export const slider = StyleSheet.create({
   thumb: {
     borderRadius: 15,
-    border: 5,
+    borderWidth: 5,
     height: 52,
     width: 20,
     shadowColor: colors.APP_COLOR,

@@ -59,11 +59,7 @@ const Button: React.FC<Props> = ({
   return (
     <Pressable onPress={onPress} style={styles.button} disabled={disabled}>
       {onlyIcon ?? !title ? "" : <Text style={styles.btnText}>{title}</Text>}
-      {icon ? (
-        <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />
-      ) : (
-        ""
-      )}
+      {icon && <FontAwesomeIcon color={btnColor} icon={icon} size={iconSize} />}
       {svg ? svg : ""}
     </Pressable>
   );

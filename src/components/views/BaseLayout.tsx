@@ -1,11 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import {
   faHome,
   faLayerGroup,
@@ -55,7 +49,7 @@ const BaseLayout = ({
   const profileAvatar = (icon: IconProp) => {
     return (
       <>
-        <TouchableOpacity
+        <Pressable
           style={{
             position: "relative",
             justifyContent: "center",
@@ -73,7 +67,7 @@ const BaseLayout = ({
             size={38}
             style={{ position: "absolute", zIndex: 99 }}
           />
-        </TouchableOpacity>
+        </Pressable>
       </>
     );
   };

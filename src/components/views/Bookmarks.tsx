@@ -4,7 +4,7 @@ import {
   faCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ListItem, Bookmark } from "@Types/types";
 import Button from "@Tools/Button";
@@ -53,7 +53,7 @@ const Bookmarks = () => {
       <View key={item.key} style={styles.listItemIconRight}>
         <Text style={styles.itemText}>{item.title}</Text>
         <View style={styles.actions}>
-          <TouchableOpacity
+          <Pressable
             style={{
               position: "relative",
               justifyContent: "center",
@@ -91,7 +91,7 @@ const Bookmarks = () => {
             ) : (
               ""
             )}
-          </TouchableOpacity>
+          </Pressable>
 
           <Button
             icon={faTimes}

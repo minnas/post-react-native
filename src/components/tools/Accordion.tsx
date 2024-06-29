@@ -45,7 +45,7 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
           <FontAwesomeIcon color={labelColor} icon={icon} size={32} />
         </Pressable>
       </View>
-      {open ? (
+      {open && (
         <View
           style={{
             ...styles.content,
@@ -55,8 +55,6 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
         >
           {children ? children : ""}
         </View>
-      ) : (
-        ""
       )}
     </View>
   );

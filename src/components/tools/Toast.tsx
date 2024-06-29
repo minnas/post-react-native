@@ -50,7 +50,7 @@ const Toast: React.FC<Props> = ({ content, type, hide, options }) => {
   return (
     <Pressable onPress={hide} style={styles.toast}>
       <FontAwesomeIcon color={color} icon={icon} size={24} />
-      {content ? <Text style={styles.text}>{content}</Text> : ""}
+      {content && <Text style={styles.text}>{content}</Text>}
     </Pressable>
   );
 };
