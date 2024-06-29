@@ -3,14 +3,12 @@
 ![](https://img.shields.io/badge/Expo-informational?style=flat&logo=expo&logoColor=white&color=6c4df5)
 ![](https://img.shields.io/badge/React%20Redux-informational?style=flat&logo=redux&logoColor=white&color=764abc)
 
-# Testing React Native
+# Small App done with React Native and Expo
 
-This is a test app for testing react native and it uses free dummy api for the test content.
-
-Under construction 👷‍♀️⚒️.
+This is a test app for testing react native and it uses free dummy api for the test content  🌈.
 
 To Setup:
-First ensure you are using node version > 14 (and have yarn installed) and have expo installed on your mobile phone
+First ensure you are using node version > 20 (and have yarn installed) and have expo installed on your mobile phone.
 
-1. Run yarn
-2. Run yarn start and scan the QR with the phone
+1️⃣ Run yarn && yarn start <br>
+2️⃣ Scan the QR with the phone
