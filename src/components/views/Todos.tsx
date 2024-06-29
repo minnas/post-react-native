@@ -110,10 +110,8 @@ const Todos = () => {
         ) : (
           ""
         )}
-        {toastErrorVisible ? (
+        {toastErrorVisible && (
           <Toast content={toastErrorMessage} type={ToastType.ERROR} />
-        ) : (
-          ""
         )}
         {loading ? (
           <Spinner />

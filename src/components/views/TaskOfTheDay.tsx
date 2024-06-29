@@ -293,7 +293,7 @@ const TaskOfTheDay = () => {
             dispatch(clearAll({ id: taskId }));
           }}
         />
-        {task?.shuffle === true ? (
+        {task?.shuffle === true && (
           <Button
             type={ButtonType.ICON_ONLY}
             icon={faArrowsRotate}
@@ -302,8 +302,6 @@ const TaskOfTheDay = () => {
               shuffleChoices();
             }}
           />
-        ) : (
-          ""
         )}
       </View>
     </>

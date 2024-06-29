@@ -109,10 +109,8 @@ const Posts = () => {
         ) : (
           ""
         )}
-        {toastErrorVisible ? (
+        {toastErrorVisible && (
           <Toast content={toastErrorMessage} type={ToastType.ERROR} />
-        ) : (
-          ""
         )}
         {loading ? (
           <Spinner />

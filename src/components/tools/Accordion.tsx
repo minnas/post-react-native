@@ -53,7 +53,7 @@ const Accordion: React.FC<Props> = ({ label, color, children }) => {
             padding: 15,
           }}
         >
-          {children ? children : ""}
+          {children && children}
         </View>
       )}
     </View>
