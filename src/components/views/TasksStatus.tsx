@@ -55,36 +55,34 @@ const TasksStatus = () => {
   };
 
   return (
-    <>
-      <ImageBackground source={bgImage} style={styles.imageBg}>
-        <View style={styles.mapIcons}>
-          {tasks.map((task: Task, index: number) => (
-            <View
-              key={index + 1}
-              style={{
-                padding: 15,
+    <ImageBackground source={bgImage} style={styles.imageBg}>
+      <View style={styles.mapIcons}>
+        {tasks.map((task: Task, index: number) => (
+          <View
+            key={index + 1}
+            style={{
+              padding: 15,
+            }}
+          >
+            <Button
+              icon={faAward}
+              onPress={() => {
+                setPage(index + 1);
+                setPath("/day");
               }}
-            >
-              <Button
-                icon={faAward}
-                onPress={() => {
-                  setPage(index + 1);
-                  setPath("/day");
-                }}
-                title={(index + 1)?.toString() ?? ""}
-                options={
-                  {
-                    backgroundColor: colors.WHITE_OPACITY_2,
-                    iconSize: 42,
-                    ...options(task.id),
-                  } as ButtonOptions
-                }
-              />
-            </View>
-          ))}
-        </View>
-      </ImageBackground>
-    </>
+              title={(index + 1)?.toString() ?? ""}
+              options={
+                {
+                  backgroundColor: colors.WHITE_OPACITY_2,
+                  iconSize: 42,
+                  ...options(task.id),
+                } as ButtonOptions
+              }
+            />
+          </View>
+        ))}
+      </View>
+    </ImageBackground>
   );
 };
 

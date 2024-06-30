@@ -11,50 +11,48 @@ const Cover = ({}) => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <View style={{ flex: 1 }}>
-        <ImageBackground
-          source={require("@Assets/birds.png")}
-          style={styles.imageBg}
-        >
-          <View style={styles.content}>
-            <AnimatableView animation="fadeInLeft" duration={800} delay={0}>
-              <View style={{ flexDirection: "column" }}>
-                <Text
-                  style={{
-                    ...styles.header,
-                    fontSize: 42,
-                    textTransform: "uppercase",
+    <View style={{ flex: 1 }}>
+      <ImageBackground
+        source={require("@Assets/birds.png")}
+        style={styles.imageBg}
+      >
+        <View style={styles.content}>
+          <AnimatableView animation="fadeInLeft" duration={800} delay={0}>
+            <View style={{ flexDirection: "column" }}>
+              <Text
+                style={{
+                  ...styles.header,
+                  fontSize: 42,
+                  textTransform: "uppercase",
+                }}
+              >
+                One small App
+              </Text>
+              <Text style={{ ...styles.imgText }}>
+                This is a small app done using react native and expo. Click
+                arrow to continue
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Button
+                  type={ButtonType.ICON_ONLY}
+                  icon={faArrowRight}
+                  options={{ fontSize: 32, iconSize: 95, noBorder: true }}
+                  onPress={() => {
+                    navigate("/profile");
                   }}
-                >
-                  One small App
-                </Text>
-                <Text style={{ ...styles.imgText }}>
-                  This is a small app done using react native and expo. Click
-                  arrow to continue
-                </Text>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button
-                    type={ButtonType.ICON_ONLY}
-                    icon={faArrowRight}
-                    options={{ fontSize: 32, iconSize: 95, noBorder: true }}
-                    onPress={() => {
-                      navigate("/profile");
-                    }}
-                  />
-                </View>
+                />
               </View>
-            </AnimatableView>
-          </View>
-        </ImageBackground>
-      </View>
-    </>
+            </View>
+          </AnimatableView>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 

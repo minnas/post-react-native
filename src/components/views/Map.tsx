@@ -70,59 +70,57 @@ const Map = () => {
   };
 
   return (
-    <>
-      <ImageBackground source={map} style={styles.imageBg}>
-        <View style={styles.mapIcons}>
-          {pages.map((index: number) => (
-            <View
-              key={index}
-              style={{
-                padding: 15,
-              }}
-            >
-              <Button
-                icon={icon(index)}
-                title={index.toString()}
-                onPress={() => {
-                  setPage(index);
-                  if (!(profile.disableInfo === true)) {
-                    setPath("/info");
-                  } else {
-                    setPath("/day");
-                  }
-                }}
-                options={
-                  {
-                    backgroundColor: colors.WHITE_OPACITY_2,
-                    ...options(index),
-                  } as ButtonOptions
-                }
-              />
-            </View>
-          ))}
+    <ImageBackground source={map} style={styles.imageBg}>
+      <View style={styles.mapIcons}>
+        {pages.map((index: number) => (
           <View
+            key={index}
             style={{
               padding: 15,
             }}
           >
             <Button
-              icon={faRainbow}
+              icon={icon(index)}
+              title={index.toString()}
               onPress={() => {
-                setPath("/end");
+                setPage(index);
+                if (!(profile.disableInfo === true)) {
+                  setPath("/info");
+                } else {
+                  setPath("/day");
+                }
               }}
-              title="Result"
               options={
                 {
-                  backgroundColor: colors.WHITE_OPACITY_6,
-                  color: colors.APP_COLOR,
-                  iconSize: 52,
+                  backgroundColor: colors.WHITE_OPACITY_2,
+                  ...options(index),
                 } as ButtonOptions
               }
             />
           </View>
+        ))}
+        <View
+          style={{
+            padding: 15,
+          }}
+        >
+          <Button
+            icon={faRainbow}
+            onPress={() => {
+              setPath("/end");
+            }}
+            title="Result"
+            options={
+              {
+                backgroundColor: colors.WHITE_OPACITY_6,
+                color: colors.APP_COLOR,
+                iconSize: 52,
+              } as ButtonOptions
+            }
+          />
         </View>
-      </ImageBackground>
-    </>
+      </View>
+    </ImageBackground>
   );
 };
 

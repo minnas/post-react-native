@@ -48,27 +48,25 @@ const BaseLayout = ({
 
   const profileAvatar = (icon: IconProp) => {
     return (
-      <>
-        <Pressable
-          style={{
-            position: "relative",
-            justifyContent: "center",
-            alignItems: "center",
-            width: 52,
-            height: 52,
-          }}
-          onPress={() => {
-            navigate("/profile");
-          }}
-        >
-          <FontAwesomeIcon icon={faCircle} size={52} />
-          <FontAwesomeIcon
-            icon={icon}
-            size={38}
-            style={{ position: "absolute", zIndex: 99 }}
-          />
-        </Pressable>
-      </>
+      <Pressable
+        style={{
+          position: "relative",
+          justifyContent: "center",
+          alignItems: "center",
+          width: 52,
+          height: 52,
+        }}
+        onPress={() => {
+          navigate("/profile");
+        }}
+      >
+        <FontAwesomeIcon icon={faCircle} size={52} />
+        <FontAwesomeIcon
+          icon={icon}
+          size={38}
+          style={{ position: "absolute", zIndex: 99 }}
+        />
+      </Pressable>
     );
   };
 

@@ -125,14 +125,12 @@ const About = ({}) => {
   );
 
   return (
-    <>
-      <ScrollView>
-        <Accordion label="About the App" children={aboutInfo} />
-        <Accordion label="Svg Image" children={svgView} />
-        <Accordion label="Svg Button" children={svgButton} />
-        <Accordion label="Svg Chat" children={svgViewChat} />
-      </ScrollView>
-    </>
+    <ScrollView>
+      <Accordion label="About the App" children={aboutInfo} />
+      <Accordion label="Svg Image" children={svgView} />
+      <Accordion label="Svg Button" children={svgButton} />
+      <Accordion label="Svg Chat" children={svgViewChat} />
+    </ScrollView>
   );
 };
 

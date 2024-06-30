@@ -101,14 +101,12 @@ const Todos = () => {
         <Text style={styles.text}>Current {count} todos in the list</Text>
       </View>
       <View style={styles.containerPosts}>
-        {toastVisible ? (
+        {toastVisible && (
           <Toast
             content="Done"
             type={ToastType.SUCCESS}
             options={{ left: 5, top: 2 } as ToastOptions}
           />
-        ) : (
-          ""
         )}
         {toastErrorVisible && (
           <Toast content={toastErrorMessage} type={ToastType.ERROR} />

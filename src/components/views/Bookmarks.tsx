@@ -76,7 +76,7 @@ const Bookmarks = () => {
               size={15}
               style={{ position: "absolute", zIndex: 99 }}
             />
-            {isImportant(item.key) ? (
+            {isImportant(item.key) && (
               <FontAwesomeIcon
                 style={{
                   position: "absolute",
@@ -88,8 +88,6 @@ const Bookmarks = () => {
                 color={colors.SUCCESS_COLOR}
                 size={25}
               />
-            ) : (
-              ""
             )}
           </Pressable>
 
