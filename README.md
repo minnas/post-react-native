@@ -9,7 +9,7 @@ This is a test app for testing react native and it uses free dummy api for the t
 
 To Start:
 <br><br>
-1️⃣ check you are having node version > 20 and yarn installed<br>
-2️⃣ download expo app if you haven't it allready installed<br>
+1️⃣ Check you are having node version > 20 and yarn installed<br>
+2️⃣ Download expo app if you haven't it allready installed<br>
 3️⃣ Run yarn && yarn start <br>
 4️⃣ Scan the QR with the phone
